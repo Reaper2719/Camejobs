@@ -1,0 +1,197 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: #172A3A;
+    color: white;
+    border-bottom: 1px solid #ddd;
+}
+.logo {
+    width: 250px;
+    height: auto;
+}
+.nav-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 10px 0;
+}
+.nav-buttons a {
+    text-decoration: none;
+    padding: 5px 20px;
+    background-color: #edeef0;
+    color: rgb(12, 11, 11);
+    border-radius: 5px;
+}
+.search-container {
+    position: relative;
+    flex-basis: 100%;
+    margin-top: 10px;
+}
+.search-container input {
+    width: 200px;
+    height: 50px;
+    border: 1px solid #ece8e8;
+    border-radius: 5px;
+    padding-left: 35px;
+}
+.search-container i {
+    position: absolute;
+    left: 10px;
+    top: 40%;
+    transform: translateY(-10%);
+    color: #a08d8d;
+}
+@media (min-width: 768px) {
+    .nav-buttons {
+        justify-content: flex-end;
+    }
+    .search-container {
+        flex-basis: auto;
+    }
+}
+
+/* Formulario de empresa */
+.formulario-empresa {
+    background-color: white;
+    margin: 40px auto;
+    padding: 20px;
+    max-width: 600px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+.formulario-empresa h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.formulario-empresa form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.formulario-empresa input,
+.formulario-empresa textarea {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+}
+.formulario-empresa input[type="file"] {
+    padding: 3px;
+}
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    flex: 1;
+}
+.guardar-btn {
+    background-color: #03264a;
+    color: white;
+}
+.guardar-btn:hover {
+    background-color: #03498f;
+}
+.cancelar-btn {
+    background-color: #969595;
+    color: white;
+}
+.cancelar-btn:hover {
+    background-color: #4d4d4d;
+}
+
+/* Body principal */
+main {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+.empresa-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 2px solid #f4f4f4;
+}
+.empresa-logo {
+    width: 150px;
+}
+.empresa-slogan h2 {
+    text-align: center;
+    font-size: 28px;
+    margin: 20px 0;
+}
+.empresa-descripcion {
+    padding: 20px;
+}
+.empresa-imagen {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    margin: 20px 0;
+    border-radius: 10px;
+}
+
+/* Estilo para el modal */
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+.hidden {
+    display: none;
+}
+.modal-content p {
+    margin-bottom: 20px;
+}
+.modal-content button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+#confirm-btn {
+    background-color: #03264a;
+    color: white;
+}
+#confirm-btn:hover {
+    background-color: #03498f;
+}
+#cancel-btn {
+    background-color: #969595;
+    color: white;
+}
+#cancel-btn:hover {
+    background-color: #4d4d4d;
+}

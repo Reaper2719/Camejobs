@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acerca de la empresa</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Logo" class="logo">
+        <div class="nav-buttons">
+            <a href="#Perfiles">Perfiles</a>  
+            <a href="#Empresas">Empresas</a>
+            <a href="#Acerca de nosotros">Acerca de nosotros</a>  
+            <a href="#Servicio al cliente">Servicio al cliente</a>
+            <br>
+        </div>
+        <div class="search-container">
+            <form action="#ofertas" method="get">
+                <input type="text" name="buscador" placeholder="Buscar nuevas ofertas...">
+                <i class="font-awesome fas fa-search"></i>
+            </form>
+        </div>
+    </header>
+
+    <!-- Formulario para la empresa -->
+    <section class="formulario-empresa">
+        <h2>Introduce los datos de la empresa</h2>
+        <form id="empresaForm">
+            <label for="logoEmpresa">Logo de la empresa:</label>
+            <input type="file" id="logoEmpresa" accept="image/*" required><br>
+
+            <label for="nombreEmpresa">Nombre de la empresa:</label>
+            <input type="text" id="nombreEmpresa" placeholder="Nombre de la empresa" required><br>
+
+            <label for="sloganEmpresa">Slogan de la empresa:</label>
+            <input type="text" id="sloganEmpresa" placeholder="Slogan" required><br>
+
+            <label for="descripcionEmpresa">Descripción de la empresa:</label>
+            <textarea id="descripcionEmpresa" rows="4" placeholder="Descripción de la empresa" required></textarea><br>
+
+            <label for="logrosEmpresa">Logros y compromisos:</label>
+            <textarea id="logrosEmpresa" rows="3" placeholder="Logros y compromisos de la empresa" required></textarea><br>
+
+            <label for="imagenEmpleados">Imagen de la empresa:</label>
+            <input type="file" id="imagenEmpleados" accept="image/*" required><br>
+
+            <div class="form-buttons">
+                <button type="submit" class="btn guardar-btn">Guardar</button>
+                <button type="button" class="btn cancelar-btn">Cancelar</button>
+            </div>
+        </form>
+    </section>
+
+    <!-- Body principal -->
+    <main>
+        <section class="empresa-header">
+            <img src="" id="empresa-logo" alt="Logo de la Empresa" class="empresa-logo">
+            <div class="empresa-rating">
+                <h1 id="nombre-display"></h1>
+            </div>
+        </section>
+
+        <section class="empresa-slogan">
+            <h2 id="slogan-display"></h2>
+        </section>
+
+        <section class="empresa-descripcion">
+            <h2>¿Quiénes somos?</h2>
+            <p id="descripcion-display"></p>
+            <img src="" id="empleados-img" alt="Imagen de empleados" class="empresa-imagen">
+            <p><strong>Seguridades y compromisos:</strong> <span id="logros-display"></span></p>
+        </section>
+    </main>
+
+    <!-- Modal de confirmación -->
+    <div id="confirmModal" class="modal hidden">
+        <div class="modal-content">
+            <p id="modal-message"></p>
+            <button id="confirm-btn">Sí</button>
+            <button id="cancel-btn">No</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
