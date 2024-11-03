@@ -1,0 +1,17 @@
+/* Estilos personalizados para la fila de búsqueda */
+
+/* Clase para ajustar el padding y el espaciado */
+.fila-busqueda {
+    padding: 10px;
+  }
+  
+  /* Ajusta la apariencia del menú desplegable */
+  .form-select {
+    font-size: 1rem;
+  }
+  
+  /* Hace que el botón ocupe todo el espacio disponible en su columna */
+  .btn-primary {
+    width: 100%;
+  }
+  
