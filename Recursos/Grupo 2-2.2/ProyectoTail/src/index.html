@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil</title>
     <link href="./output.css" rel="stylesheet">
+    
 </head>
-<body class="bg-[#f5f5f5] text-gray-800">
+<body class="bg-[#74B3CE] text-gray-800 dark:bg-gray-900 dark:text-white">
     <nav class="bg-[#86ce74]">
         <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div class="relative flex h-16 items-center justify-between">
@@ -15,7 +16,7 @@
             <div class="sm:justify-start">
               <div class="flex flex-shrink-0 items-center">
                 <img class="h-12 w-auto" src="../src/img/logo.png" alt="Camejobs">
-                <a href="#" class="text-[#172A3A] italic m-1 px-3 py-2 text-2xl font-bold ">Camejobs</a>
+                <a href="#" class="text-[#004346] italic m-1 px-3 py-2 text-2xl font-bold ">Camejobs</a>
               </div>
             </div>
             <div class="flex flex-1 items-center justify-center sm:items-stretch ">
@@ -23,18 +24,26 @@
               <div class="hidden sm:flex justify-center text-[#172A3A]">
                 <div class="flex space-x-4">
                   <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                  <a href="#" class="px-3 py-2 text-xl font-medium hover:bg-[#172A3A] hover:text-white rounded">Ofertas</a>
-                  <a href="#" class="px-3 py-2 text-xl font-medium hover:bg-[#172A3A] hover:text-white rounded">Perfiles</a>
-                  <a href="#" class="px-3 py-2 text-xl font-medium hover:bg-[#172A3A] hover:text-white rounded">Empresas</a>
+                  <a href="#" class="px-3 py-2 text-xl font-medium hover:bg-[#004346] hover:text-white rounded">Ofertas</a>
+                  <a href="#" class="px-3 py-2 text-xl font-medium hover:bg-[#004346] hover:text-white rounded">Perfiles</a>
+                  <a href="#" class="px-3 py-2 text-xl font-medium hover:bg-[#004346] hover:text-white rounded">Empresas</a>
                 </div>
               </div>
             </div>
             <!--Fin logo y links-->
-    
+
+            <!--Boton para modo noche-->
+            <div class="flex justify-center items-center h-screen">
+              <!-- Botón para alternar modo oscuro -->
+              <button id="darkmode" class="px-6 py-3 bg-[#86ce74] text-white font-semibold rounded-lg shadow-lg hover:bg-[#86ce74] focus:outline-none focus:ring-2 focus:ring-blue-300 transition duration-200">
+                  Modo Oscuro
+              </button>
+               </div>
+
             <!--Boton de notificaciones-->
             <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
               <button type="button"
-                class="relative rounded-full bg-[#09BC8A] p-1 text-gray-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                class="relative rounded-full bg-[#004346] p-1 text-gray-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                 <span class="absolute -inset-1.5"></span>
                 <span class="sr-only">View notifications</span>
                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
@@ -43,6 +52,7 @@
                     d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
                 </svg>
               </button>
+             
     
               <!-- Profile dropdown -->
               <div class="relative ml-3">
@@ -86,7 +96,7 @@
           </div>
     </nav>
     
-    <header class="bg-[#FF4B2B] shadow text-[#FFFF]">
+    <header class="bg-[#09BC8A] shadow text-[#FFFF]">
         <section id="BannerPerfil" class="flex items-center p-6">
             <div id="fotoPerfil" class="mr-4 flex justify-center items-center">
                 <img id="imgBan"class="w-40 h-40 rounded-full object-cover" src="img/7.jpeg" alt="perfil">
@@ -99,7 +109,7 @@
     </header>
     <main class="p-6">
         <section id="Principal" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <article id="ContedorExp" class="bg-[#ffca28] p-4 rounded-lg shadow">
+            <article id="ContedorExp" class="bg-[#09BC8A] p-4 rounded-lg shadow">
                 <div id="ExperienciasL" class="mb-4">
                     <h2 class="text-xl font-semibold">Experiencias laborales</h2>
                 </div>
@@ -124,7 +134,7 @@
                     </div>
                 </div>
             </article>
-            <article id="ContedorPer" class="bg-[#ffc928a8] p-4 rounded-lg shadow">
+            <article id="ContedorPer" class="bg-[#09BC8A] p-4 rounded-lg shadow">
                 <div id="PerfilL" class="mb-4">
                     <h2 class="text-xl font-semibold ">Perfil Laboral</h2>
                 </div>
@@ -145,7 +155,7 @@
                     </div>
                 </div>
             </article>
-            <article id="ContedorCon" class="bg-[#ffca28] p-4 rounded-lg shadow">
+            <article id="ContedorCon" class="bg-[#09BC8A] p-4 rounded-lg shadow">
                 <div id="contactosL" class="mb-4">
                     <h2 class="text-xl font-semibold">Contactos</h2>
                 </div>
@@ -157,7 +167,7 @@
                     </ul>                
                 </div>
             </article>
-            <article id="ContedorFor" class="bg-[#ffc928a8] p-4 rounded-lg shadow">
+            <article id="ContedorFor" class="bg-[#09BC8A] p-4 rounded-lg shadow">
                 <div id="formacionL" class="mb-4">
                     <h2 class="text-xl font-semibold">Formación académica</h2>
                 </div>
@@ -170,7 +180,7 @@
                     </div>               
                 </div>
             </article>
-            <article id="ContedorSob" class="bg-[#ffca28] p-4 rounded-lg shadow">
+            <article id="ContedorSob" class="bg-[#09BC8A] p-4 rounded-lg shadow">
                 <div id="sobreL">
                     <section id="sobre-mi">
                         <h2 class="text-xl font-semibold">Sobre mí</h2>
@@ -206,7 +216,7 @@
                     </section>
                 </div>
             </article>
-            <article id="ContedorRec" class="bg-[#ffc928a8] p-4 rounded-lg shadow">
+            <article id="ContedorRec" class="bg-[#09BC8A] p-4 rounded-lg shadow">
                 <div id="Recomendaciones" class="mb-4">
                     <h2 class="text-xl font-semibold">Recomendaciones</h2>
                 </div>
@@ -413,6 +423,6 @@
       <a class="font-semibold" href="#">Camejobs</a>
     </div>
   </footer>
-  
+  <script src="main.js"></script>
 </body>
 </html>
