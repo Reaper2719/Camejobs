@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil</title>
     <link href="./output.css" rel="stylesheet">
+    
 </head>
-<body class="bg-[#74B3CE] text-gray-800">
+<body class="bg-[#74B3CE] text-gray-800 dark:bg-gray-900 dark:text-white">
     <nav class="bg-[#86ce74]">
         <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div class="relative flex h-16 items-center justify-between">
@@ -30,7 +31,15 @@
               </div>
             </div>
             <!--Fin logo y links-->
-    
+
+            <!--Boton para modo noche-->
+            <div class="flex justify-center items-center h-screen">
+              <!-- Botón para alternar modo oscuro -->
+              <button id="darkmode" class="px-6 py-3 bg-[#86ce74] text-white font-semibold rounded-lg shadow-lg hover:bg-[#86ce74] focus:outline-none focus:ring-2 focus:ring-blue-300 transition duration-200">
+                  Modo Oscuro
+              </button>
+               </div>
+
             <!--Boton de notificaciones-->
             <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
               <button type="button"
@@ -43,6 +52,7 @@
                     d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
                 </svg>
               </button>
+             
     
               <!-- Profile dropdown -->
               <div class="relative ml-3">
@@ -413,6 +423,6 @@
       <a class="font-semibold" href="#">Camejobs</a>
     </div>
   </footer>
-  
+  <script src="main.js"></script>
 </body>
 </html>
