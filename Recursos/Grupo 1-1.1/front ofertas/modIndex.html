@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CameJobs</title>
+    <link rel="shortcut icon" href="image/icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="index.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <header>
+        <img src="./image/logo.png" alt="Logo" class="logo">
+        <div class="nav-buttons">
+            <a href="#perfil">Perfiles</a>
+            <a href="#empresa">Empresas</a>
+            <a href="#acerca">Acerca de nosotros</a>
+            <a href="#servicio">Servicio al cliente</a>
+            <br>
+        </div>
+        <div class="search-container">
+            <form action="#ofertas" method="get">
+                <input type="text" name="buscador" placeholder=" Nuevas ofertas">
+                <i class="font-awesome fas fa-search"></i>
+            </form>
+        </div>
+    </header>
+
+    <br>
+
+    <nav class="navbar">
+        <div class="dropdown">
+            <button class="dropbtn">Empresa</button>
+            <div class="dropdown-content">
+                <a href="#">Emcali</a>
+                <a href="#">Movistar</a>
+                <a href="#">Claro</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">Salario</button>
+            <div class="dropdown-content">
+                <a href="#">1.200.000</a>
+                <a href="#">2.400.000</a>
+                <a href="#">2.500.000 o más</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">Experiencia</button>
+            <div class="dropdown-content">
+                <a href="#">1 año</a>
+                <a href="#">2 años</a>
+                <a href="#">3 años o más</a>
+            </div>
+        </div>
+    </nav>
+
+    <br>
+
+    <div class="job-container" style="display: flex; flex-direction: column; align-items: flex-start; gap: 10px;">
+        <div style="display: flex; gap: 10px;">
+            <div class="brief-card" style="width: 14rem; border: 1px solid #c2bfbf; border-radius: 5px; padding: 10px; margin-bottom: 20px;" onclick="toggleDetailedCard('detailedCardEmcali')">
+                <div class="image-container" style="width: 100%; height: auto; overflow: hidden; display: flex; justify-content: center;">
+                    <img src="./image/emcali.png" alt="EMCALI" style="max-width: 80%; height: auto; display: block;">
+                </div>
+                <h5 style="font-weight: bold; color: darkblue;">Especialista en Diseño y Desarrollo de Software</h5>
+                <p>EMCALI S.A.S.</p>
+                <p>Santiago de Cali - Valle</p>
+                <p>$ 3.200.000 (Mensual)</p>
+                <p>Publicado hace 3 días</p>
+            </div>
+        
+            <!-- Tarjeta despliegable de EMCALI -->
+            <div id="detailedCardEmcali" class="detailed-card hidden" style="border: 1px solid #c2bfbf; border-radius: 5px; padding: 10px; margin-bottom: 20px;">
+                <button onclick="toggleDetailedCard('detailedCardEmcali')" style="position: absolute; top: 10px; right: 10px; background: #d73529; border: none; color: white; font-size: 18px; cursor: pointer; border-radius: 50%; width: 30px; height: 30px; text-align: center;">&times;</button>
+                <h5 style="font-weight: bold; color: darkblue;">Especialista en Diseño y Desarrollo de Software</h5>
+                <p> EMCALI S.A.S</p>
+                <div class="actions-buttons">
+                    <button class="postulate-button">
+                        <i class="bi bi-eye-slash" style="margin-right: 5px;"></i>
+                    </button>
+                    <button class="postulate-button">
+                        <i class="bi bi-share" style="margin-right: 5px;"></i> 
+                    </button>
+                    <button class="postulate-button">
+                        <i class="bi bi-bell" style="margin-right: 5px;"></i>
+                    </button>                
+                </div>
+                <br>
+                <p><i class="bi bi-laptop" style="margin-right: 5px;"></i> Remoto</p>
+                <p><i class="bi bi-clock" style="margin-right: 5px;"></i> Tiempo Completo de lunes a viernes</p>
+                <p><i class="bi bi-credit-card" style="margin-right: 5px;"></i> 3.200.000</p>
+                <p><i class="bi bi-briefcase" style="margin-right: 5px;"></i> 1 año de Experiencia</p>
+                <p><i class="bi bi-file-earmark-text"></i> Contrato Indefinido</p>
+                <div class="info-section">
+                    <h5><b>Descripción:</b></h5>
+                    <p>Estamos en busca de un Desarrollador de Software apasionado y motivado para unirse a nuestro equipo. En este rol, serás responsable de diseñar, desarrollar y mantener aplicaciones de software innovadoras que impacten a nuestros clientes y mejoren la eficiencia de nuestros procesos internos.
+                        <br>Responsabilidades:<br>
+                        Desarrollar y mantener aplicaciones web y móviles utilizando tecnologías modernas.
+                        Colaborar con equipos de diseño y producto para traducir los requisitos del negocio en soluciones técnicas efectivas.
+                        Participar en revisiones de código y asegurarte de que el software cumpla con los estándares de calidad.
+                        Realizar pruebas y depuración de software para garantizar la funcionalidad y la eficiencia.
+                        Contribuir a la documentación técnica y a las especificaciones de diseño.
+                        <br>Ofrecemos:<br>
+                        Un ambiente de trabajo colaborativo y dinámico.
+                        Oportunidades de desarrollo profesional y capacitación continua.
+                        Horario flexible y opción de trabajo remoto.
+                        Salario competitivo y beneficios adicionales.
+                        Si estás listo para un nuevo desafío y deseas contribuir a proyectos innovadores, ¡nos encantaría conocerte!
+                    </p>
+                    <h5><b>Requisitos:</b></h5>
+                    <ul>
+                        <li>Conocimientos en MySQL</li>
+                        <li>Proyectos previos serán valorados</li>
+                        <li>Título en Ciencias de la Computación, Ingeniería de Software o campo relacionado.</li>
+                        <li>Conocimientos en lenguajes de programación como Java, Python, o JavaScript.</li>
+                        <li>Familiaridad con frameworks de desarrollo web como React, Angular o Vue.js.</li>
+                        <li>Conocimientos en MySQL</li>
+                        <li>Trabajo en equipo y comunicarse efectivamente.</li>
+                    </ul>
+                    <h5><b>Procesos de selección:</b></h5>
+                    <p>
+                        Se solicita la hoja de vida, entrevista con el equipo técnico y una prueba técnicas de habilidades.
+                    </p>
+                    <div>
+                        <p><i class="bi bi-envelope" style="margin-right: 5px;"></i> correo: rrhj@emcali.com telefono: 602 987 0887</p>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center mt-3">
+                    <button type="button" class="custom-button"><b>Postularte</b></button>
+                </div>
+            </div>
+        </div>
+
+        <div style="display: flex; gap: 10px;">
+            <!-- Tarjeta de Movistar -->
+            <div class="brief-card" style="width: 14rem; border: 1px solid #c2bfbf; border-radius: 5px; padding: 10px; margin-bottom: 20px;" onclick="toggleDetailedCard('detailedCardMovistar')">
+                <div class="image-container" style="width: 100%; height: auto; overflow: hidden; display: flex; justify-content: center;">
+                    <img src="./image/movistar1.png" alt="Movistar" style="max-width: 80%; height: auto; display: block;">
+                </div>        
+                <h5 style="font-weight: bold; color: darkblue;">Analista de Sistemas</h5>
+                <p>Movistar</p>
+                <p>Bogotá - D.C.</p>
+                <p>$ 3.000.000 (Mensual)</p>
+                <p>Publicado hace 2 días</p>
+            </div>
+
+            <!-- Tarjeta despliegable de Movistar -->
+            <div id="detailedCardMovistar" class="detailed-card hidden" style="border: 1px solid #c2bfbf; border-radius: 5px; padding: 10px; margin-bottom: 20px;">
+                <button onclick="toggleDetailedCard('detailedCardMovistar')" style="position: absolute; top: 10px; right: 10px; background: #d73529; border: none; color: white; font-size: 18px; cursor: pointer; border-radius: 50%; width: 30px; height: 30px; text-align: center;">&times;</button>
+                <h5 style="font-weight: bold; color: darkblue;">Analista de Sistemas</h5>
+                <p>Movistar</p>
+                <div class="actions-buttons">
+                    <button class="postulate-button">
+                        <i class="bi bi-eye-slash" style="margin-right: 5px;"></i>
+                    </button>
+                    <button class="postulate-button">
+                        <i class="bi bi-share" style="margin-right: 5px;"></i> 
+                    </button>
+                    <button class="postulate-button">
+                        <i class="bi bi-bell" style="margin-right: 5px;"></i>
+                    </button>                
+                </div>
+                <br>
+                <p><i class="bi bi-laptop" style="margin-right: 5px;"></i> Remoto</p>
+                <p><i class="bi bi-clock" style="margin-right: 5px;"></i> Tiempo Completo de lunes a viernes</p>
+                <p><i class="bi bi-credit-card" style="margin-right: 5px;"></i> 3.000.000</p>
+                <p><i class="bi bi-briefcase" style="margin-right: 5px;"></i> 2 años de Experiencia</p>
+                <p><i class="bi bi-file-earmark-text"></i> Contrato Indefinido</p>
+                <div class="info-section">
+                    <h5><b>Descripción:</b></h5>
+                    <p>Buscamos un Analista de Sistemas con habilidades para diseñar, implementar y mantener sistemas informáticos. El candidato ideal debe tener experiencia en desarrollo de software y trabajo en equipo.</p>
+                    <h5><b>Requisitos:</b></h5>
+                    <ul>
+                        <li>Conocimientos en Java y Python</li>
+                        <li>Título en Ingeniería de Sistemas o afines</li>
+                        <li>Experiencia en metodologías ágiles</li>
+                    </ul>
+                    <h5><b>Proceso de selección:</b></h5>
+                    <p>Envía tu hoja de vida y realiza una entrevista técnica con el equipo.</p>
+                    <div>
+                        <p><i class="bi bi-envelope" style="margin-right: 5px;"></i> correo: rrhh@movistar.com teléfono: 601 123 4567</p>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center mt-3">
+                    <button type="button" class="custom-button"><b>Postularte</b></button>
+                </div>
+            </div>
+        </div>
+
+        <div style="display: flex; gap: 10px;">
+            <!-- Tarjeta de Claro -->
+            <div class="brief-card" style="width: 14rem; border: 1px solid #c2bfbf; border-radius: 5px; padding: 10px; margin-bottom: 20px;" onclick="toggleDetailedCard('detailedCardClaro')">
+                <div class="image-container" style="width: 100%; height: auto; overflow: hidden; display: flex; justify-content: center;">
+                    <img src="./image/claro.png" alt="Claro" style="max-width: 80%; height: auto; display: block;">
+                </div>        
+                <h5 style="font-weight: bold; color: darkblue;">Desarrollador Frontend</h5>
+                <p>Claro</p>
+                <p>Medellín - Antioquia</p>
+                <p>$ 3.500.000 (Mensual)</p>
+                <p>Publicado hace 1 día</p>
+            </div>
+
+            <!-- Tarjeta despliegable de Claro -->
+            <div id="detailedCardClaro" class="detailed-card hidden" style="border: 1px solid #c2bfbf; border-radius: 5px; padding: 10px; margin-bottom: 20px;">
+                <button onclick="toggleDetailedCard('detailedCardClaro')" style="position: absolute; top: 10px; right: 10px; background: #d73529; border: none; color: white; font-size: 18px; cursor: pointer; border-radius: 50%; width: 30px; height: 30px; text-align: center;">&times;</button>
+                <h5 style="font-weight: bold; color: darkblue;">Desarrollador Frontend</h5>
+                <p>Claro</p>
+                <div class="actions-buttons">
+                    <button class="postulate-button">
+                        <i class="bi bi-eye-slash" style="margin-right: 5px;"></i>
+                    </button>
+                    <button class="postulate-button">
+                        <i class="bi bi-share" style="margin-right: 5px;"></i> 
+                    </button>
+                    <button class="postulate-button">
+                        <i class="bi bi-bell" style="margin-right: 5px;"></i>
+                    </button>                
+                </div>
+                <br>
+                <p><i class="bi bi-laptop" style="margin-right: 5px;"></i> Híbrido</p>
+                <p><i class="bi bi-clock" style="margin-right: 5px;"></i> Tiempo Completo de lunes a viernes</p>
+                <p><i class="bi bi-credit-card" style="margin-right: 5px;"></i> 3.500.000</p>
+                <p><i class="bi bi-briefcase" style="margin-right: 5px;"></i> 3 años de Experiencia</p>
+                <p><i class="bi bi-file-earmark-text"></i> Contrato Indefinido</p>
+                <div class="info-section">
+                    <h5><b>Descripción:</b></h5>
+                    <p>Estamos buscando un Desarrollador Frontend con experiencia en React y Angular. El candidato debe ser creativo y tener pasión por el desarrollo web.</p>
+                    <h5><b>Requisitos:</b></h5>
+                    <ul>
+                        <li>Conocimientos en HTML, CSS y JavaScript</li>
+                        <li>Experiencia en diseño responsivo</li>
+                        <li>Trabajo en equipo y habilidades de comunicación</li>
+                    </ul>
+                    <h5><b>Proceso de selección:</b></h5>
+                    <p>Envía tu hoja de vida y realiza una entrevista con el equipo de desarrollo.</p>
+                    <div>
+                        <p><i class="bi bi-envelope" style="margin-right: 5px;"></i> correo: rrhh@claro.com teléfono: 604 123 4567</p>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center mt-3">
+                    <button type="button" class="custom-button"><b>Postularte</b></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

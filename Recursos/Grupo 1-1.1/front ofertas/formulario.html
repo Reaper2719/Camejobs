@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviar Tarjeta por Correo</title>
+    <link rel="stylesheet" href="formulario.css">
+</head>
+
+<body>
+
+    <header>
+        <img src="./image/logo.png" alt="Logo" class="logo">
+        <div class="nav-buttons">
+            <a href="#perfil">Perfiles</a>
+            <a href="#empresa">Empresas</a>
+            <a href="#acerca">Acerca de nosotros</a>
+            <a href="#servicio">Servicio al cliente</a>
+            <br>
+        </div>
+        <div class="search-container">
+            <form action="#ofertas" method="get">
+                <input type="text" name="buscador" placeholder=" Nuevas ofertas">
+                <i class="font-awesome fas fa-search"></i>
+            </form>
+        </div>
+    </header>
+    <!-- Formulario para enviar la tarjeta por correo -->
+    <div class="form-container">
+        <h3>Crear una nueva oferta de trabajo y enviarla por correo:</h3>
+        <form id="send-email-form">
+            <label for="image-url">URL de la imagen:</label><br>
+            <input type="text" id="image-url" name="image_url" placeholder="URL de la imagen" required><br><br>
+
+            <label for="title">Título (h5):</label><br>
+            <input type="text" id="title" name="title" placeholder="Título de la tarjeta" required><br><br>
+
+            <label for="description">Descripción (p):</label><br>
+            <textarea id="description" name="description" placeholder="Descripción de la tarjeta"
+                required></textarea><br><br>
+
+            <label for="salary">Salario:</label><br>
+            <input type="text" id="salary" name="salary" placeholder="Salario" required><br><br>
+
+            <label for="time">Tiempo de trabajo:</label><br>
+            <input type="text" id="time" name="time" placeholder="Tiempo de trabajo" required><br><br>
+
+            <label for="experience">Experiencia:</label><br>
+            <input type="text" id="experience" name="experience" placeholder="Experiencia" required><br><br>
+
+            <h4>Información adicional del accordion:</h4>
+            <label for="accordion-info">Información adicional:</label><br>
+            <textarea id="accordion-info" name="accordion_info" placeholder="Escribe aquí la información adicional"
+                required></textarea><br><br>
+
+            <button id="botoncito" type="submit">Enviar oferta</button>
+        </form>
+    </div>
+
+    <!-- Cargar la librería de EmailJS y tu archivo JavaScript -->
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script src="formulario.js"></script>
+
+</body>
+
+</html>

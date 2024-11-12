@@ -1,0 +1,310 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: #172A3A;
+    width: auto;
+    color: white;
+    border-bottom: 1px solid #ddd;
+}
+.logo {
+    width: 250px;
+    height: auto;
+}
+.nav-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 10px 0;
+}
+.nav-buttons a {
+    text-decoration: none;
+    padding: 5px 20px;
+    background-color: #edeef0;
+    color: rgb(12, 11, 11);
+    border-radius: 5px;
+}
+.search-container{
+    position: relative;
+    flex-basis: 100%;
+    margin-top: 10px;
+}
+.search-container input{
+    width: 200px;
+    height: 50px;
+    border: 1px solid #ece8e8;
+    border-radius: 5px;
+    padding-left: 35px;
+
+}
+.search-container i {
+    position: absolute;
+    left: 10px;
+    top: 40%;
+    transform: translateY(-10%);
+    color: #a08d8d;
+}
+@media (min-width: 768px) {
+    .nav-buttons {
+        justify-content: flex-end;
+    }
+    .search-container {
+        flex-basis: auto;
+    }
+}
+
+/* Barra de botones */
+
+.navbar {
+    display: flex;
+    background-color: #172A3A;
+    justify-content: center;
+    padding: 10px;
+    width: 90%;
+    position: relative;
+    left: 4%;
+}
+
+/* Botones principales */
+.dropbtn {
+    background-color: white;
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    border: white;
+    cursor: pointer;
+    border-radius: 12%;
+}
+
+/* Contenedor del menú de opciones */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin: 0 10px;
+    color: black;
+}
+
+/* Contenido del menú de opciones*/
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 12%;
+}
+
+/* Opciones del menú de opciones */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+
+/* Desplegar menú de opciones */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a:hover {
+    color: white ;
+    border-radius: 12%;
+}
+
+.dropbtn:hover {
+    color: white;
+    border-radius: 12%;
+}
+
+/* Cambiar color al pasar el cursor por los enlaces */
+.dropdown-content a:hover {
+    background-color: #74B3CE;
+}
+
+/* Cambiar color del botón principal al pasar el cursor */
+.dropdown:hover .dropbtn {
+    background-color: #1879a3;
+}
+
+/* Componentes de la tarjeta de empleo */
+
+.card {
+    position: relative;
+    left: 4%;
+    border: 10px solid #172A3A;
+}
+
+.card-body {
+    border: 5px solid #172A3A;
+}
+
+.card-img-top {
+    border: 5px solid #172A3A;
+}
+
+.card-link:hover {
+    font-size: 1.2em;
+}
+
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #172A3A;
+}
+
+.logo {
+    max-width: 150px;
+}
+
+.nav-buttons a {
+    margin-right: 15px;
+    text-decoration: none;
+    color: #333;
+}
+
+.search-container i {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+/* Estilos para las tarjetas de empleos */
+.job-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.brief-card, .detailed-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    position: relative;
+    transition: box-shadow 0.3s;
+    flex: 1; /* Allow cards to grow and shrink */
+    margin: 0 10px; /* Space between cards */
+}
+
+.brief-card:hover, .detailed-card:hover {
+    box-shadow: 0 4px 10px rgba(83, 133, 231, 0.2);
+}
+
+.options {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.options button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.options-menu {
+    display: none;
+    position: absolute;
+    top: 30px;
+    right: 0;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.options-menu button {
+    width: 100%;
+    border: none;
+    padding: 10px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.options-menu button:hover {
+    background-color: #f0f0f0;
+}
+
+.detailed-card .actions {
+    margin-top: 15px;
+}
+
+.detailed-card .salary,
+.detailed-card .work-type,
+.detailed-card .location,
+.detailed-card .time {
+    margin: 10px 0;
+}
+
+.info-section {
+    margin-top: 20px;
+}
+
+.info-section h5 {
+    margin-top: 10px;
+}
+
+.postulate-button {
+    background-color: #172A3A; 
+    color: white;
+}
+
+.postulate-button:hover {
+    background-color: #1f3c5e; 
+}
+
+.hidden {
+    display: none; 
+}
+.custom-button {
+    background-color: #172A3A;
+    color: white; 
+    border: none; 
+    padding: 10px 30px; 
+    text-align: center; 
+    text-decoration: none; 
+    display: inline-block; 
+    font-size: 16px; 
+    margin: 4px 2px; 
+    cursor: pointer; 
+    border-radius: 5px; 
+}
+
+.custom-button:hover {
+    background-color: #111a81; 
+}
+.actions-buttons {
+    display: flex; 
+    gap: 15px; 
+}
+.postulate-button {
+    display: flex; 
+    align-items: center; 
+}
+.postulate-button {
+    display: flex;
+    align-items: center;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: black;
+}
+.postulate-button span {
+    margin-right: 5px;
+}
