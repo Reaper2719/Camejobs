@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Reseñas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="contenedor">
+    <header>
+        <h1>Sistema de Reseñas</h1>
+    </header>
+
+    <section class="seccion-calificacion">
+        <div class="calificacion-promedio">
+            <h2 id="calificacion-promedio">0.0</h2>
+            <p>Calificación promedio</p>
+        </div>
+
+        <!-- Gráfica de barras -->
+        <div class="grafica-barras">
+            <div class="barra">
+                <span class="numero">1 </span>
+                <div class="barra-llena uno" id="barra-1">
+                    <span class="contador" id="contador-1">0</span>
+                </div>
+            </div>
+            <div class="barra">
+                <span class="numero">2 </span>
+                <div class="barra-llena dos" id="barra-2">
+                    <span class="contador" id="contador-2">0</span>
+                </div>
+            </div>
+            <div class="barra">
+                <span class="numero">3 </span>
+                <div class="barra-llena tres" id="barra-3">
+                    <span class="contador" id="contador-3">0</span>
+                </div>
+            </div>
+            <div class="barra">
+                <span class="numero">4 </span>
+                <div class="barra-llena cuatro" id="barra-4">
+                    <span class="contador" id="contador-4">0</span>
+                </div>
+            </div>
+            <div class="barra">
+                <span class="numero">5 </span>
+                <div class="barra-llena cinco" id="barra-5">
+                    <span class="contador" id="contador-5">0</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Estrellas para calificación -->
+        <div class="estrellas">
+            <span class="estrella" data-calificacion="1">★</span>
+            <span class="estrella" data-calificacion="2">★</span>
+            <span class="estrella" data-calificacion="3">★</span>
+            <span class="estrella" data-calificacion="4">★</span>
+            <span class="estrella" data-calificacion="5">★</span>
+        </div>
+    </section>
+
+    <!-- Sección de reseñas -->
+    <div class="seccion-resenas" id="seccion-resenas"></div>
+
+    <!-- Modal para escribir una reseña -->
+    <div class="modal" id="modal">
+        <div class="modal-contenido">
+            <h2>Escribir una Reseña</h2>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" placeholder="Tu nombre">
+
+            <label for="comentario">Comentario:</label>
+            <textarea id="comentario" placeholder="Escribe tu comentario aquí"></textarea>
+
+            <button id="submit-resena">Enviar Reseña</button>
+            <button id="cerrar-modal">Cerrar</button>
+        </div>
+    </div>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>

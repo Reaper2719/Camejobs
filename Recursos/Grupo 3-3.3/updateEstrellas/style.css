@@ -1,0 +1,195 @@
+/* Contenedor general */
+.contenedor {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Título */
+header h1 {
+  font-size: 2.5em;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Sección de calificación */
+.seccion-calificacion {
+  margin-top: 30px;
+}
+
+/* Calificación promedio */
+.calificacion-promedio h2 {
+  font-size: 3em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.calificacion-promedio p {
+  font-size: 1.2em;
+  color: #888;
+}
+
+/* Gráfica de barras */
+.grafica-barras {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+.barra {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.barra .numero {
+  font-weight: bold;
+  color: #333;
+  font-size: 1.1em;
+  width: 120px;
+}
+
+.barra-llena {
+  height: 30px;
+  background-color: #e0e0e0;
+  border-radius: 12px;
+  transition: width 0.5s ease;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  display: flex;
+  justify-content: flex-end; /* Asegura que el contador esté al final de la barra */
+}
+
+.uno {
+  background-color: #dd4b39; /* Rojo para 1 estrella */
+}
+
+.dos {
+  background-color: #ff9900; /* Naranja para 2 estrellas */
+}
+
+.tres {
+  background-color: #f4b400; /* Amarillo para 3 estrellas */
+}
+
+.cuatro {
+  background-color: #b3d23f; /* Verde para 4 estrellas */
+}
+
+.cinco {
+  background-color: #6aba63; /* Verde oscuro para 5 estrellas */
+}
+
+.contador {
+  color: #fff;
+  font-weight: bold;
+  margin-right: 10px;
+  position: absolute;
+  right: 10px;
+  top: 5px; /* Para que esté centrado verticalmente dentro de la barra */
+}
+
+/* Estilo de las estrellas */
+.estrellas {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.estrella {
+  font-size: 40px;
+  cursor: pointer;
+  color: #bbb;
+  transition: color 0.3s ease;
+}
+
+.estrella:hover {
+  color: #f39c12;
+}
+
+.estrella.seleccionada {
+  color: #f4c542;
+  animation: animarColor 0.3s ease;
+}
+
+@keyframes animarColor {
+  0% { color: #bbb; }
+  100% { color: #f4c542; }
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-contenido {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.modal-contenido input, .modal-contenido textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.modal-contenido button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-contenido button:hover {
+  background-color: #45a049;
+}
+
+/* Reseñas */
+.seccion-resenas .resena {
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.resena h4 {
+  margin: 0 0 5px 0;
+  color: #333;
+}
+
+.resena .comentario {
+  margin-top: 10px;
+  font-size: 1em;
+  color: #333;
+}
+
+.resena .estrellas {
+  color: #f4c542; /* Estrellas amarillas en reseñas */
+}
