@@ -4,3 +4,5 @@ mysqlclient
 Crear la base de datos en el puerto 33065 con el nombre de camejobs, cambiar el user y password dentro del settings por
 el de ustedes, después de que la base de datos y el user-password estén bien asimilados, realizar migraciones
 python manage.py makemigrations
+Estos son los documentos que tendrá que tener el back, tienen que crear el propio entorno virtual con la guía que les dí ayer, revisen las librerias y espero
+que les vaya muy bien, picos en el poposuelo.
