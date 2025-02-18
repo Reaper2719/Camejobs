@@ -1,0 +1,394 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+
+}
+/* Evita el desplazamiento horizontal */
+html, body {
+    overflow-x: hidden; 
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.navbar {
+    background-color: #0c1e2c;
+    padding: 10px 30px;
+}
+
+.container {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative; 
+}
+
+/* Logo en la parte izquierda (si decides mantener el texto) */
+.logo-superior {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 30px;
+}
+
+.logo-superior a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* Estilos del menú de navegación */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px; 
+    margin-right: 100px;
+}
+
+.nav-links a {
+    font-size: 18px;
+    display: inline-block; 
+    padding: 5px 10px; 
+    text-decoration: none; 
+    color: #ffffff; 
+    transition: all 0.3s ease-in-out; 
+    border-radius: 5px;
+}
+
+.nav-links a:hover {
+    background-color: #172A3A; 
+    color: #ffffff; 
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Barra de búsqueda en la parte superior derecha */
+.search-container {
+    position: absolute;
+    right: 30px; /* Ajusta la separación derecha según necesites */
+    display: flex;
+    align-items: center;
+    background-color: #ffffff; /* Fondo blanco para el input */
+    padding: 5px 10px;
+    border-radius: 20px;
+    padding-right: 80px;
+    margin-left: 20px;
+}
+
+/* Ajusta la imagen dentro de la barra de búsqueda */
+.search-container img {
+    height: 30px; /* Ajusta el tamaño según tu preferencia */
+    margin-right: 5px;
+}
+
+/* Input de búsqueda */
+.search-container input {
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+
+.hero {
+    background: url('img/working.jpg') no-repeat center center/cover;
+    width: 100vw; /* Ojo con esto */
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+
+.overlay {
+    background: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero button:hover {
+    background-color: #005E45;
+    transform: scale(1.05);
+}
+
+.cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 50px;
+}
+
+.card {
+    background-color: #0072a3;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+}
+
+.card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.card button, .hero button, .contact button, .about button {
+    background-color: #09BC8A;
+    font-size: 16px;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.card button:hover {
+    background-color: #007A5E;
+    transform: scale(1.05);
+}
+
+.card {
+    background-color: #0072a3;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+
+.contact {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    gap: 60px; 
+    padding: 100px 5%; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+}
+
+.contact img {
+    max-width: 500px; 
+    height: auto;
+    flex-shrink: 0;
+}
+
+.contact-content {
+    max-width: 600px; 
+}
+
+.contact h2 {
+    font-size: 36px; 
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 15px;
+}
+
+.contact p {
+    font-size: 17px; 
+    color: #000000;
+    line-height: 1.8;
+}
+
+.contact button {
+    font-size: 16px;
+    padding: 14px 28px;
+    border-radius: 6px;
+}
+
+.contact button:hover {
+    background-color: #087b5a;
+    transform: scale(1.05);
+}
+
+.about {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1100px;
+    margin: 100px auto;
+}
+
+.about img {
+    width: 550px;
+    height: 488;
+    border-radius: 10px;
+    margin-left: 400px;
+}
+
+.about-content {
+    position: absolute;
+    left: 0;
+    background-color: #0072a3; 
+    padding: 40px;
+    max-width: 590px;
+    height: 340px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.482);
+}
+
+.about h2 {
+    font-size: 36px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.about p {
+    font-size: 17px;
+    color: #000000;
+    line-height: 1.6;
+}
+
+.about button {
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    background-color: #09BC8A;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.about button:hover {
+    background-color: #087b5a;
+    transform: scale(1.05);
+}
+
+/* Estilos generales del footer */
+.footer {
+    background-color: #d6d6d6;
+    color: #000000;
+    text-align: center;
+    padding: 10px 10px;
+    width: 100%;
+}
+
+.logo-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+.logo-description {
+    font-size: 18px;
+    color: #000000;
+}
+
+  /* Línea superior con redes sociales */
+.footer-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 15px;
+}
+
+.footer-text {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+  /* Iconos sociales */
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.icon img {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.icon:hover img {
+    transform: scale(1.2);
+}
+
+/* Contenido principal del footer */
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 40px 10px;
+    text-align: left;
+}
+
+  /* Sección individual del footer */
+.footer-section {
+    margin-top: 15px;
+}
+
+  /* Estilo del logo */
+.logo-title {
+    display: flex;
+    align-items: center;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.logo {
+    height: 90px;
+    width: auto;
+    margin-right: 10px;
+}
+
+  /* Títulos de sección */
+.section-title {
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+  /* Enlaces */
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 5px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #000000;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+/* Sección inferior del footer (copyright) */
+.footer-below {
+    text-align: center;
+    color: #000000;
+    width: 100%;
+}
+
+
+
+
