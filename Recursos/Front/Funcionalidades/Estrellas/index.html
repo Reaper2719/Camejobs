@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reseñas y Calificaciones</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="contenedor">
+        <header>
+            <h1>Reseñas y Calificaciones</h1>
+            <button id="btn-resena" class="btn-resena">Escribir una reseña</button>
+        </header>
+
+        <!-- Sección de calificación promedio y barras -->
+        <section class="seccion-calificacion">
+            <div class="calificacion-promedio">
+                <h2 id="calificacion-promedio">0.0</h2>
+                <p>Calificación promedio</p>
+            </div>
+
+            <div class="grafica-barras">
+                <div class="barra">
+                    <div class="estrellas-barra">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="barra-externa">
+                        <div class="barra-llena cinco" id="barra-5"></div>
+                    </div>
+                    <span id="contador-5">0</span>
+                </div>
+                <div class="barra">
+                    <div class="estrellas-barra">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="barra-externa">
+                        <div class="barra-llena cuatro" id="barra-4"></div>
+                    </div>
+                    <span id="contador-4">0</span>
+                </div>
+                <div class="barra">
+                    <div class="estrellas-barra">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="barra-externa">
+                        <div class="barra-llena tres" id="barra-3"></div>
+                    </div>
+                    <span id="contador-3">0</span>
+                </div>
+                <div class="barra">
+                    <div class="estrellas-barra">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="barra-externa">
+                        <div class="barra-llena dos" id="barra-2"></div>
+                    </div>
+                    <span id="contador-2">0</span>
+                </div>
+                <div class="barra">
+                    <div class="estrellas-barra">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="barra-externa">
+                        <div class="barra-llena uno" id="barra-1"></div>
+                    </div>
+                    <span id="contador-1">0</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de reseñas -->
+        <section class="seccion-resenas">
+            <h2>Reseñas de usuarios</h2>
+            <div id="lista-resenas"></div>
+        </section>
+    </div>
+
+    <!-- Modal para escribir reseñas -->
+    <div class="modal" id="modal">
+        <div class="modal-contenido">
+            <h2>Escribe tu reseña</h2>
+            <input type="text" id="nombre" placeholder="Tu nombre">
+            <div class="estrellas-seleccion">
+                <i class="far fa-star" data-valor="1"></i>
+                <i class="far fa-star" data-valor="2"></i>
+                <i class="far fa-star" data-valor="3"></i>
+                <i class="far fa-star" data-valor="4"></i>
+                <i class="far fa-star" data-valor="5"></i>
+            </div>
+            <input type="hidden" id="puntaje" value="0">
+            <textarea id="comentario" placeholder="Escribe tu comentario"></textarea>
+            <button id="submit-resena">Enviar</button>
+            <button id="cerrar-modal">Cancelar</button>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
