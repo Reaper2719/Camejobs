@@ -1,197 +1,271 @@
+/* ESTILOS GENERALES */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
+    background-color: #f8f9fa;
 }
+
+/* HEADER */
 header {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    padding: 15px;
-    background-color: #172A3A;
+    padding: 10px 30px;
+    background-color: #0c1e2c;
     color: white;
-    border-bottom: 1px solid #ddd;
-}
-.logo {
-    width: 250px;
-    height: auto;
-}
-.nav-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin: 10px 0;
-}
-.nav-buttons a {
-    text-decoration: none;
-    padding: 5px 20px;
-    background-color: #edeef0;
-    color: rgb(12, 11, 11);
-    border-radius: 5px;
-}
-.search-container {
-    position: relative;
-    flex-basis: 100%;
-    margin-top: 10px;
-}
-.search-container input {
-    width: 200px;
-    height: 50px;
-    border: 1px solid #ece8e8;
-    border-radius: 5px;
-    padding-left: 35px;
-}
-.search-container i {
-    position: absolute;
-    left: 10px;
-    top: 40%;
-    transform: translateY(-10%);
-    color: #a08d8d;
-}
-@media (min-width: 768px) {
-    .nav-buttons {
-        justify-content: flex-end;
-    }
-    .search-container {
-        flex-basis: auto;
-    }
-}
-
-/* Formulario de empresa */
-.formulario-empresa {
-    background-color: white;
-    margin: 40px auto;
-    padding: 20px;
-    max-width: 600px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-}
-.formulario-empresa h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-.formulario-empresa form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-.formulario-empresa input,
-.formulario-empresa textarea {
-    padding: 10px;
-    font-size: 16px;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-}
-.formulario-empresa input[type="file"] {
-    padding: 3px;
-}
-.form-buttons {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-}
-.btn {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    flex: 1;
-}
-.guardar-btn {
-    background-color: #03264a;
-    color: white;
-}
-.guardar-btn:hover {
-    background-color: #03498f;
-}
-.cancelar-btn {
-    background-color: #969595;
-    color: white;
-}
-.cancelar-btn:hover {
-    background-color: #4d4d4d;
-}
-
-/* Body principal */
-main {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-}
-.empresa-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    border-bottom: 2px solid #f4f4f4;
-}
-.empresa-logo {
-    width: 150px;
-}
-.empresa-slogan h2 {
-    text-align: center;
-    font-size: 28px;
-    margin: 20px 0;
-}
-.empresa-descripcion {
-    padding: 20px;
-}
-.empresa-imagen {
-    width: 100%;
-    max-height: 400px;
-    object-fit: cover;
-    margin: 20px 0;
-    border-radius: 10px;
-}
-
-/* Estilo para el modal */
-.modal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
+    position: sticky;
     top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
     z-index: 1000;
 }
-.modal-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
+.camejobs {
+    font-size: 25px;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-buttons a {
+    text-decoration: none;
+    padding: 8px 15px;
+    background-color: #0c1e2c;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.nav-buttons a:hover {
+    background-color: #172A3A;
+}
+
+/* BARRA DE BÚSQUEDA CON LOGO */
+.search-container {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    padding-right: 80px;
+    margin-left: 20px;
+    border: 1px solid #ddd;
+}
+
+.search-logo {
+    width: 30px;
+    height: 30px; /* Ajusta el tamaño según tu preferencia */
+    margin-right: 5px;
+}
+
+.search-container input {
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+
+/* SECCIÓN DE ENCABEZADO */
+.empresa-header {
+    display: flex;
+    background: #0072a3;
+    color: white;
+    width: 72%; /* ANCHO MAYOR YA QUE SE ELIMINÓ LA IMAGEN */
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    justify-content: space-between; /* DISTRIBUCIÓN EQUILIBRADA */
+    margin: 0 auto; /* CENTRADO AUTOMÁTICO */
+    padding: 30px;
+}
+
+.empresa-logo {
+    width: 130px; /* Ajustar el tamaño del logo */
+    height: 120px; /* Mantener proporción cuadrada */
+    border-radius: 70%; /* Hacerlo circular */
+    background-color: white; /* Fondo blanco */
+    padding: 10px; /* Espaciado interno para evitar que el logo quede muy pegado */
+    display: flex; /* Para centrar la imagen dentro del fondo */
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para resaltar */
+}
+
+
+.empresa-info {
     text-align: center;
 }
-.hidden {
-    display: none;
+
+/* SECCIÓN DE DESCRIPCIÓN */
+.empresa-descripcion {
+    background: #f8f9fa;
+    padding: 50px 10%;
+    display: flex;
+    justify-content: center;
 }
-.modal-content p {
+
+.descripcion-container {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* CENTRAR CONTENIDO */
+    gap: 40px;
+    width: 100%;
+}
+
+/* Tarjeta de información */
+.descripcion-texto {
+    background: white;
+    padding: 30px;
+    width: 70%; /* ANCHO MAYOR YA QUE SE ELIMINÓ LA IMAGEN */
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: justify; /* MEJOR PRESENTACIÓN DEL TEXTO */
+}
+
+/* Lista con iconos */
+.descripcion-texto ul {
+    list-style: none;
+    padding: 0;
+}
+
+.descripcion-texto li {
+    padding: 5px 0;
+    font-size: 16px;
+}
+
+/* Datos adicionales */
+.empresa-info p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+
+/* Diseño responsivo */
+@media (max-width: 900px) {
+    .descripcion-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .descripcion-texto {
+        width: 100%;
+    }
+}
+
+
+/* Estilos generales del footer */
+.footer {
+    background-color: #d6d6d6;
+    color: #000000;
+    text-align: center;
+    padding: 10px 10px;
+    width: 100%;
+}
+
+.logo-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000000;
     margin-bottom: 20px;
 }
-.modal-content button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+
+.logo-description {
+    font-size: 18px;
+    color: #000000;
 }
-#confirm-btn {
-    background-color: #03264a;
+
+  /* Línea superior con redes sociales */
+.footer-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 15px;
+}
+
+.footer-text {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+  /* Iconos sociales */
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.icon img {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.icon:hover img {
+    transform: scale(1.2);
+}
+
+/* Contenido principal del footer */
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 40px 10px;
+    text-align: left;
+}
+
+  /* Sección individual del footer */
+.footer-section {
+    margin-top: 15px;
+}
+
+  /* Estilo del logo */
+.logo-title {
+    display: flex;
+    align-items: center;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.logo {
+    height: 90px;
+    width: auto;
+    margin-right: 10px;
+}
+
+  /* Títulos de sección */
+.section-title {
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+  /* Enlaces */
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 5px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #000000;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
     color: white;
 }
-#confirm-btn:hover {
-    background-color: #03498f;
+
+/* Sección inferior del footer (copyright) */
+.footer-below {
+    text-align: center;
+    color: #000000;
+    width: 100%;
 }
-#cancel-btn {
-    background-color: #969595;
-    color: white;
-}
-#cancel-btn:hover {
-    background-color: #4d4d4d;
-}
+
+
+
+
+
