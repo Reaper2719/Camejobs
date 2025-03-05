@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Perfil de {{ empresa.razon_social }} - CameJobs</title>
+    <style>
+        .ticket {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .btn-crear {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .btn-ver-tickets {
+            background-color: #2196F3;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Perfil de {{ empresa.razon_social }}</h1>
+    <a href="{% url 'bienvenida' %}">Volver al Inicio</a>
+
+    <h2>Mis Tickets</h2>
+    <a href="{% url 'tickets:listar_tickets' %}">
+        <button class="btn-ver-tickets">Ver Tickets</button>
+    </a>
+
+    {% if tipo == 'persona' %}
+    <a href="{% url 'calificar_empresa' empresa.id %}">
+        <button>Calificar a {{ empresa.razon_social }}</button>
+    </a>
+    {% endif %}
+</body>
+</html>

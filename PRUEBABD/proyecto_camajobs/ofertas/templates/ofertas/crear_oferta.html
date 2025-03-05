@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Oferta - CameJobs</title>
+    <script>
+        function confirmarVolver() {
+            if (confirm("¿Estás seguro de que quieres volver? Los datos no guardados se perderán.")) {
+                window.location.href = "{% url 'bienvenida' %}";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Crear Oferta Laboral</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Publicar Oferta</button>
+    </form>
+    <br>
+    <a href="#" onclick="confirmarVolver();">Volver</a>
+</body>
+</html>

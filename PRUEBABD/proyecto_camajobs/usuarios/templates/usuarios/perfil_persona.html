@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Perfil de {{ persona.nombre_completo }} - CameJobs</title>
+    <style>
+        .oferta {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .btn-postular {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .formulario {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .btn-enviar {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .btn-ver-tickets {
+            background-color: #2196F3;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function confirmarCerrarSesion() {
+            if (confirm("¿Estás seguro de que quieres cerrar sesión?")) {
+                document.getElementById("logout-form").submit();
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Perfil de {{ persona.nombre_completo }}</h1>
+    <a href="{% url 'bienvenida' %}">Volver al Inicio</a>
+
+    <h2>Formación Académica</h2>
+    <a href="{% url 'agregar_formacion' %}">
+        <button>Agregar Formación</button>
+    </a>
+    <ul>
+        {% for formacion in formaciones %}
+        <li>
+            {{ formacion.titulo_obtenido }} - {{ formacion.institucion }}
+            <a href="{% url 'editar_formacion' formacion.id %}">
+                <button>Editar</button>
+            </a>
+            <a href="{% url 'eliminar_formacion' formacion.id %}">
+                <button>Eliminar</button>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <h2>Experiencia Laboral</h2>
+    <a href="{% url 'agregar_experiencia' %}">
+        <button>Agregar Experiencia</button>
+    </a>
+    <ul>
+        {% for experiencia in experiencias %}
+        <li>
+            {{ experiencia.cargo }} en {{ experiencia.nombre_empresa }}
+            <a href="{% url 'editar_experiencia' experiencia.id %}">
+                <button>Editar</button>
+            </a>
+            <a href="{% url 'eliminar_experiencia' experiencia.id %}">
+                <button>Eliminar</button>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+
+<h2>Mis Tickets</h2>
+<a href="{% url 'tickets:listar_tickets' %}">
+    <button class="btn-ver-tickets">Ver Tickets</button>
+</a>
+
+
+    <!-- Formulario oculto para cerrar sesión -->
+    <form id="logout-form" method="post" action="{% url 'logout' %}" style="display: none;">
+        {% csrf_token %}
+    </form>
+
+    <!-- Enlace para cerrar sesión -->
+    <br><br>
+    <a href="#" onclick="confirmarCerrarSesion();">Cerrar Sesión</a>
+
+    {% if tipo == 'empresa' %}
+    <a href="{% url 'calificar_persona' persona.id %}">
+        <button>Calificar a {{ persona.nombre_completo }}</button>
+    </a>
+    {% endif %}
+</body>
+</html>

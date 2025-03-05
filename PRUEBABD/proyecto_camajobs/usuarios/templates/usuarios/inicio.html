@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - CameJobs</title>
+</head>
+<body>
+    <h1>Bienvenido a CameJobs</h1>
+    <p>Elige cómo deseas registrarte:</p>
+    <a href="{% url 'registro_persona' %}">Registrarse como Persona</a>
+    <br>
+    <a href="{% url 'registro_empresa' %}">Registrarse como Empresa</a>
+    <br><br>
+    <p>¿Ya tienes una cuenta? <a href="{% url 'login' %}">Inicia sesión</a></p>
+</body>
+</html>

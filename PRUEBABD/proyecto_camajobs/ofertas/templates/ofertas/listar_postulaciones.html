@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Postulaciones - CameJobs</title>
+    <style>
+        .postulacion {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .btn-accion {
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        .btn-aceptar {
+            background-color: #4CAF50;
+        }
+        .btn-rechazar {
+            background-color: #f44336;
+        }
+        .btn-calificar {
+            background-color: #FF9800; /* Color naranja para diferenciar */
+        }
+    </style>
+</head>
+<body>
+    <h1>Postulaciones para "{{ oferta.titulo }}"</h1>
+    <a href="{% url 'bienvenida' %}">
+        <button>Volver a Inicio</button>
+    </a>
+    <br><br>
+    {% for postulacion in postulaciones %}
+    <div class="postulacion">
+        <h3>{{ postulacion.trabajador.usuario.username }}</h3>
+        <p><strong>Fecha de Postulación:</strong> {{ postulacion.fecha_postulacion }}</p>
+        <p><strong>Estado:</strong> {{ postulacion.estado }}</p>
+        
+        <div class="acciones">
+            {% if postulacion.estado == 'Pendiente' %}
+            <a href="{% url 'gestionar_postulacion' postulacion.id 'aceptar' %}">
+                <button class="btn-accion btn-aceptar">Aceptar</button>
+            </a>
+            <a href="{% url 'gestionar_postulacion' postulacion.id 'rechazar' %}">
+                <button class="btn-accion btn-rechazar">Rechazar</button>
+            </a>
+            {% elif postulacion.estado == 'Aprobado' %}
+            <a href="{% url 'calificar_persona' postulacion.id %}">
+                <button class="btn-accion btn-calificar">Calificar Persona</button>
+            </a>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</body>
+</html>

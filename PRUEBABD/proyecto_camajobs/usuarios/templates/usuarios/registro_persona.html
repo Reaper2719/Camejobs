@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Persona - CameJobs</title>
+</head>
+<body>
+    <h1>Registro de Persona</h1>
+    <form method="post" enctype="multipart/form-data">  <!-- Aceptar archivos -->
+        {% csrf_token %}
+        {{ form.as_p }}
+        {% if form.errors %}
+        <div class="alert alert-danger">
+            <strong>Errores:</strong>
+            <ul>
+                {% for field, errors in form.errors.items %}
+                    {% for error in errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+        <button type="submit">Registrarse</button>
+        <a href="{% url 'inicio' %}">
+            <button type="button">Cancelar</button>
+        </a>
+    </form>
+</body>
+</html>
