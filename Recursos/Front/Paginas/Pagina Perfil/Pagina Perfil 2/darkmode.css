@@ -1,0 +1,218 @@
+  /* DARK MODE */
+
+
+  :root {
+    /* Colores principales */
+    --background-primary: #0c1e2c; 
+    --background-secondary: #0072a3;
+    --text-primary: #ffffff; 
+    --text-secondary: #d6d6d6;
+    --accent-primary: #000000; 
+    --accent-secondary: #04302384;
+    --accent-tertiary: #000000;
+    --card-background: #005E45; 
+    --footer-background: #087b5a; 
+    --footer-below-background: #005E45;
+    --text-herotitle:#000000;
+    --about-color: #005e45c9;
+    --svg-color: #005e45c9;
+    --color-2: #098e68c2;
+    --color-3: #09BC8A;
+    --color-4: #0385bd;
+    --color-5: #102b3e;
+  }
+    
+    /*  NAVBAR */
+  .dark-mode .navbar {
+    background-color: var(--background-primary);
+  }
+  
+  .dark-mode .navbar a {
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .dark-mode .nav-links a:hover {
+    background-color: var(--color-5);
+    color: var(--text-primary);
+  }
+  
+  
+    /*  HEADER */
+  .dark-mode .hero {
+    background-color: var(--background-primary);
+    color: var(--text-primary);
+  }
+  
+  .dark-mode .overlay {
+    background: rgba(0, 0, 0, 0.6)
+  }
+  
+  .dark-mode .hero-content h1 {
+    color: var(--text-primary); 
+  }
+  
+  .dark-mode .hero-content p {
+    color: var(--text-primary); 
+  }
+  
+    /* BOTÓN DEL HEADER */
+  .dark-mode .hero button {
+    background-color: var(--color-3);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease;
+  }
+  
+  .dark-mode .hero button:hover {
+    background-color: var(--accent-secondary);
+  }
+  
+    /*  SECCIONES */
+  .dark-mode section {
+    background-color: var(--background-primary);
+    color: var(--text-primary);
+  }
+  
+    /*  Tarjetas */
+  .dark-mode .card {
+    background-color: var(--color-4);
+    color: var(--text-primary);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.6);
+  }
+  
+  .dark-mode .card:hover {
+    box-shadow: 0px 0px 30px rgba(255, 255, 255, 0.274)
+  
+  }
+  
+  .dark-mode .card h2 {
+    color: var(--text-primary); 
+  }
+  
+  .dark-mode .card p{
+    color: var(--text-primary);
+  }
+  
+  
+    /* BOTÓN DE LAS TARJETAS */
+  .dark-mode .card button {
+    background-color: var(--color-3);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease;
+  }
+  
+  .dark-mode .card button:hover {
+    background-color: var(--accent-secondary);
+    
+  }
+    
+    /*  SOBRE NOSOTROS */
+  .dark-mode .about {
+    background-color: var(--background-primary);
+    color: var(--text-primary);
+  }
+  
+  .dark-mode .about h2 {
+    color: var(--text-primary); 
+  }
+  
+    .dark-mode .about p {
+      color: var(--text-primary);
+    }
+    
+  .dark-mode .about-content  {
+    background-color: rgba(3, 133, 189, 0.654);
+    
+  }
+  
+    /* BOTÓN DE SOBRE NOSOTROS */
+  
+    .dark-mode .about button {
+    background-color: var(--color-3);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease;
+  }
+  
+    .dark-mode .about button:hover {
+      background-color: var(--accent-secondary);
+    }
+  
+    /*  CONTACTO */
+  
+    .dark-mode .contact {
+    background-color: var(--background-primary);
+    color: var(--text-primary);
+  }
+  
+  .dark-mode .contact h2 {
+    color: var(--text-primary); 
+  }
+  
+  .dark-mode .contact p {
+      color: var(--text-primary); 
+  }
+  
+    /* BOTÓN DE CONTACTO */
+  
+    .dark-mode .contact button {
+    background-color: var(--color-3);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease;
+  }
+  
+  .dark-mode .contact button:hover {
+    background-color: var(--accent-secondary);
+  }
+  
+    /*  FOOTER */
+  .dark-mode .footer {
+    background-color: var(--footer-background);
+    color: var(--text-primary);
+  }
+  
+  .dark-mode .footer-text {
+    color: var(--text-primary);
+  }
+  
+  
+  .dark-mode .social-icons svg:hover {
+  fill: var(--text-primary);
+  
+  }
+  
+  .dark-mode .logo-title{
+    color: var(--text-primary);
+  }
+  
+  .dark-mode .logo-description {
+    color: var(--text-primary);
+  }
+  
+  .dark-mode .section-title {
+    color: var(--text-primary);
+  }
+  
+  .dark-mode .footer a {
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+  }
+  
+  .dark-mode .footer a:hover {
+    color: var(--text-herotitle);
+  }
+  
+  .dark-mode .footer-below {
+    background-color: var(--footer-below-background);
+    color: var(--text-primary);
+  }
+  
+    /* BOTÓN DEL FOOTER */
+  .dark-mode .footer button {
+    background-color: var(--accent-tertiary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease;
+  }
+  
+  .dark-mode .footer button:hover {
+    background-color: var(--accent-primary);
+  }
