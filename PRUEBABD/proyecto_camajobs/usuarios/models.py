@@ -13,13 +13,7 @@ class Persona(models.Model):
     genero = models.CharField(max_length=10, choices=[('M', 'Masculino'), ('F', 'Femenino'), ('O', 'Otro')], verbose_name="Género")
     email = models.EmailField(verbose_name="Correo Electrónico")
     ubicacion = models.CharField(max_length=100, verbose_name="Ubicación")
-    cargo = models.CharField(max_length=50, choices=[
-        ('Desarrollador', 'Desarrollador'),
-        ('Diseñador', 'Diseñador'),
-        ('Analista', 'Analista'),
-        ('Gerente', 'Gerente'),
-        ('Otro', 'Otro'),
-    ], verbose_name="Cargo")
+    habilidades = models.TextField(verbose_name="Habilidades")
     perfil_laboral = models.TextField(verbose_name="Perfil Laboral")
     foto_perfil = models.ImageField(upload_to='fotos_perfil/', null=True, blank=True, verbose_name="Foto de Perfil")
 

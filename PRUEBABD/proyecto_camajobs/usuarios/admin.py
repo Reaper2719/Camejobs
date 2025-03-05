@@ -3,7 +3,7 @@ from .models import Persona, Empresa, FormacionAcademica, ExperienciaLaboral
 # Register your models here.
 @admin.register(Persona)
 class PersonaAdmin(admin.ModelAdmin):
-    list_display = ('usuario', 'cedula', 'email', 'cargo')
+    list_display = ('usuario', 'cedula', 'email', 'habilidades')
 
 @admin.register(Empresa)
 class EmpresaAdmin(admin.ModelAdmin):
