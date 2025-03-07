@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}  <!-- Carga la etiqueta estática -->
+    <link rel="stylesheet" href="{% static 'css/registros_persona.css' %}">
     <title>Registro de Persona - CameJobs</title>
 </head>
 <body>
@@ -21,7 +23,7 @@
                 {% endfor %}
             </ul>
         </div>
-    {% endif %}
+        {% endif %}
         <button type="submit">Registrarse</button>
         <a href="{% url 'inicio' %}">
             <button type="button">Cancelar</button>

@@ -1,0 +1,80 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;
+    height: 100vh; 
+    background-image: url('../img/login.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Estilos para el box blanco con sombra */
+.login-box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 470px;
+    width: 100%;
+    text-align: center;
+    margin-right: 90px;
+}
+
+/* Estilos para el logo */
+.logo {
+    width: 200px;
+}
+
+/* Estilos para los grupos de formulario */
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+/* Estilos para las etiquetas */
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Estilos para los inputs */
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px; 
+    box-sizing: border-box;
+}
+
+/* Estilos para el botón */
+button {
+    background-color: #172A3A;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+/* Estilos para los enlaces */
+a {
+    color: #0072a3;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
