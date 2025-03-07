@@ -103,3 +103,8 @@ Set-ExecutionPolicy RemoteSigned
 -- Activar seguridad de Power Shell --
 Set-ExecutionPolicy Restricted
 
+
+
+-- Actualización "Habilidades" en usuario --
+Realizar las migraciones: python manage.py makemigrations usuarios
+Seleccionar la opcion #1 y añadir: timezone.now 
