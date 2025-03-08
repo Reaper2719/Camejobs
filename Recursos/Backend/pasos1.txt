@@ -1,0 +1,136 @@
+
+#Descargar MAriabaDB 11.04.5
+Agregar al path 
+
+---Path sistema--
+1.Python\Script
+2.Python313
+3.MariaDB
+4.Workbrench
+
+1.Crear carpeta
+
+# Crear el entorno virtual
+python -m venv venv
+
+# Activar el entorno virtual (en Windows)
+venv\Scripts\activate
+
+4. Instalar Django, el Rest Framework, mysqlclient y pillow:
+pip install django djangorestframework
+------ adiciones futuras ---
+pip install python-dotenv
+pip install django-extensions werkzeug pyOpenSSL
+
+
+Agrega django_extensions a tu settings.py:
+
+python
+Copy
+# settings.py
+INSTALLED_APPS = [
+    # ...
+    'django_extensions',
+    # ...
+]
+
+5. Creamos el proyecto de Django:
+django-admin startproject mi_proyecto (<- Esto ultimo es el nombre que le daremos al proyecto).
+-- entramos a la carpeta de nuestro proyecto:
+cd mi_proyecto
+
+6. Crear la App de tickets (en este caso):
+python manage.py startapp tickets
+
+7. Configurar el proyecto
+Agregar la aplicación y DRF a INSTALLED_APPS en project_camejobs/settings.py:
+	
+	...
+
+  # aplicaciones externas
+    'rest_framework',
+    
+    # nuestra app
+    'formularios',
+
+
+8. Instalar el conector MySQL para Python, así trabajamos utilizando la base de datos en MySQL:
+pip install mysqlclient
+pip install pillow
+
+-- En caso de usar un entorno de Windows y tienes problemas con mysqlclient, utilizar:
+pip install mysql-connector
+
+9. Configuramos la base de datos en Settings.py para cambiar el predeterminado (SQLite) y utilizar el MySQL.
+buscamos la sección DATABASES de la configuramos con la siguiente plantilla:
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'nombre_de_tu_base_de_datos',
+        'USER': 'tu_usuario_mysql',
+        'PASSWORD': 'tu_contraseña_mysql',
+        'HOST': 'localhost',  # O la IP de tu servidor de base de datos si no está en local
+        'PORT': '3308',  # El puerto por defecto de MySQL
+    }
+}
+
+10. Creamos la base de datos en MySQL y entramos al entorno de MySQL (MariaDB):
+mysql -u root -p
+
+
+ver usuarios creados 
+SELECT user, host FROM mysql.user;
+
+
+crear bd 
+
+CREATE USER 'mariadb.sys'@'localhost' IDENTIFIED BY '';
+
+asignar privilegios
+
+GRANT USAGE ON *.* TO 'mariadb.sys'@'localhost';
+GRANT SELECT, DELETE ON `mysql`.`global_priv` TO 'mariadb.sys'@'localhost';
+
+
+ver privilegios
+SHOW GRANTS FOR 'mariadb.sys'@'localhost'; se debe tener creado
+
+
+10.2 Crear un nuevo usuario en MySQL el cual es el que utilizaremos
+CREATE USER 'camejobs'@'localhost' IDENTIFIED BY 'camejobs2025';
+(El username y password ES OBLIGATORIO los que están definidos en el paso).
+
+-- Ya de ahí en adelante iniciariamos con el siguiente usuario usando:
+mysql -u camejobs -p 
+(te pedira despues ingresar la Password el cual es "camejobs2025"
+ATENCION: No ejecutar esto dentro del entorno de MariaDB Monitor. En caso de, usamos ctrl+c y entramos con nuestro usario "camejobs".)
+
+10.3 Otorgamos permisos al nuevo usuario para permitir que el usuario "camejobs" tenga acceso completo a la base de datos:
+GRANT ALL PRIVILEGES ON camejobs.* TO 'camejobs'@'localhost';
+GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, ALTER, INDEX ON camajobs.* TO 'camejobs'@'localhost';
+
+
+
+-- Aseguramos de aplicar los cambios:
+FLUSH PRIVILEGES;
+
+10.4 Y tambien otorgamos permisos para que el usuario "camejobs" pueda crear Bases de datos. A travez del usuario "root" le entregamos el permiso con:
+GRANT CREATE ON *.* TO 'camejobs'@'localhost';
+
+-- Aseguramos de aplicar los cambios;
+FLUSH PRIVILEGES;
+
+
+-- Desactivar seguridad de Power Shell --
+Set-ExecutionPolicy RemoteSigned
+
+-- Activar seguridad de Power Shell --
+Set-ExecutionPolicy Restricted
+
+---Iniciar con SSL
+python manage.py runserver_plus --cert-file cert.pem --key-file key.pem
+-- Sin SSL
+python manage.py runserver 
+
+

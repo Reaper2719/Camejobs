@@ -1,0 +1,21 @@
+K32jsbwJ12s - Andrew = persona
+O5sTus8js25 - Game_SAS = empresa
+Y9s85sBk12w - Gratis_SAS = empresa1
+---------------------------------
+Kis52sNs252 - KevinR = persona1
+Is653vJski2 - Oscar2 = persona2
+Ous672K2sY3 - Pagos_SAS = empresa2
+K83hs6HsSbs - Pablo1 = persona 3
+J7sUjs32Kx2  - Juan2 = persona 4 - kevinrd.workspace@gmail.com -nueva contra : J7sUjs32Kx4
+Iks632xMsxs  - Goku = persona5 - - Iks632xMsx4
+
+---****----
+Correo :camejobs2025@gmail.com
+Contrasseña: camejobstps
+NOmbre de app : camejobs
+contraseAPP : gqwz fiun cbjg yhcs
+
+---
+kevinrd.workspace@gmail.com
+
+"error en" <link rel="icon" href="{% static 'img/Logo camejobs.png' %}">
