@@ -27,9 +27,9 @@
 
             <!-- Menú de navegación -->
             <ul class="nav-links">
-                <li><a href="#">Ofertas</a></li>
-                <li><a href="#">Perfiles</a></li>
-                <li><a href="#">Empresas</a></li>
+                <li><a href="{% url 'pagina_ofertas' %}">Ofertas</a></li>
+                <li><a href="{% url 'busquedas_pagina' %}">Perfiles</a></li>
+                <li><a href="{% url 'busquedas_pagina' %}">Empresas</a></li>
             </ul>
 
             <!-- Contenedor de la barra de búsqueda -->
@@ -131,7 +131,7 @@
                 <ul class="footer-links">
                     <li><a href="#!">Política de privacidad</a></li>
                     <li><a href="#!">Términos y condiciones</a></li>
-                    <li><a href="#!">Soporte</a></li>
+                    <li><a href="{% url 'faqs_pagina' %}">Soporte</a></li>
                 </ul>
             </div>
 

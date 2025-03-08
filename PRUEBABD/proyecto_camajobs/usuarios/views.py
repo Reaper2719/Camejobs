@@ -257,3 +257,17 @@ def calificar_empresa(request, empresa_id):
         form = CalificacionEmpresaForm()
 
     return render(request, 'usuarios/calificar_empresa.html', {'form': form, 'empresa': empresa})
+
+#Pagina ofertas
+def pagina_ofertas(request):
+    return render(request, 'usuarios/pagina_ofertas.html')
+
+#Preguntas frecuentes
+@login_required
+def faqs_pagina(request):
+    return render(request, 'usuarios/faqs_pagina.html')
+
+#Pagina de perfiles
+@login_required
+def busquedas_pagina(request):
+    return render(request, 'usuarios/busquedas_pagina.html')

@@ -39,4 +39,13 @@ urlpatterns = [
     # Rutas para calificar personas y empresas
     path('calificar/persona/<int:persona_id>/', views.calificar_persona, name='calificar_persona'),
     path('calificar/empresa/<int:empresa_id>/', views.calificar_empresa, name='calificar_empresa'),
+
+    # Ruta para pagina de ofertas
+    path('pagina_ofertas/', views.pagina_ofertas, name='pagina_ofertas'),
+
+    # Ruta para FAQS
+    path('faqs_pagina/', views.faqs_pagina, name='faqs_pagina'),
+
+    #Ruta para pagina perfiles
+    path('busquedas_pagina/', views.busquedas_pagina, name='busquedas_pagina')
 ]
