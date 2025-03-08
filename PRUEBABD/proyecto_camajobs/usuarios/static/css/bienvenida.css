@@ -1,0 +1,309 @@
+/* bienvenida.css */
+
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4; /* Fondo gris claro */
+    color: #333; /* Color de texto principal */
+    background-image: url('../img/blue.avif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    line-height: 1.6; /* Mejor espaciado entre líneas */
+}
+
+h1, h2, h3 {
+    font-family: 'Georgia', serif; /* Fuente más elegante para títulos */
+    font-weight: bold;
+    color: #172A3A; /* Color azul oscuro para títulos */
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+p {
+    text-align: center;
+    font-size: 1.1em;
+    color: #555; /* Texto un poco más oscuro */
+}
+
+/* Estilos para el contenedor principal */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white; /* Fondo blanco para el contenido */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Estilos para las ofertas */
+.oferta {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: #fff; /* Fondo blanco */
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Transición suave */
+}
+
+.oferta:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+    transform: translateY(-5px); /* Levantar ligeramente la oferta */
+}
+
+.oferta h3 {
+    color: #172A3A; /* Color azul oscuro para el título de la oferta */
+    margin-top: 0;
+}
+
+.oferta p {
+    margin: 5px 0;
+    font-size: 0.9em;
+    color: #666; /* Color gris para el texto */
+}
+
+/* Estilos para los botones */
+button {
+    background-color: #172A3A; /* Color azul oscuro */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transición suave */
+}
+
+button:hover {
+    background-color: #2980b9; /* Color azul más claro al pasar el mouse */
+    transform: scale(1.05); /* Efecto de escala al pasar el mouse */
+}
+
+.btn-postular {
+    background-color: #4CAF50; /* Color verde para el botón de postular */
+}
+
+.btn-postular:hover {
+    background-color: #45a049; /* Verde más oscuro al pasar el mouse */
+}
+
+.btn-ver-detalles {
+    background-color: #2196F3; /* Color azul para el botón de ver detalles */
+}
+
+.btn-ver-detalles:hover {
+    background-color: #1e88e5; /* Azul más oscuro al pasar el mouse */
+}
+
+.btn-ver-candidatos {
+    background-color: #FF9800; /* Color naranja para el botón de ver candidatos */
+}
+
+.btn-ver-candidatos:hover {
+    background-color: #fb8c00; /* Naranja más oscuro al pasar el mouse */
+}
+
+/* Estilos para la sección de ranking */
+.ranking-section {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f9f9f9; /* Fondo gris claro */
+    border-radius: 8px;
+}
+
+.ranking-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: white; /* Fondo blanco */
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.ranking-item h3 {
+    margin: 0;
+    color: #172A3A; /* Color azul oscuro */
+}
+
+.ranking-item p {
+    margin: 5px 0;
+    color: #666; /* Color gris */
+}
+
+.stars {
+    display: inline-block;
+}
+
+.star-icon {
+    width: 20px;
+    height: 20px;
+    fill: #ffd700; /* Color dorado para las estrellas */
+    margin-right: 2px;
+}
+
+.star-icon.empty {
+    fill: #ddd; /* Color gris para las estrellas vacías */
+}
+
+.rating-info {
+    font-size: 0.9em;
+    color: #666; /* Color gris para la información de calificación */
+}
+
+.ranking-title {
+    color: #333; /* Color oscuro para el título */
+    border-bottom: 2px solid #4CAF50; /* Línea verde debajo del título */
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Estilos para el enlace de cerrar sesión */
+a {
+    color: #0072a3; /* Color azul para los enlaces */
+    text-decoration: none; /* Sin subrayado */
+}
+
+a:hover {
+    text-decoration: underline; /* Subrayado al pasar el mouse */
+}
+
+/* Mejoras de accesibilidad */
+button:focus, a:focus {
+    outline: 2px solid #0072a3; /* Contorno visible para enfoque */
+    outline-offset: 2px;
+}
+
+/* Estilos para mensajes de estado */
+.mensaje {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.mensaje.exito {
+    background-color: #d4edda; /* Fondo verde claro */
+    color: #155724; /* Texto verde oscuro */
+    border: 1px solid #c3e6cb;
+}
+
+.mensaje.error {
+    background-color: #f8d7da; /* Fondo rojo claro */
+    color: #721c24; /* Texto rojo oscuro */
+    border: 1px solid #f5c6cb;
+}
+
+.mensaje.advertencia {
+    background-color: #fff3cd; /* Fondo amarillo claro */
+    color: #856404; /* Texto amarillo oscuro */
+    border: 1px solid #ffeeba;
+}
+
+/* Estilos para el footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #172A3A; /* Fondo azul oscuro */
+    color: white;
+    margin-top: 30px;
+    border-radius: 0 0 10px 10px;
+}
+
+footer a {
+    color: #0072a3; /* Color azul para los enlaces */
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos para el menú de navegación (si lo hay) */
+nav {
+    background-color: #172A3A; /* Fondo azul oscuro */
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #0072a3; /* Color azul al pasar el mouse */
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .oferta {
+        padding: 10px;
+    }
+
+    .ranking-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .stars {
+        margin-top: 10px;
+    }
+
+    button {
+        width: 100%; /* Botones de ancho completo en móviles */
+        margin-bottom: 10px;
+    }
+
+    h1 {
+        font-size: 1.5em; /* Tamaño de fuente más pequeño para móviles */
+    }
+
+    p {
+        font-size: 0.9em; /* Tamaño de fuente más pequeño para móviles */
+    }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.oferta {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Efecto de carga */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.cargando {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}

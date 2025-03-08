@@ -6,7 +6,7 @@ body {
     justify-content: flex-end; 
     align-items: center;
     height: 100vh; 
-    background-image: url('../img/login.jpeg');
+    background-image: url('../img/login.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -18,7 +18,7 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    max-width: 470px;
+    max-width: 400px;
     width: 100%;
     text-align: center;
     margin-right: 90px;
@@ -27,6 +27,7 @@ body {
 /* Estilos para el logo */
 .logo {
     width: 200px;
+    margin-bottom: 20px;
 }
 
 /* Estilos para los grupos de formulario */

@@ -1,0 +1,101 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif; /* Fuente principal */
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* Fondo claro para el cuerpo */
+    color: #333; /* Color de texto principal */
+    background-image: url('../img/oferta.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Contenedor principal */
+h1 {
+    font-size: 28px; /* Tamaño de fuente para el título */
+    color: #172a3a; /* Color oscuro para el título */
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Formulario */
+form {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 30px; /* Aumenté el padding para más espacio interno */
+    background-color: rgba(255, 255, 255, 0.651);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Grupos de campos del formulario */
+form p {
+    margin-bottom: 20px; /* Aumenté el margen inferior para más espacio */
+}
+
+form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px; /* Espacio entre la etiqueta y el campo */
+    color: #0c1e2c; /* Color oscuro para las etiquetas */
+}
+
+form input[type="text"],
+form input[type="number"],
+form input[type="email"],
+form textarea,
+form select {
+    width: 100%;
+    padding: 12px 16px; /* Más espacio interno en los campos */
+    margin: 12px 0; /* Mayor separación entre los campos */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+    box-sizing: border-box; /* Incluye el padding dentro del tamaño total */
+    background-color: #ffffff; /* Fondo blanco para los campos de entrada */
+    pointer-events: auto; /* Activa la interacción con los campos */
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form textarea:focus,
+form select:focus {
+    border-color: #09BC8A; /* Color verde para el foco */
+    outline: none;
+}
+
+/* Botón de publicar oferta */
+button[type="submit"] {
+    background-color: #09BC8A; /* Color verde para el botón */
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%; /* Botón ocupa todo el ancho */
+    margin-top: 10px; /* Espacio arriba del botón */
+}
+
+button[type="submit"]:hover {
+    background-color: #087b5a; /* Color verde oscuro al pasar el mouse */
+}
+
+/* Enlace "Volver" */
+a {
+    display: inline-block;
+    margin-top: 20px; /* Más espacio arriba del enlace */
+    color: #0072a3; /* Color azul para el enlace */
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+    text-align: center; /* Centrar el enlace */
+    width: 100%; /* Enlace ocupa todo el ancho */
+}
+
+a:hover {
+    color: #005e45; /* Color azul oscuro al pasar el mouse */
+}

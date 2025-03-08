@@ -7,7 +7,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: url('../img/inicio.jpeg');
+    background-image: url('../img/inicio.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -27,6 +27,7 @@ body {
 /* Estilos para el logo */
 .logo {
     width: 200px;
+    margin-bottom: 5px;
 }
 
 /* Estilos para los botones de registro */

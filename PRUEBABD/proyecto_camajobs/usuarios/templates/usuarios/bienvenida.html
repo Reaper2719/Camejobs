@@ -1,114 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bienvenido - CameJobs</title>
-    <style>
-        .oferta {
-            border: 1px solid #ddd;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-        }
-        .btn-postular {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .btn-ver-detalles {
-            background-color: #2196F3;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .btn-ver-candidatos {
-            background-color: #FF9800;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Bienvenido - CamaJobs</title>
-    <style>
-        /* Estilos existentes */
-        .oferta {
-            border: 1px solid #ddd;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-        }
-        
-        .btn-postular {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        /* Nuevos estilos para ranking */
-        .ranking-section {
-            margin-top: 30px;
-            padding: 20px;
-            background-color: #f9f9f9;
-            border-radius: 8px;
-        }
-
-        .ranking-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 15px;
-            margin-bottom: 10px;
-            background-color: white;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .stars {
-            display: inline-block;
-        }
-
-        .star {
-            color: #ffd700;
-            font-size: 1.2em;
-            margin-right: 3px;
-        }
-
-        .ranking-title {
-            color: #333;
-            border-bottom: 2px solid #4CAF50;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-        /* Nuevos estilos para estrellas */
-        .star-icon {
-            width: 20px;
-            height: 20px;
-            fill: #ffd700;
-            margin-right: 2px;
-        }
-
-        .star-icon.empty {
-            fill: #ddd;
-        }
-        
-        .rating-info {
-            font-size: 0.9em;
-            color: #666;
-        }
-    </style>
+    <link rel="stylesheet" href="{% static 'css/bienvenida.css' %}">
     <script>
         function confirmarCerrarSesion() {
             if (confirm("¿Estás seguro de que quieres cerrar sesión?")) {
@@ -116,154 +13,155 @@
             }
         }
     </script>
+        <link rel="icon" href="{% static 'img/Logo camejobs.png' %}">
 </head>
 <body>
-    <h1>¡Bienvenido, {{ nombre }}!</h1>
-    <p>Has iniciado sesión correctamente.</p>
+    <div class="container">
+        <h1>¡Bienvenido, {{ nombre }}!</h1>
+        <p>Has iniciado sesión correctamente.</p>
 
-     <!-- Sección de Ranking -->
-<div class="ranking-section">
-    {% if tipo == 'persona' %}
-        <h2 class="ranking-title">Empresas Calificadas</h2>
-        {% for empresa in empresas_calificadas %}
-        <div class="ranking-item">
-            <div>
-                <h3>{{ empresa.razon_social }}</h3>
-                <p>{{ empresa.descripcion|truncatechars:50 }}</p>
-                <div class="rating-info">
-                    {{ empresa.cantidad_calificaciones }} calificación(es)
+        <!-- Sección de Ranking -->
+        <div class="ranking-section">
+            {% if tipo == 'persona' %}
+                <h2 class="ranking-title">Empresas Calificadas</h2>
+                {% for empresa in empresas_calificadas %}
+                <div class="ranking-item">
+                    <div>
+                        <h3>{{ empresa.razon_social }}</h3>
+                        <p>{{ empresa.descripcion|truncatechars:50 }}</p>
+                        <div class="rating-info">
+                            {{ empresa.cantidad_calificaciones }} calificación(es)
+                        </div>
+                    </div>
+                    <div class="stars">
+                        {% with promedio=empresa.promedio_calificaciones %}
+                            {% for i in "12345" %}
+                                {% if forloop.counter <= promedio %}
+                                    <svg class="star-icon" viewBox="0 0 24 24">
+                                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                                    </svg>
+                                {% else %}
+                                    <svg class="star-icon empty" viewBox="0 0 24 24">
+                                        <path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/>
+                                    </svg>
+                                {% endif %}
+                            {% endfor %}
+                            ({{ empresa.promedio_calificaciones|floatformat:1 }})
+                        {% endwith %}
+                    </div>
                 </div>
-            </div>
-            <div class="stars">
-                {% with promedio=empresa.promedio_calificaciones %}
-                    {% for i in "12345" %}
-                        {% if forloop.counter <= promedio %}
-                            <svg class="star-icon" viewBox="0 0 24 24">
-                                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                            </svg>
-                        {% else %}
-                            <svg class="star-icon empty" viewBox="0 0 24 24">
-                                <path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/>
-                            </svg>
-                        {% endif %}
-                    {% endfor %}
-                    ({{ empresa.promedio_calificaciones|floatformat:1 }})
-                {% endwith %}
-            </div>
-        </div>
-        {% empty %}
-            <p>No hay empresas calificadas aún.</p>
-        {% endfor %}
-
-    {% elif tipo == 'empresa' %}
-        <h2 class="ranking-title">Personas Calificadas</h2>
-        {% for persona in personas_calificadas %}
-        <div class="ranking-item">
-            <div>
-                <h3>{{ persona.nombre_completo }}</h3>
-                <p>{{ persona.habilidades|truncatechars:50 }}</p>
-                <div class="rating-info">
-                    {{ persona.cantidad_calificaciones }} calificación(es)
+                {% empty %}
+                    <p>No hay empresas calificadas aún.</p>
+                {% endfor %}
+            {% elif tipo == 'empresa' %}
+                <h2 class="ranking-title">Personas Calificadas</h2>
+                {% for persona in personas_calificadas %}
+                <div class="ranking-item">
+                    <div>
+                        <h3>{{ persona.nombre_completo }}</h3>
+                        <p>{{ persona.habilidades|truncatechars:50 }}</p>
+                        <div class="rating-info">
+                            {{ persona.cantidad_calificaciones }} calificación(es)
+                        </div>
+                    </div>
+                    <div class="stars">
+                        {% with promedio=persona.promedio_calificaciones %}
+                            {% for i in "12345" %}
+                                {% if forloop.counter <= promedio %}
+                                    <svg class="star-icon" viewBox="0 0 24 24">
+                                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                                    </svg>
+                                {% else %}
+                                    <svg class="star-icon empty" viewBox="0 0 24 24">
+                                        <path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/>
+                                    </svg>
+                                {% endif %}
+                            {% endfor %}
+                            ({{ persona.promedio_calificaciones|floatformat:1 }})
+                        {% endwith %}
+                    </div>
                 </div>
-            </div>
-            <div class="stars">
-                {% with promedio=persona.promedio_calificaciones %}
-                    {% for i in "12345" %}
-                        {% if forloop.counter <= promedio %}
-                            <svg class="star-icon" viewBox="0 0 24 24">
-                                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                            </svg>
-                        {% else %}
-                            <svg class="star-icon empty" viewBox="0 0 24 24">
-                                <path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/>
-                            </svg>
-                        {% endif %}
-                    {% endfor %}
-                    ({{ persona.promedio_calificaciones|floatformat:1 }})
-                {% endwith %}
-            </div>
+                {% empty %}
+                    <p>No hay personas calificadas aún.</p>
+                {% endfor %}
+            {% endif %}
         </div>
-        {% empty %}
-            <p>No hay personas calificadas aún.</p>
-        {% endfor %}
-    {% endif %}
-</div>
 
+        <!-- Sección para Empresas -->
+        {% if tipo == 'empresa' %}
+            <a href="{% url 'crear_oferta' %}">
+                <button>Crear Oferta</button>
+            </a>
+            
+            <a href="{% url 'perfil_empresa' %}">
+                <button>Ver Mi Perfil</button>
+            </a>
 
-    <!-- Sección para Empresas -->
-    {% if tipo == 'empresa' %}
-        <a href="{% url 'crear_oferta' %}">
-            <button>Crear Oferta</button>
-        </a>
-        
-        <a href="{% url 'perfil_empresa' %}">
-            <button>Ver Mi Perfil</button>
-        </a>
+            <!-- Mostrar ofertas de la empresa -->
+            {% if ofertas_empresa %}
+                <h2>Mis Ofertas</h2>
+                {% for oferta in ofertas_empresa %}
+                    <div class="oferta">
+                        <h3>{{ oferta.titulo }}</h3>
+                        <p><strong>Descripción:</strong> {{ oferta.descripcion }}</p>
+                        <p><strong>Salario:</strong> ${{ oferta.salario }}</p>
+                        <p><strong>Ubicación:</strong> {{ oferta.ubicacion }}</p>
+                        <p><strong>Fecha de cierre:</strong> {{ oferta.fecha_cierre }}</p>
+                        <a href="{% url 'listar_postulaciones' oferta.id %}">
+                            <button class="btn-ver-candidatos">Ver Candidatos</button>
+                        </a>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No has creado ninguna oferta.</p>
+            {% endif %}
+        {% endif %}
 
-        <!-- Mostrar ofertas de la empresa -->
-        {% if ofertas_empresa %}
-            <h2>Mis Ofertas</h2>
-            {% for oferta in ofertas_empresa %}
+        <!-- Sección para Personas -->
+        {% if tipo == 'persona' %}
+            <!-- Mostrar ofertas disponibles -->
+            <h2>Ofertas Disponibles</h2>
+            {% for oferta in ofertas %}
                 <div class="oferta">
                     <h3>{{ oferta.titulo }}</h3>
-                    <p><strong>Descripción:</strong> {{ oferta.descripcion }}</p>
+                    <p><strong>Empresa:</strong> {{ oferta.empresa.razon_social }}</p>
                     <p><strong>Salario:</strong> ${{ oferta.salario }}</p>
                     <p><strong>Ubicación:</strong> {{ oferta.ubicacion }}</p>
                     <p><strong>Fecha de cierre:</strong> {{ oferta.fecha_cierre }}</p>
-                    <a href="{% url 'listar_postulaciones' oferta.id %}">
-                        <button class="btn-ver-candidatos">Ver Candidatos</button>
-                    </a>
+
+                    <!-- Mostrar estado de la postulación o botón para postular -->
+                    {% if postulaciones %}
+                        {% for postulacion in postulaciones %}
+                            {% if postulacion.oferta.id == oferta.id %}
+                                <p><strong>Estado de tu postulación:</strong> {{ postulacion.estado }}</p>
+                                <a href="{% url 'ver_detalles_postulacion' postulacion.id %}">
+                                    <button class="btn-ver-detalles">Ver Detalles</button>
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                    {% else %}
+                        <a href="{% url 'postular' oferta.id %}">
+                            <button class="btn-postular">Postular</button>
+                        </a>
+                    {% endif %}
                 </div>
             {% endfor %}
-        {% else %}
-            <p>No has creado ninguna oferta.</p>
+
+            <!-- Botón "Mi Perfil Persona" -->
+            <br>
+            <a href="{% url 'perfil_persona' %}">
+                <button>Mi Perfil (Ver Formación/Experiencia)</button>
+            </a>
         {% endif %}
-    {% endif %}
 
-    <!-- Sección para Personas -->
-    {% if tipo == 'persona' %}
-        <!-- Mostrar ofertas disponibles -->
-        <h2>Ofertas Disponibles</h2>
-        {% for oferta in ofertas %}
-            <div class="oferta">
-                <h3>{{ oferta.titulo }}</h3>
-                <p><strong>Empresa:</strong> {{ oferta.empresa.razon_social }}</p>
-                <p><strong>Salario:</strong> ${{ oferta.salario }}</p>
-                <p><strong>Ubicación:</strong> {{ oferta.ubicacion }}</p>
-                <p><strong>Fecha de cierre:</strong> {{ oferta.fecha_cierre }}</p>
+        <!-- Formulario oculto para cerrar sesión -->
+        <form id="logout-form" method="post" action="{% url 'logout' %}" style="display: none;">
+            {% csrf_token %}
+        </form>
 
-                <!-- Mostrar estado de la postulación o botón para postular -->
-                {% if postulaciones %}
-                    {% for postulacion in postulaciones %}
-                        {% if postulacion.oferta.id == oferta.id %}
-                            <p><strong>Estado de tu postulación:</strong> {{ postulacion.estado }}</p>
-                            <a href="{% url 'ver_detalles_postulacion' postulacion.id %}">
-                                <button class="btn-ver-detalles">Ver Detalles</button>
-                            </a>
-                        {% endif %}
-                    {% endfor %}
-                {% else %}
-                    <a href="{% url 'postular' oferta.id %}">
-                        <button class="btn-postular">Postular</button>
-                    </a>
-                {% endif %}
-            </div>
-        {% endfor %}
-
-        <!-- Botón "Mi Perfil Persona" -->
-        <br>
-        <a href="{% url 'perfil_persona' %}">
-            <button>Mi Perfil (Ver Formación/Experiencia)</button>
-        </a>
-    {% endif %}
-
-    <!-- Formulario oculto para cerrar sesión -->
-    <form id="logout-form" method="post" action="{% url 'logout' %}" style="display: none;">
-        {% csrf_token %}
-    </form>
-
-    <!-- Enlace para cerrar sesión -->
-    <br><br>
-    <a href="#" onclick="confirmarCerrarSesion();">Cerrar Sesión</a>
+        <!-- Enlace para cerrar sesión -->
+        <br><br>
+        <a href="{% url 'login' %}" onclick="confirmarCerrarSesion();">Cerrar Sesión</a>
+    </div>
 </body>
 </html>

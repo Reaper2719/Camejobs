@@ -1,8 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>Crear Oferta - CameJobs</title>
+    <link rel="stylesheet" href="{% static 'css/crear_oferta.css' %}">
+    <link rel="icon" href="{% static 'img/Logo camejobs.png' %}">
     <script>
         function confirmarVolver() {
             if (confirm("¿Estás seguro de que quieres volver? Los datos no guardados se perderán.")) {
@@ -12,13 +15,13 @@
     </script>
 </head>
 <body>
-    <h1>Crear Oferta Laboral</h1>
     <form method="post">
+        <h1>Crear Oferta Laboral</h1>
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Publicar Oferta</button>
+        <a href="#" onclick="confirmarVolver();">Volver</a>
     </form>
     <br>
-    <a href="#" onclick="confirmarVolver();">Volver</a>
 </body>
 </html>

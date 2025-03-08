@@ -1,18 +1,37 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login
-from .forms import RegistroPersonaForm, RegistroEmpresaForm, CalificacionPersona, CalificacionEmpresa
+from .forms import (
+    RegistroPersonaForm, RegistroEmpresaForm, 
+    CalificacionPersona, CalificacionEmpresa,
+    FormacionAcademicaForm, ExperienciaLaboralForm, 
+    CalificacionPersonaForm, CalificacionEmpresaForm
+)
 from .models import Persona, Empresa, FormacionAcademica, ExperienciaLaboral
 from django.contrib.auth.decorators import login_required
 from usuarios.models import Persona, Empresa
-from ofertas.models import Oferta, Postulacion  # Importa el modelo de ofertas
+from ofertas.models import Oferta, Postulacion
 from django.contrib import messages
-from .forms import RegistroPersonaForm, RegistroEmpresaForm, FormacionAcademicaForm, ExperienciaLaboralForm, CalificacionPersonaForm, CalificacionEmpresaForm
-from tickets.models import Ticket  # Importar el modelo Ticket
+from tickets.models import Ticket
 from django.db.models import Avg, Count
+from django.views import View
+from django.contrib.auth.views import LoginView
 
+# Vista para la página principal
+def pagina_principal(request):
+    return render(request, 'usuarios/paginaPrincipal.html')
+
+# Vista de inicio de sesión personalizada
+class CustomLoginView(LoginView):
+    template_name = 'usuarios/login.html'  # Cambia esto al template de inicio de sesión
+
+# Vista de inicio (opcional)
+def inicio(request):
+    return render(request, 'usuarios/inicio.html')
+
+# Registro de persona
 def registro_persona(request):
     if request.method == 'POST':
-        form = RegistroPersonaForm(request.POST, request.FILES)  # Aceptar archivos (foto de perfil)
+        form = RegistroPersonaForm(request.POST, request.FILES)
         if form.is_valid():
             user = form.save()
             Persona.objects.create(
@@ -26,17 +45,18 @@ def registro_persona(request):
                 habilidades=form.cleaned_data['habilidades'],
                 email=form.cleaned_data['email'],
                 ubicacion=form.cleaned_data['ubicacion'],
-                foto_perfil=form.cleaned_data['foto_perfil']  # Guardar la foto de perfil
+                foto_perfil=form.cleaned_data['foto_perfil']
             )
             login(request, user)
-            return redirect('bienvenida')  # Redirige a la página de bienvenida
+            return redirect('bienvenida')
     else:
         form = RegistroPersonaForm()
     return render(request, 'usuarios/registro_persona.html', {'form': form})
 
+# Registro de empresa
 def registro_empresa(request):
     if request.method == 'POST':
-        form = RegistroEmpresaForm(request.POST, request.FILES)  # Aceptar archivos
+        form = RegistroEmpresaForm(request.POST, request.FILES)
         if form.is_valid():
             user = form.save()
             Empresa.objects.create(
@@ -49,51 +69,41 @@ def registro_empresa(request):
                 descripcion=form.cleaned_data['descripcion'],
                 email=form.cleaned_data['email'],
                 ubicacion=form.cleaned_data['ubicacion'],
-                logo=form.cleaned_data['logo']  # Guardar el logo
+                logo=form.cleaned_data['logo']
             )
             login(request, user)
-            return redirect('bienvenida')  # Redirige a la página de bienvenida 
+            return redirect('bienvenida')
     else:
         form = RegistroEmpresaForm()
     return render(request, 'usuarios/registro_empresa.html', {'form': form})
 
-def inicio(request):
-    return render(request, 'usuarios/inicio.html')
-
+# Vista de bienvenida
 @login_required
 def bienvenida(request):
-    
-    # Limpiar mensajes después de mostrarlos
-    storage = messages.get_messages(request)
-    for message in storage:
-        pass  # Esto asegura que los mensajes se marquen como usados
     usuario = request.user
-    ofertas_activas = Oferta.objects.filter(activa=True)  # Obtener ofertas activas
+    ofertas_activas = Oferta.objects.filter(activa=True)
     context = {
         'usuario': usuario,
-        'ofertas': ofertas_activas, # Añadir ofertas al contexto
-        
+        'ofertas': ofertas_activas,
     }
 
-    # Verificar si el usuario es una persona o una empresa
     if hasattr(usuario, 'persona'):
         context['tipo'] = 'persona'
         context['nombre'] = usuario.persona.nombre_completo
-        # Obtener las postulaciones de la persona
         postulaciones = Postulacion.objects.filter(trabajador=usuario.persona)
-        context['postulaciones'] = postulaciones  # Añadir postulaciones al contexto
+        context['postulaciones'] = postulaciones
         context['empresas_calificadas'] = Empresa.objects.filter(
             calificaciones_recibidas__persona=usuario.persona
         ).annotate(
             promedio_calificaciones=Avg('calificaciones_recibidas__puntuacion'),
             cantidad_calificaciones=Count('calificaciones_recibidas')
         ).distinct()
+
     elif hasattr(usuario, 'empresa'):
         context['tipo'] = 'empresa'
         context['nombre'] = usuario.empresa.razon_social
-        # Obtener las ofertas de la empresa actual
         ofertas_empresa = Oferta.objects.filter(empresa=usuario.empresa, activa=True)
-        context['ofertas_empresa'] = ofertas_empresa  # Añadir ofertas de la empresa al contexto
+        context['ofertas_empresa'] = ofertas_empresa
         context['personas_calificadas'] = Persona.objects.filter(
             calificaciones_recibidas__empresa=usuario.empresa
         ).annotate(
@@ -103,41 +113,37 @@ def bienvenida(request):
 
     return render(request, 'usuarios/bienvenida.html', context)
 
-def custom_login(request):
-    return render(request, 'usuarios/login.html', {'request': request})
-
-# Nueva vista para el perfil de la persona
+# Perfil de persona
 @login_required
 def perfil_persona(request):
     persona = get_object_or_404(Persona, usuario=request.user)
     formaciones = FormacionAcademica.objects.filter(persona=persona)
     experiencias = ExperienciaLaboral.objects.filter(persona=persona)
-    tickets = Ticket.objects.filter(usuario=request.user)  # Tickets de la persona
-    
+    tickets = Ticket.objects.filter(usuario=request.user)
+
     return render(request, 'usuarios/perfil_persona.html', {
         'persona': persona,
         'formaciones': formaciones,
         'experiencias': experiencias,
-        
+        'tickets': tickets,
     })
-    
+
+# Perfil de empresa
 @login_required
 def perfil_empresa(request, empresa_id=None):
-    # Si no se proporciona empresa_id, usar la empresa del usuario actual
     if empresa_id:
         empresa = get_object_or_404(Empresa, id=empresa_id)
     else:
         empresa = get_object_or_404(Empresa, usuario=request.user)
-    
-    tickets = Ticket.objects.filter(usuario=request.user)  # Tickets de la empresa
+
+    tickets = Ticket.objects.filter(usuario=request.user)
 
     return render(request, 'usuarios/perfil_empresa.html', {
         'empresa': empresa,
-        'tickets': tickets,  # Pasar los tickets al template
-    })   
+        'tickets': tickets,
+    })
 
-    
-# Vistas para la formación académica
+# Funciones adicionales para la formación y experiencia académica
 @login_required
 def agregar_formacion(request):
     persona = get_object_or_404(Persona, usuario=request.user)
@@ -151,10 +157,9 @@ def agregar_formacion(request):
             return redirect('perfil_persona')
     else:
         form = FormacionAcademicaForm()
-    
+
     return render(request, 'usuarios/agregar_formacion.html', {'form': form})
 
-#Editar formacion de persona 
 @login_required
 def editar_formacion(request, formacion_id):
     formacion = get_object_or_404(FormacionAcademica, id=formacion_id, persona__usuario=request.user)
@@ -166,10 +171,9 @@ def editar_formacion(request, formacion_id):
             return redirect('perfil_persona')
     else:
         form = FormacionAcademicaForm(instance=formacion)
-    
+
     return render(request, 'usuarios/editar_formacion.html', {'form': form})
 
-#Eliminar informacion de formacion de persona
 @login_required
 def eliminar_formacion(request, formacion_id):
     formacion = get_object_or_404(FormacionAcademica, id=formacion_id, persona__usuario=request.user)
@@ -191,10 +195,9 @@ def agregar_experiencia(request):
             return redirect('perfil_persona')
     else:
         form = ExperienciaLaboralForm()
-    
+
     return render(request, 'usuarios/agregar_experiencia.html', {'form': form})
 
-#Editar exp laboral de persona 
 @login_required
 def editar_experiencia(request, experiencia_id):
     experiencia = get_object_or_404(ExperienciaLaboral, id=experiencia_id, persona__usuario=request.user)
@@ -206,10 +209,9 @@ def editar_experiencia(request, experiencia_id):
             return redirect('perfil_persona')
     else:
         form = ExperienciaLaboralForm(instance=experiencia)
-    
+
     return render(request, 'usuarios/editar_experiencia.html', {'form': form})
 
-#Eliminar informacion de exp laboral de persona
 @login_required
 def eliminar_experiencia(request, experiencia_id):
     experiencia = get_object_or_404(ExperienciaLaboral, id=experiencia_id, persona__usuario=request.user)
@@ -217,6 +219,7 @@ def eliminar_experiencia(request, experiencia_id):
     messages.success(request, 'Experiencia laboral eliminada correctamente.')
     return redirect('perfil_persona')
 
+# Vistas de calificación
 @login_required
 def calificar_persona(request, persona_id):
     persona = get_object_or_404(Persona, id=persona_id)

@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión - CameJobs</title>
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="icon" href="{% static 'img/Logo camejobs.png' %}">
 </head>
 <body>
     <div class="login-box">
-        <img src="{% static 'img/logo.jpeg' %}" alt="Logo de CameJobs" class="logo">
+        <img src="{% static 'img/logo.jpg' %}" alt="Logo de CameJobs" class="logo">
 
         <h1>Iniciar Sesión</h1>
         <form method="post">
@@ -25,7 +26,9 @@
             <button type="submit">Ingresar</button>
         </form>
         <br>
-        <a href="{% url 'inicio' %}">Volver al inicio</a>
+        <p>¿No tienes una cuenta? <a href="{% url 'inicio' %}">Regístrate acá</a></p>
+        <br>
+        <a href="{% url 'paginaPrincipal' %}">Volver al inicio</a>
     </div>
 </body>
 </html>

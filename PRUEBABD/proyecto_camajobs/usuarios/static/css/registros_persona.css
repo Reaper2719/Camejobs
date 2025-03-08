@@ -4,7 +4,7 @@ body {
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-    background-image: url('../img/office.jpg'); /* Asegúrate de que la ruta de la imagen sea correcta */
+    background-image: url('../img/442.jpg'); /* Asegúrate de que la ruta de la imagen sea correcta */
     background-size: cover; /* Hace que la imagen cubra toda la pantalla */
     background-position: center center; /* Centra la imagen en el fondo */
     background-attachment: fixed; /* Hace que la imagen se quede fija al hacer scroll */
@@ -49,9 +49,14 @@ form textarea {
     pointer-events: auto; /* Activa la interacción con los campos */
 }
 
+/* Para deshabilitar el redimensionamiento de los campos de tipo textarea */
+form textarea {
+    resize: none; /* Evita que el usuario cambie el tamaño de los campos textarea */
+}
+
 /* Botones */
 button {
-    background-color: #09BC8A;
+    background-color: #0c1e2c; /* Azul oscuro */
     color: white;
     border: none;
     padding: 12px 20px; /* Ajusté el padding para hacer los botones más cómodos */
@@ -63,7 +68,7 @@ button {
 }
 
 button:hover {
-    background-color: #007A5E; 
+    background-color: #003366; /* Azul más claro */
 }
 
 /* Enlace de cancelar */
@@ -82,7 +87,7 @@ a button {
 }
 
 a button:hover {
-    background-color: #172A3A; 
+    background-color: #339AC4; /* Rojo más oscuro */
 }
 
 /* Estilos para los mensajes de error */
@@ -101,8 +106,4 @@ a button:hover {
 
 .alert-danger li {
     list-style-type: none;
-}
-
-form textarea {
-    resize: none; 
 }
