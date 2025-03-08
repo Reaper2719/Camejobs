@@ -2,7 +2,12 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Persona, Empresa, FormacionAcademica, ExperienciaLaboral, CalificacionPersona, CalificacionEmpresa
-
+#VALIDACION
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib import messages
+from django.core.exceptions import ValidationError
+from django.contrib.auth import authenticate
+from django.utils.translation import gettext_lazy as _
 
 class RegistroPersonaForm(UserCreationForm):
     cedula = forms.CharField(max_length=15, label="Cédula")
@@ -15,6 +20,14 @@ class RegistroPersonaForm(UserCreationForm):
     email = forms.EmailField(label="Correo Electrónico")
     ubicacion = forms.CharField(max_length=100, label="Ubicación")
     foto_perfil = forms.ImageField(required=False, label="Foto de Perfil")
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.email = self.cleaned_data['email']  # Sincroniza el email con el User
+        user.is_active = False  # Usuario inactivo hasta confirmar correo
+        if commit:
+            user.save()
+        return user
 
     class Meta:
         model = User
@@ -30,6 +43,14 @@ class RegistroEmpresaForm(UserCreationForm):
     email = forms.EmailField(label="Correo Electrónico")
     ubicacion = forms.CharField(max_length=100, label="Ubicación")
     logo = forms.ImageField(required=False, label="Logo")
+    
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.email = self.cleaned_data['email']  # Sincroniza el email con el User
+        user.is_active = False  # Usuario inactivo hasta confirmar correo
+        if commit:
+            user.save() 
+        return user
 
     class Meta:
         model = User
@@ -70,4 +91,34 @@ class CalificacionEmpresaForm(forms.ModelForm):
         widgets = {
             'puntuacion': forms.NumberInput(attrs={'min': 1, 'max': 5}),
             'comentario': forms.Textarea(attrs={'rows': 4}),
-        }        
+        }
+
+class CustomAuthenticationForm(AuthenticationForm):
+    def clean(self):
+        username = self.cleaned_data.get('username')
+        password = self.cleaned_data.get('password')
+
+        if username is not None and password:
+            self.user_cache = authenticate(
+                self.request,
+                username=username,
+                password=password
+            )
+            
+            # Verifica si el usuario existe pero no está activo
+            if self.user_cache is None:
+                try:
+                    user_temp = User.objects.get(username=username)
+                    if not user_temp.is_active:
+                        raise ValidationError(
+                            _("¡Cuenta no verificada! Revisa tu correo para activarla."),
+                            code='inactive_account',
+                        )
+                except User.DoesNotExist:
+                    pass
+                
+                raise self.get_invalid_login_error()
+            
+            self.confirm_login_allowed(self.user_cache)
+
+        return self.cleaned_data           

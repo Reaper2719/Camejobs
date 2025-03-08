@@ -1,0 +1,17 @@
+<!-- usuarios/templates/usuarios/confirmacion_enviada.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirmación Enviada</title>
+</head>
+<body>
+    <h1>¡Registro exitoso!</h1>
+    <p>Hemos enviado un correo electrónico con un enlace para activar tu cuenta.</p>
+    <p>Revisa tu bandeja de entrada (y la carpeta de spam).</p>
+
+     <!--  Botón para volver al login -->
+    <a href="{% url 'login' %}">
+        <button>Volver al Inicio de Sesión</button>
+    </a>
+</body>
+</html>

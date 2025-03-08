@@ -16,6 +16,14 @@ from django.db.models import Avg, Count
 from django.views import View
 from django.contrib.auth.views import LoginView
 
+#neceesario para validación
+from django.core.mail import send_mail
+from django.contrib.sites.shortcuts import get_current_site
+from django.utils.http import urlsafe_base64_encode
+from django.contrib.auth.tokens import default_token_generator
+from django.utils.encoding import force_bytes
+from django.contrib.auth.models import User
+
 # Vista para la página principal
 def pagina_principal(request):
     return render(request, 'usuarios/paginaPrincipal.html')
@@ -47,8 +55,22 @@ def registro_persona(request):
                 ubicacion=form.cleaned_data['ubicacion'],
                 foto_perfil=form.cleaned_data['foto_perfil']
             )
-            login(request, user)
-            return redirect('bienvenida')
+            # Generar enlace de confirmación
+            token = default_token_generator.make_token(user)
+            uid = urlsafe_base64_encode(force_bytes(user.pk))
+            
+            confirm_link = f"{request.scheme}://{request.get_host()}/usuarios/confirmar-email/{uid}/{token}/"
+            
+
+            # Enviar correo
+            send_mail(
+                'Confirma tu correo electrónico',
+                f'Haz clic aquí para confirmar tu cuenta: {confirm_link}',
+                'no-reply@camajobs.com',
+                [user.email],
+                fail_silently=False,
+            )
+            return redirect('confirmacion-enviada')
     else:
         form = RegistroPersonaForm()
     return render(request, 'usuarios/registro_persona.html', {'form': form})
@@ -71,8 +93,21 @@ def registro_empresa(request):
                 ubicacion=form.cleaned_data['ubicacion'],
                 logo=form.cleaned_data['logo']
             )
-            login(request, user)
-            return redirect('bienvenida')
+            # Generar enlace de confirmación (mismo código que en registro_persona)
+            token = default_token_generator.make_token(user)
+            uid = urlsafe_base64_encode(force_bytes(user.pk))
+            current_site = get_current_site(request).domain
+            confirm_link = f"{request.scheme}://{request.get_host()}/usuarios/confirmar-email/{uid}/{token}/"
+
+            # Enviar correo
+            send_mail(
+                'Confirma tu correo electrónico',
+                f'Haz clic aquí para confirmar tu cuenta: {confirm_link}',
+                'no-reply@camajobs.com',
+                [user.email],
+                fail_silently=False,
+            )
+            return redirect('confirmacion-enviada')
     else:
         form = RegistroEmpresaForm()
     return render(request, 'usuarios/registro_empresa.html', {'form': form})
@@ -271,3 +306,25 @@ def faqs_pagina(request):
 @login_required
 def busquedas_pagina(request):
     return render(request, 'usuarios/busquedas_pagina.html')
+
+#confirmar correo
+from django.utils.http import urlsafe_base64_decode
+from django.contrib.auth import login
+
+def confirmar_email(request, uidb64, token):
+    try:
+        uid = urlsafe_base64_decode(uidb64).decode()
+        user = User.objects.get(pk=uid)
+    except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+
+    if user and default_token_generator.check_token(user, token):
+        user.is_active = True
+        user.save()
+        login(request, user)
+        return redirect('bienvenida')
+    else:
+        return render(request, 'usuarios/enlace_invalido.html')
+    
+def confirmacion_enviada(request):
+    return render(request, 'usuarios/confirmacion_enviada.html')

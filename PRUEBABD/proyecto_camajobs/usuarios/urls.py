@@ -1,6 +1,8 @@
 from django.urls import path
 from . import views
 from django.contrib.auth import views as auth_views
+#Cambiar contraseña y validar
+from .forms import CustomAuthenticationForm
 
 urlpatterns = [
     # Página principal
@@ -47,5 +49,15 @@ urlpatterns = [
     path('faqs_pagina/', views.faqs_pagina, name='faqs_pagina'),
 
     #Ruta para pagina perfiles
-    path('busquedas_pagina/', views.busquedas_pagina, name='busquedas_pagina')
+    path('busquedas_pagina/', views.busquedas_pagina, name='busquedas_pagina'),
+    
+    #Rutas para cambiar contraseña
+    path('reset-password/', auth_views.PasswordResetView.as_view(template_name='usuarios/reset_password.html'), name='password_reset'),
+    path('reset-password/done/', auth_views.PasswordResetDoneView.as_view(template_name='usuarios/reset_password_done.html'), name='password_reset_done'),
+    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='usuarios/reset_password_confirm.html'), name='password_reset_confirm'),
+    path('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='usuarios/reset_password_complete.html'), name='password_reset_complete'),
+    
+    #confimar gmail
+    path('confirmar-email/<str:uidb64>/<str:token>/',views.confirmar_email,name='confirmar-email'),
+    path('confirmacion-enviada/', views.confirmacion_enviada, name='confirmacion-enviada'),
 ]
