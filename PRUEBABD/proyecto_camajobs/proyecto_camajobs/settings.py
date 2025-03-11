@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     # Aplicaciones de terceros
     'rest_framework',
     'django_extensions',
-
     #  aplicaciones locales
     'tickets',
     'usuarios',
