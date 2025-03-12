@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <title>Perfil de {{ empresa.razon_social }} - CameJobs</title>
     <style>
@@ -27,7 +28,7 @@
             cursor: pointer;
         }
     </style>
-    <link rel="icon" href="{% static 'img/Logo camejobs.png' %}">
+    <link rel="icon" href="{% static 'img/Logo camejobs blanco.png' %}">
 </head>
 <body>
     <h1>Perfil de {{ empresa.razon_social }}</h1>
