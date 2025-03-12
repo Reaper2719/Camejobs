@@ -109,3 +109,19 @@ def calificar_persona(request, postulacion_id):
         form = CalificacionPersonaForm()
 
     return render(request, 'ofertas/calificar_persona.html', {'form': form, 'persona': persona, 'postulacion': postulacion})
+
+#Función y elementos para ajustar la vista de las ofertas dependiendo de cuando se publicaron
+from django.shortcuts import render
+from .models import Oferta
+from datetime import date 
+
+#ofertas disponibles
+def lista_ofertas (request):
+    hoy = date.today()
+    ofertas = Oferta.objects.filter(activa=True, fecha_cierre__gte=hoy).order_by('-fecha_publicacion')
+    return render(request, 'ofertas/pagina_ofertas.html', {'ofertas': ofertas})
+
+#Pagina ofertas
+def pagina_ofertas(request):
+    ofertas = Oferta.objects.filter(activa=True).order_by('-fecha_publicacion')
+    return render(request, 'ofertas/pagina_ofertas.html', {'ofertas': ofertas})

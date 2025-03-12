@@ -9,4 +9,7 @@ urlpatterns = [
     path('postulacion/<int:postulacion_id>/', views.ver_detalles_postulacion, name='ver_detalles_postulacion'),
     path('calificar_empresa/<int:postulacion_id>/', views.calificar_empresa, name='calificar_empresa'),
     path('calificar_persona/<int:postulacion_id>/', views.calificar_persona, name='calificar_persona'),
+
+    # Ruta para pagina de ofertas
+    path('pagina_ofertas/', views.pagina_ofertas, name='pagina_ofertas'),
 ]

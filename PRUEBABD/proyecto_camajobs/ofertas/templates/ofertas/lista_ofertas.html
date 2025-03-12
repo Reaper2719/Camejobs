@@ -1,0 +1,36 @@
+<!-- lista_ofertas.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ofertas de Trabajo | Camejobs</title>
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+</head>
+<body>
+    <h1>Ofertas Disponibles</h1>
+
+    <div class="contenedor-ofertas">
+        {% for oferta in ofertas %}
+        <div class="tarjeta-oferta">
+            <div class="logo-empresa">
+                {% if oferta.empresa.logo %}
+                    <img src="{{ oferta.empresa.logo.url }}" alt="{{ oferta.empresa.razon_social }}">
+                {% else %}
+                    <img src="{% static 'img/default-logo.png' %}" alt="Sin logo">
+                {% endif %}
+            </div>
+            <h2>{{ oferta.titulo }}</h2>
+            <p><strong>{{ oferta.empresa.razon_social }}</strong></p>
+            <p><strong>${{ oferta.salario|floatformat:0 }}</strong> (Mensual)</p>
+            <p>Ubicación: {{ oferta.ubicacion }}</p>
+            <p>Contrato: {{ oferta.tipo_contrato|default:"Indefinido" }}</p>
+            <p>Publicado hace {{ oferta.fecha_publicacion|timesince }}</p>
+            <p><strong>Cierra el {{ oferta.fecha_cierre }}</strong></p>
+            <a href="#" class="btn-postularse">Postularse</a>
+        </div>
+        {% empty %}
+        <p>No hay ofertas disponibles en este momento.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
