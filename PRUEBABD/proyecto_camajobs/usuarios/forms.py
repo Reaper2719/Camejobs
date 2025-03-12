@@ -22,11 +22,30 @@ class RegistroPersonaForm(UserCreationForm):
     foto_perfil = forms.ImageField(required=False, label="Foto de Perfil")
 
     def save(self, commit=True):
+        # Validar el formulario antes de guardar
+        if not self.is_valid():
+            raise ValidationError("El formulario no es válido.")
+        
         user = super().save(commit=False)
         user.email = self.cleaned_data['email']  # Sincroniza el email con el User
         user.is_active = False  # Usuario inactivo hasta confirmar correo
+        
         if commit:
-            user.save()
+            user.save() # Guardar el User
+            # Crear el perfil Persona
+            Persona.objects.create(
+                usuario=user,
+                cedula=self.cleaned_data['cedula'],
+                nombre_completo=self.cleaned_data['nombre_completo'],
+                telefono=self.cleaned_data['telefono'],
+                direccion=self.cleaned_data['direccion'],
+                fecha_nacimiento=self.cleaned_data['fecha_nacimiento'],
+                genero=self.cleaned_data['genero'],
+                habilidades=self.cleaned_data['habilidades'],
+                email=self.cleaned_data['email'],
+                ubicacion=self.cleaned_data['ubicacion'],
+                foto_perfil=self.cleaned_data['foto_perfil']
+            )
         return user
 
     class Meta:
@@ -45,11 +64,30 @@ class RegistroEmpresaForm(UserCreationForm):
     logo = forms.ImageField(required=False, label="Logo")
     
     def save(self, commit=True):
+        
+        # Validar el formulario antes de guardar
+        if not self.is_valid():
+            raise ValidationError("El formulario no es válido.")
+
         user = super().save(commit=False)
         user.email = self.cleaned_data['email']  # Sincroniza el email con el User
         user.is_active = False  # Usuario inactivo hasta confirmar correo
+        
         if commit:
-            user.save() 
+            user.save() # Guardar el User
+            # Crear el perfil Empresa
+            Empresa.objects.create(
+                usuario=user,
+                nit=self.cleaned_data['nit'],
+                razon_social=self.cleaned_data['razon_social'],
+                telefono=self.cleaned_data['telefono'],
+                direccion=self.cleaned_data['direccion'],
+                sitio_web=self.cleaned_data['sitio_web'],
+                descripcion=self.cleaned_data['descripcion'],
+                email=self.cleaned_data['email'],
+                ubicacion=self.cleaned_data['ubicacion'],
+                logo=self.cleaned_data['logo']
+            ) 
         return user
 
     class Meta:

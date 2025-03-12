@@ -23,6 +23,7 @@ from django.utils.http import urlsafe_base64_encode
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
 
 # Vista para la página principal
 def pagina_principal(request):
@@ -41,36 +42,26 @@ def registro_persona(request):
     if request.method == 'POST':
         form = RegistroPersonaForm(request.POST, request.FILES)
         if form.is_valid():
-            user = form.save()
-            Persona.objects.create(
-                usuario=user,
-                cedula=form.cleaned_data['cedula'],
-                nombre_completo=form.cleaned_data['nombre_completo'],
-                telefono=form.cleaned_data['telefono'],
-                direccion=form.cleaned_data['direccion'],
-                fecha_nacimiento=form.cleaned_data['fecha_nacimiento'],
-                genero=form.cleaned_data['genero'],
-                habilidades=form.cleaned_data['habilidades'],
-                email=form.cleaned_data['email'],
-                ubicacion=form.cleaned_data['ubicacion'],
-                foto_perfil=form.cleaned_data['foto_perfil']
-            )
-            # Generar enlace de confirmación
-            token = default_token_generator.make_token(user)
-            uid = urlsafe_base64_encode(force_bytes(user.pk))
-            
-            confirm_link = f"{request.scheme}://{request.get_host()}/usuarios/confirmar-email/{uid}/{token}/"
-            
-
-            # Enviar correo
-            send_mail(
-                'Confirma tu correo electrónico',
-                f'Haz clic aquí para confirmar tu cuenta: {confirm_link}',
-                'no-reply@camajobs.com',
-                [user.email],
-                fail_silently=False,
-            )
-            return redirect('confirmacion-enviada')
+            try:
+                user = form.save()
+                           
+                # Generar enlace de confirmación
+                token = default_token_generator.make_token(user)
+                uid = urlsafe_base64_encode(force_bytes(user.pk))
+                
+                confirm_link = f"{request.scheme}://{request.get_host()}/usuarios/confirmar-email/{uid}/{token}/"
+                
+                # Enviar correo
+                send_mail(
+                    'Confirma tu correo electrónico',
+                    f'Haz clic aquí para confirmar tu cuenta: {confirm_link}',
+                    'no-reply@camajobs.com',
+                    [user.email],
+                    fail_silently=False,
+                )
+                return redirect('confirmacion-enviada')
+            except ValidationError as e:
+                form.add_error(None, e)
     else:
         form = RegistroPersonaForm()
     return render(request, 'usuarios/registro_persona.html', {'form': form})
@@ -79,35 +70,27 @@ def registro_persona(request):
 def registro_empresa(request):
     if request.method == 'POST':
         form = RegistroEmpresaForm(request.POST, request.FILES)
-        if form.is_valid():
-            user = form.save()
-            Empresa.objects.create(
-                usuario=user,
-                nit=form.cleaned_data['nit'],
-                razon_social=form.cleaned_data['razon_social'],
-                telefono=form.cleaned_data['telefono'],
-                direccion=form.cleaned_data['direccion'],
-                sitio_web=form.cleaned_data['sitio_web'],
-                descripcion=form.cleaned_data['descripcion'],
-                email=form.cleaned_data['email'],
-                ubicacion=form.cleaned_data['ubicacion'],
-                logo=form.cleaned_data['logo']
-            )
-            # Generar enlace de confirmación (mismo código que en registro_persona)
-            token = default_token_generator.make_token(user)
-            uid = urlsafe_base64_encode(force_bytes(user.pk))
-            current_site = get_current_site(request).domain
-            confirm_link = f"{request.scheme}://{request.get_host()}/usuarios/confirmar-email/{uid}/{token}/"
+        if form.is_valid():           
+            try:               
+                user = form.save()
+                           
+                # Generar enlace de confirmación (mismo código que en registro_persona)
+                token = default_token_generator.make_token(user)
+                uid = urlsafe_base64_encode(force_bytes(user.pk))
+                current_site = get_current_site(request).domain
+                confirm_link = f"{request.scheme}://{request.get_host()}/usuarios/confirmar-email/{uid}/{token}/"
 
-            # Enviar correo
-            send_mail(
-                'Confirma tu correo electrónico',
-                f'Haz clic aquí para confirmar tu cuenta: {confirm_link}',
-                'no-reply@camajobs.com',
-                [user.email],
-                fail_silently=False,
-            )
-            return redirect('confirmacion-enviada')
+                # Enviar correo
+                send_mail(
+                    'Confirma tu correo electrónico',
+                    f'Haz clic aquí para confirmar tu cuenta: {confirm_link}',
+                    'no-reply@camajobs.com',
+                    [user.email],
+                    fail_silently=False,
+                )
+                return redirect('confirmacion-enviada')
+            except ValidationError as e:
+                form.add_error(None, e)
     else:
         form = RegistroEmpresaForm()
     return render(request, 'usuarios/registro_empresa.html', {'form': form})
