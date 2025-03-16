@@ -1,0 +1,379 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fff
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0
+}
+
+body,
+html {
+  overflow-x: hidden;
+  width: 100%
+}
+
+.hero {
+  background: url(img/working.jpg) no-repeat 50%/cover;
+  width: 100vw;
+  height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  position: relative
+}
+
+.overlay {
+  background: rgba(0, 0, 0, .6);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1
+}
+
+.hero h1 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 37px;
+  font-weight: 700;
+  color: #fff
+}
+
+.hero p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  color: #fff;
+  margin-top: 10px
+}
+
+.hero button:hover {
+  background-color: #005e45;
+  transform: scale(1.05)
+}
+
+.cards-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 50px
+}
+
+.card img {
+  width: 100%;
+  border-radius: 10px
+}
+
+.about button,
+.card button,
+.contact button,
+.hero button {
+  background-color: #09bc8a;
+  font-size: 16px;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 5px
+}
+
+.card button:hover {
+  background-color: #007a5e;
+  transform: scale(1.05)
+}
+
+.card {
+  background-color: #0072a3;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 7px 10px rgba(0, 0, 0, .501);
+  width: 300px;
+  transform: scale(1);
+  transition: transform .4s ease, box-shadow .4s ease
+}
+
+.card h2 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff
+}
+
+.card p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 17px;
+  margin-top: 10px;
+  color: #fff
+}
+
+.card:hover {
+  transform: scale(1.1);
+  transition: transform .4s ease;
+  box-shadow: 0 0 30px rgba(0, 51, 255, .596)
+}
+
+.about {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10%
+}
+
+.about-content {
+  position: absolute;
+  margin-left: -400px;
+  background-color: #0072a3c6;
+  padding: 40px;
+  max-width: 590px;
+  height: 340px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, .501)
+}
+
+.about img {
+  width: 550px;
+  height: 488;
+  border-radius: 10px;
+  margin-left: 400px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .501)
+}
+
+.about h2 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #fff
+}
+
+.about p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 19px;
+  margin-top: 10px;
+  line-height: 1.6;
+  color: #fff
+}
+
+.about button {
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  background-color: #09bc8a;
+  color: #fff;
+  cursor: pointer;
+  transition: .3s ease
+}
+
+.about button:hover {
+  background-color: #087b5a;
+  transform: scale(1.05)
+}
+
+.contact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 10%;
+  padding-top: 5px
+}
+
+.contact img {
+  max-width: 500px;
+  height: auto;
+  flex-shrink: 0
+}
+
+.contact-content {
+  max-width: 600px
+}
+
+.contact h2 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #000
+}
+
+.contact p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 19px;
+  margin-top: 10px;
+  line-height: 1.8;
+  color: #000
+}
+
+.contact button {
+  font-size: 16px;
+  padding: 14px 28px;
+  border-radius: 6px
+}
+
+.contact button:hover {
+  background-color: #087b5a;
+  transform: scale(1.05)
+}
+
+.logo {
+  height: 90px;
+  width: auto;
+  margin-right: 10px
+}
+
+.logo {
+  width: 100px;
+  height: auto
+}
+
+:root {
+  --background-primary: #0c1e2c;
+  --background-secondary: #0072a3;
+  --text-primary: #fff;
+  --text-secondary: #d6d6d6;
+  --accent-primary: #000;
+  --accent-secondary: #04302384;
+  --accent-tertiary: #000;
+  --card-background: #005e45;
+  --footer-background: #087b5a;
+  --footer-below-background: #005e45;
+  --text-herotitle: #000;
+  --about-color: #005e45c9;
+  --svg-color: #005e45c9;
+  --color-2: #098e68c2;
+  --color-3: #09bc8a;
+  --color-4: #0385bd;
+  --color-5: #102b3e
+}
+
+@media (max-width:768px) {
+  .cards-container {
+      flex-direction: column;
+      align-items: center;
+      gap: 20px
+  }
+
+  .card {
+      width: 80%
+  }
+  .about {
+      flex-direction: column;
+      padding: 5%
+  }
+
+  .about-content {
+      margin-left: 0;
+      width: 80%;
+      padding: 10px;
+      height: 350px
+  }
+
+  .about img {
+      margin-left: 0;
+      width: 100%
+  }
+  .contact {
+      flex-direction: column;
+      padding: 5%
+  }
+
+  .contact img {
+      width: 100%
+  }
+
+  .contact-content {
+      width: 90%
+  }
+  .cards-container {
+      flex-direction: column;
+      align-items: center;
+      gap: 20px
+  }
+
+  .card {
+      width: 90%;
+      max-width: 350px
+  }
+
+  .about {
+      flex-direction: row;
+      padding: 5%;
+      text-align: center
+  }
+
+  .about-content {
+      position: absolute;
+      width: 350px;
+      padding: 20px;
+      background-color: #0072a3c6;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, .501)
+  }
+
+  .about-content,
+  .about img {
+      height: auto;
+      border-radius: 10px
+  }
+
+  .about img {
+      width: 400px;
+      margin-left: 400px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, .501)
+  }
+
+  .about button {
+      display: block;
+      margin: 15px auto 0;
+      font-size: 14px;
+      padding: 8px 16px
+  }
+
+  .about-content h2 {
+      font-size: 24px
+  }
+
+  .about-content p {
+      font-size: 15px;
+      line-height: 1.4
+  }
+
+  .contact {
+      flex-direction: column;
+      text-align: center;
+      padding: 5%
+  }
+
+  .contact img {
+      width: 90%;
+      margin-bottom: 20px
+  }
+
+  .contact-content {
+      width: 90%
+  }
+
+  .full-text {
+    display: none
+  }
+
+}
+
+@media (min-width:769px) {
+  .short-text {
+      display: none
+  }
+
+  .full-text {
+      display: inline
+  }
+}

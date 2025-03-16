@@ -40,3 +40,33 @@ document.querySelectorAll('.faq-question').forEach(button => {
         }
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const navbar = document.querySelector('.navbar');
+    const navLinks = document.querySelector('.nav-links');
+    const hamburger = document.createElement('div');
+    hamburger.classList.add('hamburger');
+    hamburger.innerHTML = '&#9776;';
+    navbar.appendChild(hamburger);
+
+    // Función para abrir/cerrar el menú
+    hamburger.addEventListener('click', function() {
+        navLinks.classList.toggle('active');
+    });
+
+    // Cerrar el menú al hacer clic fuera de él
+    document.addEventListener('click', function(event) {
+        const isClickInsideNavbar = navbar.contains(event.target);
+        const isClickOnHamburger = hamburger.contains(event.target);
+
+        // Si el clic es fuera del navbar y el menú está abierto, ciérralo
+        if (!isClickInsideNavbar && navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+        }
+
+        // Si el clic es en un enlace del menú, ciérralo
+        if (event.target.tagName === 'A' && navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+        }
+    });
+});

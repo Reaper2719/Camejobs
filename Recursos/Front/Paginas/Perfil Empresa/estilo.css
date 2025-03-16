@@ -1,271 +1,174 @@
-/* ESTILOS GENERALES */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background-color: #f8f9fa;
+  font-family: Arial, sans-serif;
+  background-color: #fff
 }
 
-/* HEADER */
-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 30px;
-    background-color: #0c1e2c;
-    color: white;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-.camejobs {
-    font-size: 25px;
+body,
+html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100%
 }
 
-.nav-buttons {
-    display: flex;
-    gap: 15px;
+.card,
+.header {
+  display: flex;
+  width: 100%
 }
 
-.nav-buttons a {
-    text-decoration: none;
-    padding: 8px 15px;
-    background-color: #0c1e2c;
-    color: white;
-    border-radius: 5px;
-    transition: background-color 0.3s ease-in-out;
+.card {
+  background: #0072a3;
+  color: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, .1);
+  text-align: center;
+  height: 420px;
+  flex-direction: column;
+  justify-content: center;
+  left: 20px;
+  top: 46px;
+  align-items: center;
+  margin-top: 20px;
+  margin-left: 30px
 }
 
-.nav-buttons a:hover {
-    background-color: #172A3A;
+.card h2 {
+  font-size: 17px
 }
 
-/* BARRA DE BÚSQUEDA CON LOGO */
-.search-container {
-    display: flex;
-    align-items: center;
-    background: white;
-    padding: 5px 10px;
-    border-radius: 20px;
-    padding-right: 80px;
-    margin-left: 20px;
-    border: 1px solid #ddd;
+.card img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 0 auto
 }
 
-.search-logo {
-    width: 30px;
-    height: 30px; /* Ajusta el tamaño según tu preferencia */
-    margin-right: 5px;
-}
-
-.search-container input {
-    border: none;
-    outline: none;
-    font-size: 16px;
-}
-
-/* SECCIÓN DE ENCABEZADO */
-.empresa-header {
-    display: flex;
-    background: #0072a3;
-    color: white;
-    width: 72%; /* ANCHO MAYOR YA QUE SE ELIMINÓ LA IMAGEN */
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    align-items: center;
-    justify-content: space-between; /* DISTRIBUCIÓN EQUILIBRADA */
-    margin: 0 auto; /* CENTRADO AUTOMÁTICO */
-    padding: 30px;
+.card img,
+.empresa-logo {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex
 }
 
 .empresa-logo {
-    width: 130px; /* Ajustar el tamaño del logo */
-    height: 120px; /* Mantener proporción cuadrada */
-    border-radius: 70%; /* Hacerlo circular */
-    background-color: white; /* Fondo blanco */
-    padding: 10px; /* Espaciado interno para evitar que el logo quede muy pegado */
-    display: flex; /* Para centrar la imagen dentro del fondo */
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para resaltar */
+  width: 130px;
+  height: 120px;
+  border-radius: 70%;
+  background-color: #fff;
+  padding: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, .1);
+  margin-top: 30px
 }
-
 
 .empresa-info {
-    text-align: center;
-}
-
-/* SECCIÓN DE DESCRIPCIÓN */
-.empresa-descripcion {
-    background: #f8f9fa;
-    padding: 50px 10%;
-    display: flex;
-    justify-content: center;
+  justify-content: left
 }
 
 .descripcion-container {
-    display: flex;
-    align-items: center;
-    justify-content: center; /* CENTRAR CONTENIDO */
-    gap: 40px;
-    width: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 40px;
+  width: 100%
 }
 
-/* Tarjeta de información */
 .descripcion-texto {
-    background: white;
-    padding: 30px;
-    width: 70%; /* ANCHO MAYOR YA QUE SE ELIMINÓ LA IMAGEN */
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: justify; /* MEJOR PRESENTACIÓN DEL TEXTO */
+  flex-grow: 1;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 30px;
+  border-radius: 10px;
+  text-align: justify
 }
 
-/* Lista con iconos */
-.descripcion-texto ul {
-    list-style: none;
-    padding: 0;
+.contact {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 5%;
+  gap: 20px
 }
 
-.descripcion-texto li {
-    padding: 5px 0;
-    font-size: 16px;
+.contact img {
+  max-width: 500px;
+  height: auto;
+  flex-shrink: 0
 }
 
-/* Datos adicionales */
-.empresa-info p {
-    margin: 5px 0;
-    font-size: 16px;
-    color: #333;
+.contact h2 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #000
 }
 
-
-/* Diseño responsivo */
-@media (max-width: 900px) {
-    .descripcion-container {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .descripcion-texto {
-        width: 100%;
-    }
+.contact p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  margin-top: 10px;
+  line-height: 1.8;
+  color: #000
 }
 
-
-/* Estilos generales del footer */
-.footer {
-    background-color: #d6d6d6;
-    color: #000000;
-    text-align: center;
-    padding: 10px 10px;
-    width: 100%;
+:root {
+  --background-primary: #0c1e2c;
+  --background-secondary: #0072a3;
+  --text-primary: #fff;
+  --text-secondary: #d6d6d6;
+  --accent-primary: #000;
+  --accent-secondary: #04302384;
+  --accent-tertiary: #000;
+  --card-background: #005e45;
+  --footer-background: #087b5a;
+  --footer-below-background: #005e45;
+  --text-herotitle: #000;
+  --about-color: #005e45c9;
+  --svg-color: #005e45c9;
+  --color-2: #098e68c2;
+  --color-3: #09bc8a;
+  --color-4: #0385bd;
+  --color-5: #102b3e
 }
 
-.logo-title {
-    font-size: 24px;
-    font-weight: bold;
-    color: #000000;
-    margin-bottom: 20px;
-}
-
-.logo-description {
-    font-size: 18px;
-    color: #000000;
-}
-
-  /* Línea superior con redes sociales */
-.footer-top {
-    display: flex;
+@media (max-width:768px) {
+  .header {
     flex-direction: column;
     align-items: center;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: 15px;
-}
+    justify-content: center;
+    text-align: center
+  }
 
-.footer-text {
-    margin-bottom: 10px;
-    font-weight: bold;
-}
+  .descripcion-container {
+    flex-direction: column;
+    display: flex
+  }
 
-  /* Iconos sociales */
-.social-icons {
-    display: flex;
-    gap: 15px;
-}
-
-.icon img {
-    width: 24px;
-    height: 24px;
-    transition: transform 0.3s ease-in-out;
-}
-
-.icon:hover img {
-    transform: scale(1.2);
-}
-
-/* Contenido principal del footer */
-.footer-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    padding: 40px 10px;
+  .descripcion-texto {
+    width: 80%;
     text-align: left;
-}
+    padding: 0
+  }
 
-  /* Sección individual del footer */
-.footer-section {
-    margin-top: 15px;
-}
+  .contact {
+    flex-direction: column;
+    align-items: center
+  }
 
-  /* Estilo del logo */
-.logo-title {
-    display: flex;
-    align-items: center;
-    font-size: 1.2em;
-    font-weight: bold;
-}
+  .card {
+    margin-left: 0;
+    max-width: 70%
+  }
 
-.logo {
-    height: 90px;
-    width: auto;
-    margin-right: 10px;
-}
-
-  /* Títulos de sección */
-.section-title {
-    font-weight: bold;
-    font-size: 1.1em;
-    margin-bottom: 10px;
-}
-
-  /* Enlaces */
-.footer-links {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-links li {
-    margin-bottom: 5px;
-}
-
-.footer-links a {
-    text-decoration: none;
-    color: #000000;
-    transition: color 0.3s;
-}
-
-.footer-links a:hover {
-    color: white;
-}
-
-/* Sección inferior del footer (copyright) */
-.footer-below {
+  .card,
+  .descripcion-container {
     text-align: center;
-    color: #000000;
-    width: 100%;
+    align-items: center;
+    justify-content: center
+  }
 }
-
-
-
-
-
