@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Camejobs{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="icon" href="{% static 'img/Logo camejobs.png' %}">
+    <style>
+
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-left">
+            <!-- Logo y nombre -->
+            <div class="logo-superior">
+                <img src="{% static 'img/Logo camejobs blanco.png' %}" alt="Camejobs">
+                <a href="#">Camejobs</a>
+            </div>
+        </div>
+        <!-- Enlaces de navegación -->
+        <ul class="nav-links">
+            <li><a href="#">Ofertas</a></li>
+            <li><a href="#">Perfiles</a></li>
+            <li><a href="#">Empresas</a></li>
+        </ul>
+        <!-- Botón de Dark Mode -->
+
+        <div class="profile-menu">
+            <label class="switch">
+                <input type="checkbox" id="dark-mode-toggle">
+                <span class="slider"></span>
+            </label>
+            <span class="bell" id="bell-icon">&#128276;</span>
+            <div class="profile" id="profile-icon">
+                <img src="{% static 'img/Logo camejobs blanco.png' %}" alt="User" class="profile-img">
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu">
+                <a href="#">Tu Perfil</a>
+                <a href="#">Configuración</a>
+                <a href="#">Cerrar Sesión</a>
+            </div>
+        </div>
+        <!-- Botón de menú (ícono de hamburguesa) -->
+        <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+    </nav>
+
+    <!-- Sidebar para móviles -->
+    <div class="sidebar" id="sidebar">
+        <button class="close-btn" id="close-btn">&times;</button>
+        <ul>
+            <li><a href="#" class="active">Ofertas</a></li>
+            <li><a href="#">Perfiles</a></li>
+            <li><a href="#">Empresas</a></li>
+        </ul>
+        <div class="profile-info">
+            <img src="{% static 'img/Logo camejobs blanco.png' %}" alt="User" class="profile-img">
+            <p>Usuario</p>
+            <p>usuario@example.com</p>
+        </div>
+    </div>
+
+    <!-- Resto del contenido de paginaPrincipal.html -->
+    
+    <script src="{% static 'js/darkmode.js' %}"></script>
+
+    <script>
+        // Script para manejar el menú desplegable y el sidebar
+        document.getElementById("menu-toggle").addEventListener("click", function() {
+            document.getElementById("sidebar").classList.add("active");
+        });
+        document.getElementById("close-btn").addEventListener("click", function() {
+            document.getElementById("sidebar").classList.remove("active");
+        });
+        document.getElementById("profile-icon").addEventListener("click", function() {
+            document.getElementById("dropdown-menu").classList.toggle("active");
+        });
+
+        // Script para mostrar/ocultar el texto completo
+        document.querySelectorAll("button").forEach(button => {
+            button.addEventListener("click", function() {
+                const parentSection = this.closest("section");
+                parentSection.classList.toggle("show-full-text");
+            });
+        });
+    </script>
+</body>
+</html>

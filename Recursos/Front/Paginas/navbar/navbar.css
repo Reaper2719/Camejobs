@@ -1,0 +1,383 @@
+/* Estilos generales */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  margin: 0;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0c1e2c;
+  padding: 10px 20px;
+  color: white;
+  position: relative;
+  z-index: 1000;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo-superior {
+  display: flex;
+  align-items: center;
+  margin-left: 190px;
+}
+
+.logo-superior img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.logo-superior a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: white;
+  margin-left: 15px;
+  /* Espacio entre el botón y el logo */
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin-left: 20px;
+  /* Mover los enlaces a la izquierda */
+}
+
+.nav-links li {
+  margin: 0 10px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+}
+
+.nav-links a.active,
+.nav-links a:hover {
+  background: #2d3748;
+  border-radius: 5px;
+}
+
+.profile-menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.bell {
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.profile-img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -250px;
+  /* Cambiado a la derecha */
+  width: 250px;
+  height: 100%;
+  background: #0c1e2c;
+  /* Fondo sólido */
+  padding: 20px 0;
+  /* Padding arriba y abajo */
+  transition: 0.3s;
+  z-index: 1001;
+  /* Asegura que el sidebar esté por encima de otros elementos */
+}
+
+.sidebar.active {
+  right: 0;
+  /* Cambiado a la derecha */
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li {
+  padding: 10px 20px;
+  /* Padding para los elementos de la lista */
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+}
+
+.sidebar .profile-info {
+  text-align: center;
+  padding: 20px;
+  color: white;
+}
+
+.sidebar .profile-img {
+  width: 50px;
+  height: 50px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  /* Cambiado a la izquierda */
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 50px;
+  background: white;
+  color: black;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  width: 150px;
+  text-align: left;
+  z-index: 1002;
+  /* Asegura que el menú desplegable esté por encima del sidebar */
+}
+
+.dropdown-menu.active {
+  display: block;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px;
+  color: black;
+  text-decoration: none;
+}
+
+.dropdown-menu a:hover {
+  background: #f1f1f1;
+}
+
+/* Estilos para el texto corto y largo */
+.short-text {
+  display: block;
+}
+
+.full-text {
+  display: none;
+}
+
+/* Mostrar el texto completo cuando se hace clic en el botón */
+.show-full-text .short-text {
+  display: none;
+}
+
+.show-full-text .full-text {
+  display: block;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0
+}
+
+body,
+html {
+  overflow-x: hidden;
+  width: 100%
+}
+
+.navbar {
+  background-color: #0c1e2c;
+  padding: 10px 30px
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin-right: 50px
+}
+
+.nav-links a {
+  font-size: 18px;
+  display: inline-block;
+  padding: 5px 10px;
+  text-decoration: none;
+  color: #fff;
+  transition: all .3s ease-in-out;
+  border-radius: 5px
+}
+
+.nav-links a:hover {
+  background-color: #172a3a;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, .5);
+  transition: background-color .5s ease-in-out
+}
+
+.logo-superior {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  left: 30px;
+  margin: 10%
+}
+
+.logo-superior img {
+  height: 90px;
+  width: 90px;
+}
+
+.logo-superior img:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: transform .3s ease
+}
+
+.logo-superior a {
+  text-decoration: none;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 25px;
+  font-weight: 700
+}
+
+.logo {
+  height: 90px;
+  width: auto;
+  margin-right: 10px
+}
+
+.logo {
+  width: 100px;
+  height: auto
+}
+
+:root {
+  --background-primary: #0c1e2c;
+  --background-secondary: #0072a3;
+  --text-primary: #fff;
+  --text-secondary: #d6d6d6;
+  --accent-primary: #000;
+  --accent-secondary: #04302384;
+  --accent-tertiary: #000;
+  --card-background: #005e45;
+  --footer-background: #087b5a;
+  --footer-below-background: #005e45;
+  --text-herotitle: #000;
+  --about-color: #005e45c9;
+  --svg-color: #005e45c9;
+  --color-2: #098e68c2;
+  --color-3: #09bc8a;
+  --color-4: #0385bd;
+  --color-5: #102b3e
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+  margin-right: 15px
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0
+}
+
+.slider {
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 24px
+}
+
+.slider,
+.slider:before {
+  position: absolute;
+  transition: .4s
+}
+
+.slider:before {
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 2px;
+  bottom: 2px;
+  background-color: #fff;
+  border-radius: 50%
+}
+
+input:checked+.slider {
+  background-color: #09bc8a
+}
+
+input:checked+.slider:before {
+  transform: translateX(26px)
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .profile-menu {
+    display: none;
+  }
+}
+
+@media (max-width:768px) {
+
+  .full-text {
+    display: none
+  }
+}
+
+@media (min-width:769px) {
+  .short-text {
+    display: none
+  }
+
+  .full-text {
+    display: inline
+  }
+}
