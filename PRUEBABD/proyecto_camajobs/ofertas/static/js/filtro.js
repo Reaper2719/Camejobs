@@ -58,5 +58,5 @@ document.addEventListener('DOMContentLoaded', function () {
 
     toggleFiltrosBtn.addEventListener('click', function () {
         filtrosContainer.classList.toggle('show'); // Clase CSS que muestra/oculta
-    });
+    });
 });
