@@ -43,62 +43,54 @@
 
         </div>
     </nav>
-
+    
     <main>
+        <!-- Botón hamburguesa para filtros -->
+        <button id="toggleFiltros" class="btn-filtros">☰ Filtros</button>
         <div class="oferta-container">
             <!-- Sección izquierda: Filtros -->
-            <aside class="filtros">
+            <aside class="filtros" id="filtrosContainer">
                 <h2>Filtros</h2>
 
+                <!-- Barra de búsqueda -->
+                <span class="texto">Buscar</span>
+                <div class="input-container">
+                    <input type="text" id="searchBar" placeholder="Buscar oferta, descripción o empresa" onkeyup="applyFilters()">
+                    <img src="{% static 'img/logo camejobs.png' %}" alt="Buscar">
+                </div>
+                <br>
+                
                 <!-- Filtro de modalidad de ubicacion -->
                 <span class="texto">Ubicación</span>
                 <select id="filterUbicacion" class="filter-select" onchange="applyFilters()">
-                    <option class="filter-select-option" value>Ubicación</option>
-                    <option class="filter-select-option" value="Santiago de Cali - Valle">Santiago de Cali - Valle</option>
-                    <option class="filter-select-option" value="Bogotá - D.C.">Bogotá - D.C.</option>
-                    <option class="filter-select-option" value="Medellín - Antioquia">Medellín - Antioquia</option>
+                    <option class="filter-select-option" value="">Ubicación</option>
+                    {% for ubicacion in ubicaciones %}
+                        <option class="filter-select-option" value="{{ ubicacion }}">{{ ubicacion }}</option>
+                    {% endfor %}
                 </select>
                 <br>
 
                 <!-- Filtro de salario -->
                 <span class="texto">Salario</span>
                 <select id="filterSalario" class="filter-select" onchange="applyFilters()">
-                    <option class="filter-select-option" value>Salario</option>
-                    <option class="filter-select-option" value="$ 3.500.000 (Mensual)">$ 3.500.000 (Mensual)</option>
-                    <option class="filter-select-option" value="$ 3.200.000 (Mensual)">$ 3.200.000 (Mensual)</option>
-                    <option class="filter-select-option" value="$ 3.000.000 (Mensual)">$ 3.000.000 (Mensual)</option>
-                </select>
-                <br>
-
-                <!-- Filtro de contrato -->
-                <span class="texto">Tipo Contrato</span>
-                <select id="filterContrato" class="filter-select" onchange="applyFilters()">
-                    <option class="filter-select-option" value>Tipo Contrato</option>
-                    <option class="filter-select-option" value="Definido">Definido</option>
-                    <option class="filter-select-option" value="Indefinido">Indefinido</option>
+                    <option class="filter-select-option" value="">Salario</option>
+                    <option class="filter-select-option" value="0-3000000">$0 a $3.000.000</option>
+                    <option class="filter-select-option" value="3000000-6000000">$3.000.000 a $6.000.000</option>
+                    <option class="filter-select-option" value="6000000-9000000">$6.000.000 a $9.000.000</option>
+                    <option class="filter-select-option" value="9000000-12000000">$9.000.000 a $12.000.000</option>
+                    <option class="filter-select-option" value="12000000-mas">$12.000.000 o más</option>
                 </select>
                 <br>
 
                 <!-- Filtro de empresa -->
                 <span class="texto">Empresa</span>
                 <select id="filterEmpresa" class="filter-select" onchange="applyFilters()">
-                    <option class="filter-select-option" value>Empresa</option>
-                    <option class="filter-select-option" value="EMCALI S.A.S.">EMCALI S.A.S.</option>
-                    <option class="filter-select-option" value="Movistar">Movistar</option>
-                    <option class="filter-select-option" value="Claro">Claro</option>
-                    <option class="filter-select-option" value="Davivienda">Davivienda</option>
-                    <option class="filter-select-option" value="Alpina">Alpina</option>
+                    <option class="filter-select-option" value="">Empresa</option>
+                    {% for empresa in empresas %}
+                        <option class="filter-select-option" value="{{ empresa }}">{{ empresa }}</option>
+                    {% endfor %}
                 </select>
                 <br>
-
-                <!-- Filtro de categoria -->
-                <span class="texto">Categoría</span>
-                <select id="filterCategoria" class="filter-select" onchange="applyFilters()">
-                    <option class="filter-select-option" value>categoría</option>
-                    <option class="filter-select-option" value="Especialista en Diseño y Desarrollo de Software">Especialista en Diseño y Desarrollo de Software</option>
-                    <option class="filter-select-option" value="Analista de Sistemas">Analista de Sistemas</option>
-                    <option class="filter-select-option" value="Desarrollador Frontend">Desarrollador Frontend</option>
-                </select>
             </aside>
             
             <!-- Sección derecha: Listado de ofertas -->
@@ -110,10 +102,15 @@
                          data-empresa="{{ oferta.empresa.razon_social }}"
                          data-ubicacion="{{ oferta.ubicacion }}"
                          data-salario="${{ oferta.salario|floatformat:0 }} (Mensual)"
-                         data-categoria="{{ oferta.titulo }}">
+                         data-categoria="{{ oferta.titulo }}"
+                         data-titulo="{{ oferta.titulo }}"
+                        data-descripcion="{{ oferta.descripcion }}">
             
-                        <img src="{{ oferta.empresa.logo.url|default:'/media/default-logo.png' }}" alt="Logo de {{ oferta.empresa.razon_social }}" class="oferta-logo">
-
+                        {% if oferta.empresa.logo %}
+                            <img src="{{ oferta.empresa.logo.url }}" alt="{{ oferta.empresa.razon_social }}" class="oferta-logo">
+                        {% else %}
+                            <img src="{% static 'img/Logo camejobs.png' %}" alt="Logo Empresa" class="oferta-logo">
+                        {% endif %}
             
                         <h2 class="oferta-titulo">{{ oferta.titulo }}</h2>
             
@@ -143,7 +140,11 @@
             <span class="cerrar" onclick="cerrarModal('modal-{{ oferta.id }}')">&times;</span>
     
             <div class="oferta-header">
-                <img src="{{ oferta.empresa.logo.url|default:'/media/default-logo.png' }}" alt="Logo de {{ oferta.empresa.razon_social }}" class="oferta-logo">
+                {% if oferta.empresa.logo %}
+                    <img src="{{ oferta.empresa.logo.url }}" alt="{{ oferta.empresa.razon_social }}" class="oferta-logo">
+                {% else %}
+                    <img src="{% static 'img/Logo camejobs.png' %}" alt="Logo Empresa" class="oferta-logo">
+                {% endif %}
                 <div class="oferta-titulo">
                     <h2>{{ oferta.titulo }}</h2>
                     <p><strong>{{ oferta.empresa.razon_social }}</strong></p>
@@ -170,6 +171,12 @@
     {% endfor %}
         </div>
     
+    
+    <script src="{% static 'js/oferta.js' %}"></script>
+    <script src="{% static 'js/filtro.js' %}"></script>
+    <script src="{% static 'js/darkmode.js' %}"> </script>
+    
+    </div>
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-top">
@@ -225,10 +232,5 @@
             <p>&copy; 2025 Camejobs - Todos los derechos reservados.</p>
         </div>
     </footer>
-    <script src="{% static 'js/oferta.js' %}"></script>
-    <script src="{% static 'js/filtro.js' %}"></script>
-    <script src="{% static 'js/darkmode.js' %}"> </script>
-    
-    </div>
 </body>
 </html>

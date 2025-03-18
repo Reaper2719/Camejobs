@@ -124,4 +124,10 @@ def lista_ofertas (request):
 #Pagina ofertas
 def pagina_ofertas(request):
     ofertas = Oferta.objects.filter(activa=True).order_by('-fecha_publicacion')
-    return render(request, 'ofertas/pagina_ofertas.html', {'ofertas': ofertas})
+    ubicaciones = Oferta.objects.values_list('ubicacion', flat=True).distinct()
+    empresas = Oferta.objects.values_list('empresa__razon_social', flat=True).distinct()
+    return render(request, 'ofertas/pagina_ofertas.html', {
+        'ofertas': ofertas, # Enviar ofertas al template
+        'ubicaciones': ubicaciones, # Enviar ubicaciones al template
+        'empresas': empresas,  # Enviar empresas al template
+    })

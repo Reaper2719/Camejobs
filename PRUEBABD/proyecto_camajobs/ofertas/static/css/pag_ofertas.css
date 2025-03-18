@@ -1,13 +1,41 @@
+
+:root {
+  --primary-color: #0c1e2c;
+  --secondary-color: #0072a3;
+  --background-color: #f4f4f4;
+  --background-dark: #3b4a52;
+  --white: #ffffff;
+  --radius: 10px;
+  --spacing: 20px;
+  --shadow: 0 4px 10px rgba(0,0,0,0.1);
+  --max-width: 1200px;
+}
+
+* {
+  box-sizing: border-box; /* TODO respeta límites */
+}
+
 .dark-mode{
   background-color: #0c1e2c !important;
   color: white !important;
 }
 
-body {
+html, body {
   font-family: Arial, sans-serif;
+  max-width: 100vw;
+  height: 100%;
   margin: 0;
   padding: 0;
   background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column; 
+}
+
+.main-content {
+  flex: 1; 
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
 }
 
 header {
@@ -31,7 +59,7 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   position: relative;
 }
@@ -104,15 +132,18 @@ header {
 
 .oferta-container {
     display: flex;
+    align-items: start;
     max-width: 100%;
-    margin: 20px 50px;
+    margin: 20px 50px 20px 50px;
     gap: 50px;
+    flex: 1;
     
 }
 
 /* Sección izquierda: Filtros */
 
 .filtros {
+    top: 20px;
     width: 20%;
     background: white;
     padding: 20px;
@@ -123,7 +154,7 @@ header {
     gap: 20px;
     margin-left: 50px;
     gap: 5px;
-
+    position: sticky;
 }
 
 body.dark-mode .filtros {
@@ -174,10 +205,67 @@ body.dark-mode .filtros button {
     
 }
 
-body.dark-mode .filtros button:hover {
-    background: #0c1e2c;
-    
+/* Barra de busqueda en filtros */
+
+.input-container {
+  position: relative;
+  width: 100%;
 }
+
+.input-container input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 25px;
+  border: 2px solid #0c1e2c;
+  background-color: white;
+  font-size: 14px;
+  color: black;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+  font-weight: bold;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* Cambiar color al escribir (igual al seleccionar filtro) */
+.input-container input[type="text"]:not(:placeholder-shown) {
+  background-color: #0072a3; /* Mismo color que filtros activos */
+  color: white; /* Texto blanco */
+  border-color: #0c1e2c;
+}
+
+/* Icono lupa */
+.input-container img {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+
+.input-container input[type="text"]:not(:placeholder-shown) + img {
+  opacity: 0;
+}
+
+/* Placeholder */
+.input-container input[type="text"]::placeholder {
+  color: #666;
+  font-weight: normal;
+}
+
+/* Al escribir en dark mode (igual a filtros activos) */
+body.dark-mode .input-container input[type="text"]:not(:placeholder-shown) {
+  background-color: #0072a3; /* Azul filtro activo */
+  color: white;
+}
+
+
+
 
 /* Sección derecha: Ofertas */
 .ofertas {
@@ -462,8 +550,9 @@ body.dark-mode .oferta p {
     background-color: #d6d6d6;
     color: #000000;
     text-align: center;
-    padding: 10px 10px;
+    padding: 10px 10px ;
     width: 100%;
+    margin-top: auto; /* Empuja el footer al final siempre */
   }
   
   .logo-title {
@@ -722,3 +811,381 @@ body.dark-mode .oferta p {
     background-color: #000000;
   }
 
+/* Botón hamburguesa para filtros */
+.btn-filtros {
+  display: none; /* Oculto por defecto */
+  padding: 10px 20px;
+  background-color: #0c1e2c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  margin: 10px auto;
+  cursor: pointer;
+  width: fit-content;
+}
+
+/* ============================= */
+/* PANTALLAS GRANDES DESDE 1600PX */
+/* ============================= */
+@media (min-width: 1800px) {
+
+  /* Navbar */
+  .navbar {
+    width: 100%;
+    padding: 15px 40px;
+    background-color: #0c1e2c;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .nav-links a {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .logo-superior img {
+    width: 90px;
+    height: 90px;
+    margin-left: -200px;
+  }
+
+  .logo-superior a {
+    font-size: 25px;
+  }
+
+  .search-container input {
+    font-size: 18px;
+    padding: 10px 15px;
+  }
+
+  /* Switch Darkmode */
+  .switch {
+    transform: scale(1);
+  }
+
+  /* Contenido principal */
+  .oferta-container {
+    margin: 20px 50px;
+    gap: 50px;
+  }
+
+  /* Filtros */
+  .filtros {
+    width: 22%;
+    padding: 20px;
+    gap: 10px;
+  }
+
+  .filter-select,
+  .input-container input[type="text"] {
+    padding: 12px;
+    font-size: 16px;
+  }
+
+  .filtros h2,
+  .filtros label {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  /* Ofertas */
+  .ofertas {
+    width: 78%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+  .oferta-titulo {
+    font-size: 22px;
+  }
+
+  .oferta-info,
+  .oferta-detalles-container {
+    font-size: 16px;
+  }
+
+  .oferta-fecha {
+    font-size: 15px;
+  }
+
+  .oferta img {
+    max-width: 100px;
+    margin-bottom: 25px;
+  }
+
+  /* Footer */
+  .footer-content {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .footer-section h6,
+  .footer-section a,
+  .footer-links a {
+    font-size: 16px;
+  }
+
+  .social-icons svg {
+    width: 30px;
+    height: 30px;
+  }
+
+}
+
+/* ============================= */
+/* PANTALLAS MEDIANAS 1024px a 1799px */
+/* ============================= */
+
+@media (min-width: 1024px) and (max-width: 1799px) {
+
+  /* ============================= */
+/* NAVBAR PANTALLAS MEDIAS 1024px a 1799px */
+/* ============================= */
+
+  /* ============ NAVBAR ADAPTADO MEDIANO ============ */
+  .navbar {
+    padding: 10px 15px; /* Reduce los espacios generales del navbar */
+  }
+
+  .logo-superior {
+    margin: 0;
+    left: 10px; /* Mueve logo a la izquierda */
+  }
+
+  .logo-superior img {
+    width: 40px; /* Reduce logo */
+    height: auto;
+    margin-left: 0; /* Centrado */
+  }
+
+  .logo-superior a {
+    font-size: 18px; /* Tamaño de texto del logo */
+  }
+
+  .nav-links {
+    gap: 15px; /* Reduce espacios entre botones */
+    margin-right: 10px; /* Menos margen derecho */
+  }
+
+  .nav-links a {
+    font-size: 14px; /* Letra más pequeña */
+    padding: 5px 8px;
+  }
+
+  .search-container {
+    right: 65px; /* Ajusta más a la derecha sin pasarse */
+    padding: 3px 8px;
+    padding-right: 50px; /* Ajuste de icono */
+    margin-left: 10px;
+  }
+
+  .search-container input {
+    font-size: 12px; /* Tamaño letra de buscador */
+  }
+
+  .switch {
+    left: auto;
+    right: 10px; /* Mueve switch a la derecha */
+    transform: scale(0.8); /* Reduce tamaño */
+  }
+
+
+  /* Contenido principal */
+  .oferta-container {
+    margin: 15px 30px;
+    gap: 30px;
+  }
+
+  /* Filtros */
+  .filtros {
+    width: 28%; /* Más estrechos */
+    padding: 15px;
+    gap: 10px;
+  }
+
+  .filter-select,
+  .input-container input[type="text"] {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .filtros h2,
+  .filtros label {
+    font-size: 16px;
+  }
+
+  /* Ofertas */
+  .ofertas {
+    width: 72%;
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+    gap: 20px;
+  }
+
+  .oferta {
+    padding: 15px;
+  }
+
+  .oferta-titulo {
+    font-size: 18px;
+  }
+
+  .oferta-info,
+  .oferta-detalles-container {
+    font-size: 14px;
+  }
+
+  .oferta-fecha {
+    font-size: 13px;
+  }
+
+  .oferta img {
+    max-width: 80px;
+    margin-bottom: 20px;
+  }
+
+  /* Footer */
+  .footer-content {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+  }
+
+  .footer-section h6,
+  .footer-section a {
+    font-size: 14px;
+  }
+
+  .social-icons svg {
+    width: 24px;
+    height: 24px;
+  }
+
+}
+
+/* ========================== */
+/*   RESPONSIVE MÓVIL - 1024px */
+/* ========================== */
+
+@media (max-width: 1024px) {
+
+  /* ==== BOTÓN HAMBURGUESA PEGADO ARRIBA ==== */
+  .btn-filtros {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 0;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    position: sticky;
+    top: 0; /* SIEMPRE ARRIBA */
+    z-index: 1000;
+  }
+
+  /* ==== FILTROS COMO PERSIANA DEBAJO DEL BOTÓN ==== */
+  .filtros {
+    display: none;
+    position: fixed; /* FIJO para que se mueva con scroll */
+    top: 50px; /* Justo debajo del botón */
+    left: 0;
+    width: 100%;
+    background: white;
+    z-index: 999;
+    padding: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    border-radius: 0 0 15px 15px;
+    flex-direction: column;
+    gap: 15px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+  }
+
+  /* ==== CLASE PARA MOSTRAR FILTROS ==== */
+  .filtros.show {
+    display: flex;
+    max-height: 400px; /* Altura máxima */
+    overflow-y: auto;
+  }
+
+  /* ==== INPUTS Y SELECTS ==== */
+  .filtros input[type="text"],
+  .filtros select,
+  .filtros button {
+    width: 100%;
+    font-size: 15px;
+    padding: 12px;
+    border-radius: 8px;
+    border: 2px solid var(--primary-color);
+    text-align: center;
+    font-weight: bold;
+  }
+
+  /* ==== UNA OFERTA POR FILA ==== */
+  .ofertas {
+    width: 100%;
+    grid-template-columns: 1fr !important;
+    margin: 10px auto;
+    padding: 0 10px;
+    gap: 20px;
+  }
+
+  .oferta {
+    width: 100%;
+  }
+
+  /* ==== NAVBAR AJUSTADA ==== */
+  .navbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .logo-superior {
+    margin: 0;
+    position: static;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 10px;
+    margin: 0;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+  }
+
+  .search-container {
+    margin: 5px 0;
+    width: 100%;
+  }
+
+  /* ==== FOOTER ==== */
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 20px 10px;
+  }
+
+  .footer-section {
+    text-align: center;
+  }
+
+  /* ==== MODO OSCURO ADAPTADO ==== */
+  .switch {
+    position: static;
+    transform: scale(0.8);
+    margin-left: auto;
+  }
+
+}
