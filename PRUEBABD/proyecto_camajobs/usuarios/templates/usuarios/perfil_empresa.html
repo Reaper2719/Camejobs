@@ -1,48 +1,45 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    {% load static %}
     <meta charset="UTF-8">
-    <title>Perfil de {{ empresa.razon_social }} - CameJobs</title>
-    <style>
-        .ticket {
-            border: 1px solid #ddd;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-        }
-        .btn-crear {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .btn-ver-tickets {
-            background-color: #2196F3;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-    </style>
-    <link rel="icon" href="{% static 'img/Logo camejobs blanco.png' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de {{ empresa.razon_social }}</title>
+    <link rel="stylesheet" href="{% static 'css/perfil_empresa.css' %}">
 </head>
+
 <body>
-    <h1>Perfil de {{ empresa.razon_social }}</h1>
-    <a href="{% url 'bienvenida' %}">Volver al Inicio</a>
+    <!--Tarjeta izquierda-->
+    <div class="perfil-container">
+        <div class="tarjeta-empresa">
+            <div class="empresa-logo">
+                {% if empresa.logo %}
+                    <img src="{{ empresa.logo.url }}" alt="Logo de {{ empresa.razon_social }}">
+                {% else %}
+                    <img src="{% static 'img/default-logo.png' %}" alt="Logo por defecto">
+                {% endif %}
+            </div>
+            <h2>{{ empresa.razon_social }}</h2>
+        </div>
 
-    <h2>Mis Tickets</h2>
-    <a href="{% url 'tickets:listar_tickets' %}">
-        <button class="btn-ver-tickets">Ver Tickets</button>
-    </a>
+        <!--Información de la empresa -->
+        <div class="info-empresa">
+            <h1>¿Quiénes somos?</h1>
+            <p>{{ empresa.descripcion }}</p>
 
-    {% if tipo == 'persona' %}
-    <a href="{% url 'calificar_empresa' empresa.id %}">
-        <button>Calificar a {{ empresa.razon_social }}</button>
-    </a>
-    {% endif %}
+            <hr>
+
+            <ul class="detalles">
+                {% if empresa.sitio_web %}
+                <li><strong>🌐 Sitio web:</strong> <a href="{{ empresa.sitio_web }}" target="_blank">{{ empresa.sitio_web }}</a></li>
+                {% endif %}
+                <li><strong>🏢 Razón social:</strong> {{ empresa.razon_social }}</li>
+                <li><strong>📞 Teléfono:</strong> {{ empresa.telefono }}</li>
+                <li><strong>📍 Ubicación:</strong> {{ empresa.ubicacion }}</li>
+                <li><strong>✉️ Correo Electrónico:</strong> {{ empresa.email }}</li>
+                <li><strong>📍 Dirección:</strong> {{ empresa.direccion}}</li>
+            </ul>
+        </div>
+    </div>
 </body>
 </html>
