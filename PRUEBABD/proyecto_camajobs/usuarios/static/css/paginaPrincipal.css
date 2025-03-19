@@ -1,3 +1,23 @@
+:root {
+  --background-primary: #0c1e2c;
+  --background-secondary: #0072a3;
+  --text-primary: #fff;
+  --text-secondary: #d6d6d6;
+  --accent-primary: #000;
+  --accent-secondary: #04302384;
+  --accent-tertiary: #000;
+  --card-background: #005e45;
+  --footer-background: #087b5a;
+  --footer-below-background: #005e45;
+  --text-herotitle: #000;
+  --about-color: #005e45c9;
+  --svg-color: #005e45c9;
+  --color-2: #098e68c2;
+  --color-3: #09bc8a;
+  --color-4: #0385bd;
+  --color-5: #102b3e
+}
+
 body {
   font-family: Arial, sans-serif;
   background-color: #fff
@@ -131,6 +151,7 @@ html {
 }
 
 .about-content {
+
   position: absolute;
   margin-left: -400px;
   background-color: #0072a3c6;
@@ -185,14 +206,14 @@ html {
   align-items: center;
   justify-content: center;
   gap: 20px;
-  padding: 10%;
-  padding-top: 5px
+  padding: 10px;
 }
 
 .contact img {
   max-width: 500px;
   height: auto;
-  flex-shrink: 0
+  flex-shrink: 0;
+  margin: 0px;
 }
 
 .contact-content {
@@ -225,6 +246,10 @@ html {
   transform: scale(1.05)
 }
 
+.contact-img{
+  margin: 0px;
+}
+
 .logo {
   height: 90px;
   width: auto;
@@ -236,24 +261,159 @@ html {
   height: auto
 }
 
-:root {
-  --background-primary: #0c1e2c;
-  --background-secondary: #0072a3;
-  --text-primary: #fff;
-  --text-secondary: #d6d6d6;
-  --accent-primary: #000;
-  --accent-secondary: #04302384;
-  --accent-tertiary: #000;
-  --card-background: #005e45;
-  --footer-background: #087b5a;
-  --footer-below-background: #005e45;
-  --text-herotitle: #000;
-  --about-color: #005e45c9;
-  --svg-color: #005e45c9;
-  --color-2: #098e68c2;
-  --color-3: #09bc8a;
-  --color-4: #0385bd;
-  --color-5: #102b3e
+/* dark mode */
+/*  HEADER */
+.dark-mode .hero {
+  background-color: var(--background-primary);
+  color: var(--text-primary);
+}
+
+.dark-mode .overlay {
+  background: rgba(0, 0, 0, 0.6)
+}
+
+.dark-mode .hero-content h1 {
+  color: var(--text-primary); 
+}
+
+.dark-mode .hero-content p {
+  color: var(--text-primary); 
+}
+
+  /* BOTÓN DEL HEADER */
+.dark-mode .hero button {
+  background-color: var(--color-3);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease;
+}
+
+.dark-mode .hero button:hover {
+  background-color: var(--accent-secondary);
+}
+
+  /*  SECCIONES */
+.dark-mode section {
+  background-color: var(--background-primary);
+  color: var(--text-primary);
+}
+
+  /*  Tarjetas */
+.dark-mode .card {
+  background-color: var(--color-4);
+  color: var(--text-primary);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.6);
+}
+
+.dark-mode .card:hover {
+  box-shadow: 0px 0px 30px rgba(255, 255, 255, 0.274)
+
+}
+
+.dark-mode .card h2 {
+  color: var(--text-primary); 
+}
+
+.dark-mode .card p{
+  color: var(--text-primary);
+}
+
+
+  /* BOTÓN DE LAS TARJETAS */
+.dark-mode .card button {
+  background-color: var(--color-3);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease;
+}
+
+.dark-mode .card button:hover {
+  background-color: var(--accent-secondary);
+  
+}
+  
+  /*  SOBRE NOSOTROS */
+.dark-mode .about {
+  background-color: var(--background-primary);
+  color: var(--text-primary);
+}
+
+.dark-mode .about h2 {
+  color: var(--text-primary); 
+}
+
+  .dark-mode .about p {
+    color: var(--text-primary);
+  }
+  
+.dark-mode .about-content  {
+  background-color: rgba(3, 133, 189, 0.654);
+  
+}
+
+  /* BOTÓN DE SOBRE NOSOTROS */
+
+  .dark-mode .about button {
+  background-color: var(--color-3);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease;
+}
+
+  .dark-mode .about button:hover {
+    background-color: var(--accent-secondary);
+  }
+
+  /*  CONTACTO */
+
+  .dark-mode .contact {
+  background-color: var(--background-primary);
+  color: var(--text-primary);
+}
+
+.dark-mode .contact h2 {
+  color: var(--text-primary); 
+}
+
+.dark-mode .contact p {
+    color: var(--text-primary); 
+}
+
+  /* BOTÓN DE CONTACTO */
+
+  .dark-mode .contact button {
+  background-color: var(--color-3);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease;
+}
+
+.dark-mode .contact button:hover {
+  background-color: var(--accent-secondary);
+}
+
+  /*  FOOTER */
+.dark-mode .footer {
+  background-color: var(--footer-background);
+  color: var(--text-primary);
+}
+
+.dark-mode .footer-text {
+  color: var(--text-primary);
+}
+
+
+.dark-mode .social-icons svg:hover {
+fill: var(--text-primary);
+
+}
+
+.dark-mode .logo-title{
+  color: var(--text-primary);
+}
+
+.dark-mode .logo-description {
+  color: var(--text-primary);
+}
+
+.dark-mode .section-title {
+  color: var(--text-primary);
 }
 
 @media (max-width:768px) {
@@ -277,14 +437,19 @@ html {
       padding: 10px;
       height: 350px
   }
-
+  
   .about img {
       margin-left: 0;
       width: 100%
   }
   .contact {
       flex-direction: column;
-      padding: 5%
+      text-align: center;
+      padding: 5px 10% 20px 10%;
+      gap: 0px;
+  }
+  .contact h2 {
+    margin: 0px;
   }
 
   .contact img {
@@ -347,15 +512,8 @@ html {
       line-height: 1.4
   }
 
-  .contact {
-      flex-direction: column;
-      text-align: center;
-      padding: 5%
-  }
-
   .contact img {
       width: 90%;
-      margin-bottom: 20px
   }
 
   .contact-content {
