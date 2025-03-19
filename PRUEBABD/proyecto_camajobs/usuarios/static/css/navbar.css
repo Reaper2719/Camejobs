@@ -248,8 +248,8 @@ html {
   display: flex;
   align-items: center;
   position: absolute;
-  left: 30px;
-  margin: 10%
+  left: 10px;
+  margin: 10px;
 }
 
 .logo-superior img {
