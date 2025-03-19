@@ -1,130 +1,43 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    {% load static %}
     <meta charset="UTF-8">
-    <title>Perfil de {{ persona.nombre_completo }} - CameJobs</title>
-    <style>
-        .oferta {
-            border: 1px solid #ddd;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-        }
-        .btn-postular {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .formulario {
-            border: 1px solid #ddd;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            max-width: 600px;
-            margin: 20px auto;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        input, textarea, select {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-        .btn-enviar {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .btn-ver-tickets {
-            background-color: #2196F3;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-    </style>
-    <script>
-        function confirmarCerrarSesion() {
-            if (confirm("¿Estás seguro de que quieres cerrar sesión?")) {
-                document.getElementById("logout-form").submit();
-            }
-        }
-    </script>
-    <link rel="icon" href="{% static 'img/Logo camejobs.png' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de {{ persona.nombre_completo }}</title>
+    <link rel="stylesheet" href="{% static 'css/perfil_persona.css' %}">
 </head>
+
 <body>
-    <h1>Perfil de {{ persona.nombre_completo }}</h1>
-    <a href="{% url 'bienvenida' %}">Volver al Inicio</a>
+    <!-- Contenedor del perfil -->
+    <div class="perfil-container">
+        <!-- Tarjeta lateral izquierda -->
+        <div class="tarjeta-persona">
+            <div class="persona-foto">
+                {% if persona.foto_perfil %}
+                    <img src="{{ persona.foto_perfil.url }}" alt="Foto de {{ persona.nombre_completo }}">
+                {% else %}
+                    <img src="{% static 'img/default_profile.png' %}" alt="Foto por defecto">
+                {% endif %}
+            </div>
+            <h2>{{ persona.nombre_completo }}</h2>
+        </div>
 
-    <h2>Formación Académica</h2>
-    <a href="{% url 'agregar_formacion' %}">
-        <button>Agregar Formación</button>
-    </a>
-    <ul>
-        {% for formacion in formaciones %}
-        <li>
-            {{ formacion.titulo_obtenido }} - {{ formacion.institucion }}
-            <a href="{% url 'editar_formacion' formacion.id %}">
-                <button>Editar</button>
-            </a>
-            <a href="{% url 'eliminar_formacion' formacion.id %}">
-                <button>Eliminar</button>
-            </a>
-        </li>
-        {% endfor %}
-    </ul>
-
-    <h2>Experiencia Laboral</h2>
-    <a href="{% url 'agregar_experiencia' %}">
-        <button>Agregar Experiencia</button>
-    </a>
-    <ul>
-        {% for experiencia in experiencias %}
-        <li>
-            {{ experiencia.cargo }} en {{ experiencia.nombre_empresa }}
-            <a href="{% url 'editar_experiencia' experiencia.id %}">
-                <button>Editar</button>
-            </a>
-            <a href="{% url 'eliminar_experiencia' experiencia.id %}">
-                <button>Eliminar</button>
-            </a>
-        </li>
-        {% endfor %}
-    </ul>
-
-<h2>Mis Tickets</h2>
-<a href="{% url 'tickets:listar_tickets' %}">
-    <button class="btn-ver-tickets">Ver Tickets</button>
-</a>
-
-
-    <!-- Formulario oculto para cerrar sesión -->
-    <form id="logout-form" method="post" action="{% url 'logout' %}" style="display: none;">
-        {% csrf_token %}
-    </form>
-
-    <!-- Enlace para cerrar sesión -->
-    <br><br>
-    <a href="#" onclick="confirmarCerrarSesion();">Cerrar Sesión</a>
-
-    {% if tipo == 'empresa' %}
-    <a href="{% url 'calificar_persona' persona.id %}">
-        <button>Calificar a {{ persona.nombre_completo }}</button>
-    </a>
-    {% endif %}
+        <!-- Información del usuario -->
+        <div class="info-persona">
+            <h1>Perfil Laboral</h1>
+            <p>{{ persona.perfil_laboral }}</p>
+            <hr>
+            <ul class="detalles">
+                <h1>Contactame</h1>
+                <li><strong>📧 Correo Electrónico:</strong> {{ persona.email }}</li>
+                <li><strong>📞 Teléfono:</strong> {{ persona.telefono }}</li>
+                <hr>
+                <li><strong>📍 Ubicación:</strong> {{ persona.ubicacion }}</li>
+                <hr>
+                <li><strong>Sobre mí:</strong> {{ persona.habilidades }}</li>
+            </ul>
+        </div>
+    </div>
 </body>
 </html>
