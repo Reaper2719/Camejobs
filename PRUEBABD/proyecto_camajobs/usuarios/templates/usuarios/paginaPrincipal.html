@@ -9,38 +9,9 @@
     <link rel="icon" href="{% static 'img/Logo camejobs.png' %}">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container">
+    {% include 'usuarios/navbar.html' %}
 
-            <!-- From Uiverse.io by EddyBel -->
-            <label class="switch">
-                <input type="checkbox" id="dark-mode-toggle" class="input__check">
-                <span class="slider"></span>
-            </label>
-
-            <!-- Si quieres conservar solo el texto "Camejobs" a la izquierda, 
-                quita la imagen de aquí y déjalo así: -->
-            <div class="logo-superior">
-                <img src="{% static 'img/Logo camejobs blanco.png' %}" alt="Camejobs">
-                <a href="#">Camejobs</a>
-            </div>
-
-            <!-- Menú de navegación -->
-            <ul class="nav-links">
-                <li><a href="{% url 'pagina_ofertas' %}">Ofertas</a></li>
-                <li><a href="{% url 'busquedas_pagina' %}">Perfiles</a></li>
-                <li><a href="{% url 'busquedas_pagina' %}">Empresas</a></li>
-            </ul>
-
-            <!-- Contenedor de la barra de búsqueda -->
-            <div class="search-container">
-                <img src="{% static 'img/Logo camejobs.png' %}" width="40" height="30" alt="Camejobs">
-                <input type="text" placeholder="Buscar en Camejobs">
-            </div>
-        </div>
-    </nav>
-
-    <header class="hero">
+    <header class="hero" style="background: url({% static 'img/working.jpg' %}) no-repeat 50%/cover;">
         <div class="overlay">
             <div class="hero-content">
                 <h1>Conecta con tu próximo reto profesional</h1>
@@ -96,56 +67,8 @@
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="footer-top">
-            <div class="footer-text">Conócenos a través de nuestras redes</div>
-            <div class="social-icons">
-                <a href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550 512"><!--FACEBOOK--><path d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z"/></svg></a>
-                <!-- Otros iconos sociales -->
-            </div>
-        </div>
+    {% include 'usuarios/footer.html' %}     
 
-        <div class="footer-content">
-            <div class="footer-section">
-                <h6 class="logo-title">
-                    <img class="logo" src="{% static 'img/Logo camejobs.png' %}" alt="Camejobs">
-                    <h6>Camejobs</h6>
-                </h6>
-                <div class="logo-description">
-                    <p>Descubre ofertas de trabajo, explora perfiles profesionales y accede a recursos para mejorar tu carrera.</p>
-                </div>
-            </div>
-
-            <div class="footer-section">
-                <h6 class="section-title">Navegación</h6>
-                <ul class="footer-links">
-                    <li><a href="#!">Inicio</a></li>
-                    <li><a href="#!">Ofertas</a></li>
-                    <li><a href="#!">Perfiles</a></li>
-                    <li><a href="#!">Empresas</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h6 class="section-title">Enlaces Útiles</h6>
-                <ul class="footer-links">
-                    <li><a href="#!">Política de privacidad</a></li>
-                    <li><a href="#!">Términos y condiciones</a></li>
-                    <li><a href="{% url 'faqs_pagina' %}">Soporte</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h6 class="section-title">Contáctanos</h6>
-                <p>Email: contacto@camejobs.com</p>
-                <p>Teléfono: +123 456 7890</p>
-            </div>
-        </div>
-
-        <div class="footer-below">
-            <p>&copy; 2025 Camejobs - Todos los derechos reservados.</p>
-        </div>
-    </footer>      
 <script src="{% static 'js/darkmode.js' %}"></script>
 </body>
 </html>

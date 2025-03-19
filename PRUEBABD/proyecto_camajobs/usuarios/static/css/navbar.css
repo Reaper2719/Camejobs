@@ -29,8 +29,8 @@ body {
 }
 
 .logo-superior img {
-  width: 40px;
-  height: 40px;
+  width: 20px;
+  height: 20px;
   margin-right: 10px;
 }
 
@@ -253,8 +253,8 @@ html {
 }
 
 .logo-superior img {
-  height: 90px;
-  width: 90px;
+  height: 50px;
+  width: 50px;
 }
 
 .logo-superior img:hover {
@@ -357,7 +357,7 @@ input:checked+.slider:before {
   }
 
   .menu-toggle {
-    display: block;
+    display: flex;
   }
 
   .profile-menu {

@@ -1,0 +1,186 @@
+body {
+  margin: 0;
+}
+.footer {
+  overflow-x: hidden;
+  font-family: Arial, sans-serif;
+  background-color: #d6d6d6;
+  color: #000;
+  text-align: center;
+  width: 100%;
+}
+
+p, h6, .footer-links{
+  margin: 0;
+}
+
+h6{
+  margin-bottom: 10px;
+}
+
+.footer-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 2px solid hsla(0, 0%, 100%, .1);
+  padding-bottom: 15px
+}
+
+.footer-text {
+  margin-bottom: 10px;
+  font-weight: 700
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: left
+}
+
+.footer-section {
+  max-width: 200px;
+}
+
+.logo-title {
+  display: flex;
+  align-items: center;
+  font-style: italic;
+  font-size: 1.2em
+}
+
+.logo {
+  height: 90px;
+  width: auto;
+}
+
+.section-title {
+  font-weight: 700;
+  font-size: 1.1em;
+
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0
+}
+
+.footer-text {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+
+  line-height: 1.8;
+  color: #000
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px
+}
+
+svg {
+  fill: var(--text-herotitle);
+  width: 25px;
+  transition: transform .4s ease-in-out
+}
+
+svg:hover {
+  fill: var(--svg-color);
+  transform: scale(1.2)
+}
+
+.logo-container {
+  display: flex;
+  align-items: center
+}
+
+.logo {
+  width: 100px;
+  height: auto
+}
+
+.logo-title {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 700
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #000;
+  transition: color .3s
+}
+
+.footer-links a:hover {
+  color: #fff
+}
+
+.footer-below {
+  text-align: center;
+  color: #000;
+  width: 100%;
+}
+
+.logo-title {
+  width: 100px;
+  font-size: 19px;
+  color: #000;
+}
+
+:root {
+  --background-primary: #0c1e2c;
+  --background-secondary: #0072a3;
+  --text-primary: #fff;
+  --text-secondary: #d6d6d6;
+  --accent-primary: #000;
+  --accent-secondary: #04302384;
+  --accent-tertiary: #000;
+  --card-background: #005e45;
+  --footer-background: #087b5a;
+  --footer-below-background: #005e45;
+  --text-herotitle: #000;
+  --about-color: #005e45c9;
+  --svg-color: #005e45c9;
+  --color-2: #098e68c2;
+  --color-3: #09bc8a;
+  --color-4: #0385bd;
+  --color-5: #102b3e
+}
+
+@media (max-width: 880px) {
+  .footer-links {
+      display: none;
+      margin-bottom: 10px;
+  }
+  .footer-content{
+    display:inline-block;
+    text-align:center;
+  }
+  .footer-text, .footer-below {
+      width: 90%;
+      display:inline-block;
+    text-align:center;
+  }
+
+  .footer-section.active .footer-links {
+      display: block;
+  }
+
+  .section-title {
+      cursor: pointer;
+      position: relative;
+  }
+
+  .section-title::after {
+      content: '▼';
+      position: absolute;
+      right: 10px;
+      transition: transform 0.3s;
+  }
+
+  .footer-section.active .section-title::after {
+      transform: rotate(180deg);
+  }
+}
