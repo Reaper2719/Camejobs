@@ -13,59 +13,71 @@
 <body>
     <!-- Navbar -->
     <nav class="navbar">
-        <div class="navbar-left">
-            <!-- Logo y nombre -->
-            <div class="logo-superior">
-                <img src="{% static 'img/Logo camejobs blanco.png' %}" alt="Camejobs">
-                <a href="{% url 'paginaPrincipal' %}">Camejobs</a>
-            </div>
-        </div>
-        <!-- Enlaces de navegación -->
-        <ul class="nav-links">
-            <li><a href="{% url 'pagina_ofertas' %}">Ofertas</a></li>
-            <li><a href="{% url 'busquedas_pagina' %}">Perfiles</a></li>
-            <li><a href="{% url 'busquedas_pagina' %}">Empresas</a></li>
-        </ul>
-        <div class="navbar-right" style="display: flex; align-items: center; justify-content: flex-end;">
-            <label class="switch">
-                <input type="checkbox" id="dark-mode-toggle">
-                <span class="slider"></span>
-            </label>
-            <!-- Botón de Dark Mode -->
-            <div class="profile-menu">
-                <span class="bell" id="bell-icon">&#128276;</span>
-                <div class="profile" id="profile-icon">
-                    <img src="{% static 'img/Logo camejobs blanco.png' %}" alt="User" class="profile-img">
-                </div>
-                <div class="dropdown-menu" id="dropdown-menu">
-                    <a href="#">Tu Perfil</a>
-                    <a href="#">Configuración</a>
-                    <a href="#">Cerrar Sesión</a>
+        <div class="nav-container">
+            <div class="navbar-left">
+                <!-- Logo y nombre -->
+                <div class="logo-superior">
+                    <img src="{% static 'img/Logo camejobs blanco.png' %}" alt="Camejobs">
+                    <a href="{% url 'paginaPrincipal' %}">Camejobs</a>
                 </div>
             </div>
+            <!-- Enlaces de navegación -->
+            <ul class="nav-links">
+                <li><a href="{% url 'pagina_ofertas' %}">Ofertas</a></li>
+                <li><a href="{% url 'busquedas_pagina' %}">Perfiles</a></li>
+                <li><a href="{% url 'busquedas_pagina' %}">Empresas</a></li>
+                <li><a href="#">Postulaciones</a></li>
+            </ul>
+            <div class="navbar-right">
+                <label class="switch">
+                    <input type="checkbox" id="dark-mode-toggle">
+                    <span class="slider"></span>
+                </label>
+                <!-- Botón de Dark Mode -->
+                <div class="profile-menu">
+                    <div class="profile" id="profile-icon">
+                        {% if persona.foto_perfil %}
+                            <img src="{{ persona.foto_perfil.url }}" alt="Foto de {{ persona.nombre_completo }}">
+                        {% else %}
+                            <img src="{% static 'img/default_profile_nav.png' %}" alt="Foto por defecto">
+                        {% endif %}
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu">
+                        <a href="#">Tu Perfil</a>
+                        <a href="#">Configuración</a>
+                        <a href="#">Cerrar Sesión</a>
+                    </div>
+                </div>
 
-            <!-- Botón de menú (ícono de hamburguesa) -->
-            <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+                <!-- Botón de menú (ícono de hamburguesa) -->
+                <div class="menu-toggle" id="menu-toggle">&#9776;</div>
 
-        </div>
+            </div>
 
-    </nav>
+        </nav>
 
-    <!-- Sidebar para móviles -->
-    <div class="sidebar" id="sidebar">
-        <button class="close-btn" id="close-btn">&times;</button>
-        <ul style="margin-top: 30px;">
-            <li><a href="{% url 'pagina_ofertas' %}">Ofertas</a></li>
-            <li><a href="{% url 'busquedas_pagina' %}">Perfiles</a></li>
-            <li><a href="{% url 'busquedas_pagina' %}">Empresas</a></li>
-        </ul>
-        <div class="profile-info">
-            <img src="{% static 'img/Logo camejobs blanco.png' %}" alt="User" class="profile-img">
-            <p>Usuario</p>
-            <p>usuario@example.com</p>
+        <!-- Sidebar para móviles -->
+        <div class="sidebar" id="sidebar">
+            <button class="close-btn" id="close-btn">&times;</button>
+            <ul style="margin-top: 30px;">
+                <li><a href="{% url 'pagina_ofertas' %}">Ofertas</a></li>
+                <li><a href="{% url 'busquedas_pagina' %}">Perfiles</a></li>
+                <li><a href="{% url 'busquedas_pagina' %}">Empresas</a></li>
+                <li><a href="#">Postulaciones</a></li>
+            </ul>
+            <div class="profile-info">
+                {% if persona.foto_perfil %}
+                    <img src="{{ persona.foto_perfil.url }}" alt="Foto de {{ persona.nombre_completo }}">
+                {% elif empresa.logo %}
+                    <img src="{{ empresa.logo.url }}" alt="Foto de {{ empresa.razon_social }}">
+                {% else %}
+                    <img src="{% static 'img/default_profile_nav.png' %}" alt="Foto por defecto">
+                {% endif %}
+                <p>Usuario</p>
+                <p>usuario@example.com</p>
+            </div>
         </div>
     </div>
-
     <!-- Resto del contenido de paginaPrincipal.html -->
 
     <script src="{% static 'js/darkmode.js' %}"></script>

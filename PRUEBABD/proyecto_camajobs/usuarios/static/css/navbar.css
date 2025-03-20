@@ -381,3 +381,19 @@ input:checked+.slider:before {
     display: inline
   }
 }
+
+.profile-menu img {
+  max-width: 50px;
+  max-height: 50px;
+}
+
+.profile-info img {
+  max-width: 80px;
+  max-height: 80px;
+}
+
+.navbar-right {
+ display: flex; 
+ align-items: center; 
+ justify-content: flex-end;
+}
