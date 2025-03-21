@@ -24,6 +24,7 @@
                 {% endif %}
             </div>
             <h2>{{ persona.nombre_completo }}</h2>
+            <h3>{{persona.profesion}}</h3>
         </div>
 
         <!-- Información del usuario -->
@@ -42,5 +43,8 @@
             </ul>
         </div>
     </div>
+
+    {% include 'usuarios/footer.html' %}
+    
 </body>
 </html>

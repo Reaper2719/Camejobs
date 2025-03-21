@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,17 +10,20 @@
 </head>
 
 <body>
+    {% include 'usuarios/navbar.html' %}
+
     <!--Tarjeta izquierda-->
     <div class="perfil-container">
         <div class="tarjeta-empresa">
             <div class="empresa-logo">
                 {% if empresa.logo %}
-                    <img src="{{ empresa.logo.url }}" alt="Logo de {{ empresa.razon_social }}">
+                <img src="{{ empresa.logo.url }}" alt="Logo de {{ empresa.razon_social }}">
                 {% else %}
-                    <img src="{% static 'img/default-logo.png' %}" alt="Logo por defecto">
+                <img src="{% static 'img/default-logo.png' %}" alt="Logo por defecto">
                 {% endif %}
             </div>
             <h2>{{ empresa.razon_social }}</h2>
+            <h2>{{ empresa.eslogan }}</h2>
         </div>
 
         <!--Información de la empresa -->
@@ -31,7 +35,8 @@
 
             <ul class="detalles">
                 {% if empresa.sitio_web %}
-                <li><strong>🌐 Sitio web:</strong> <a href="{{ empresa.sitio_web }}" target="_blank">{{ empresa.sitio_web }}</a></li>
+                <li><strong>🌐 Sitio web:</strong> <a href="{{ empresa.sitio_web }}" target="_blank">{{
+                        empresa.sitio_web }}</a></li>
                 {% endif %}
                 <li><strong>🏢 Razón social:</strong> {{ empresa.razon_social }}</li>
                 <li><strong>📞 Teléfono:</strong> {{ empresa.telefono }}</li>
@@ -41,5 +46,9 @@
             </ul>
         </div>
     </div>
+    
+    {% include 'usuarios/footer.html' %}
+
 </body>
+
 </html>

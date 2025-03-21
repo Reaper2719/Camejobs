@@ -5,13 +5,26 @@ body {
     background-color: #f8f8f8;
 }
 
-.perfil-container {
+html, body {
+    min-height: 100vh;
     display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+.perfil-container {
+    width: 80%; 
+    max-width: 1300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
     margin: 50px auto;
     background-color: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    flex-grow: 1;
 }
 
 .tarjeta-empresa {
@@ -53,4 +66,27 @@ h1 {
 .detalles a {
     color: #007bff;
     text-decoration: none;
+}
+
+@media screen and (max-width: 768px) {
+    .perfil-container {
+        flex-direction: column; 
+        align-items: center; 
+        width: 90%; 
+    }
+
+    .tarjeta-empresa {
+        width: 100%;
+        min-width: auto;
+    }
+
+    .info-empresa {
+        width: 100%;
+    }
+}
+
+footer {
+    width: 100%;
+    max-width: 100vw;
+    margin-top: auto;
 }

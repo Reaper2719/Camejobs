@@ -13,7 +13,6 @@
 <body>
     <!-- Navbar -->
     <nav class="navbar">
-        <div class="nav-container">
             <div class="navbar-left">
                 <!-- Logo y nombre -->
                 <div class="logo-superior">
@@ -38,6 +37,8 @@
                     <div class="profile" id="profile-icon">
                         {% if persona.foto_perfil %}
                             <img src="{{ persona.foto_perfil.url }}" alt="Foto de {{ persona.nombre_completo }}">
+                        {% elif empresa.logo %}
+                            <img src="{{ empresa.logo.url }}" alt="Foto de {{ empresa.razon_social }}">
                         {% else %}
                             <img src="{% static 'img/default_profile_nav.png' %}" alt="Foto por defecto">
                         {% endif %}
@@ -45,7 +46,7 @@
                     <div class="dropdown-menu" id="dropdown-menu">
                         <a href="#">Tu Perfil</a>
                         <a href="#">Configuración</a>
-                        <a href="#">Cerrar Sesión</a>
+                        <a href="{% url 'login' %}" onclick="confirmarCerrarSesion();">Cerrar Sesión</a>
                     </div>
                 </div>
 

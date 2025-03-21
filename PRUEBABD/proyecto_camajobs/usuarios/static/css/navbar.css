@@ -383,13 +383,15 @@ input:checked+.slider:before {
 }
 
 .profile-menu img {
-  max-width: 50px;
-  max-height: 50px;
+  max-width: 70px;
+  max-height: 70px;
+  border-radius: 50%;
 }
 
 .profile-info img {
   max-width: 80px;
   max-height: 80px;
+  border-radius: 50%;
 }
 
 .navbar-right {
