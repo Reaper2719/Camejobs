@@ -13,7 +13,8 @@ class RegistroPersonaForm(UserCreationForm):
     cedula = forms.CharField(max_length=15, label="Cédula")
     nombre_completo = forms.CharField(max_length=100, label="Nombre Completo")
     telefono = forms.CharField(max_length=15, label="Teléfono")
-    direccion = forms.CharField(widget=forms.Textarea, label="Dirección")
+    profesion = forms.CharField(max_length=100, label="Profesión")
+    direccion = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Ej: Calle 123 #45-67'}), label="Dirección")
     fecha_nacimiento = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}), label="Fecha de Nacimiento")
     genero = forms.ChoiceField(choices=[('M', 'Masculino'), ('F', 'Femenino'), ('O', 'Otro')], label="Género")
     habilidades = forms.CharField(widget=forms.Textarea, label="Habilidades")
@@ -38,6 +39,7 @@ class RegistroPersonaForm(UserCreationForm):
                 cedula=self.cleaned_data['cedula'],
                 nombre_completo=self.cleaned_data['nombre_completo'],
                 telefono=self.cleaned_data['telefono'],
+                profesion=self.cleaned_data['profesion'],
                 direccion=self.cleaned_data['direccion'],
                 fecha_nacimiento=self.cleaned_data['fecha_nacimiento'],
                 genero=self.cleaned_data['genero'],
@@ -50,13 +52,14 @@ class RegistroPersonaForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['username', 'password1', 'password2', 'cedula', 'nombre_completo', 'telefono', 'direccion', 'fecha_nacimiento', 'genero', 'habilidades', 'email', 'ubicacion','foto_perfil']
+        fields = ['username', 'password1', 'password2', 'cedula', 'nombre_completo', 'telefono', 'profesion', 'direccion', 'fecha_nacimiento', 'genero', 'habilidades', 'email', 'ubicacion','foto_perfil']
 
 class RegistroEmpresaForm(UserCreationForm):
     nit = forms.CharField(max_length=20, label="NIT")
     razon_social = forms.CharField(max_length=100, label="Razón Social")
     telefono = forms.CharField(max_length=15, label="Teléfono")
-    direccion = forms.CharField(widget=forms.Textarea, label="Dirección")
+    eslogan = forms.CharField(max_length=200, label="Eslogan", required=False)
+    direccion = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Ej: Avenida Principal #100-23'}), label="Dirección")
     sitio_web = forms.URLField(required=False, label="Sitio Web")
     descripcion = forms.CharField(widget=forms.Textarea, label="Descripción")
     email = forms.EmailField(label="Correo Electrónico")
@@ -81,6 +84,7 @@ class RegistroEmpresaForm(UserCreationForm):
                 nit=self.cleaned_data['nit'],
                 razon_social=self.cleaned_data['razon_social'],
                 telefono=self.cleaned_data['telefono'],
+                eslogan=self.cleaned_data['eslogan'],
                 direccion=self.cleaned_data['direccion'],
                 sitio_web=self.cleaned_data['sitio_web'],
                 descripcion=self.cleaned_data['descripcion'],
@@ -92,7 +96,7 @@ class RegistroEmpresaForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['username', 'password1', 'password2', 'nit', 'razon_social', 'telefono', 'direccion', 'sitio_web', 'descripcion', 'email', 'ubicacion', 'logo']
+        fields = ['username', 'password1', 'password2', 'nit', 'razon_social', 'telefono', 'eslogan', 'direccion', 'sitio_web', 'descripcion', 'email', 'ubicacion', 'logo']
         
 
 class FormacionAcademicaForm(forms.ModelForm):
