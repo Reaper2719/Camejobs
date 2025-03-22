@@ -27,6 +27,7 @@ urlpatterns = [
     # Rutas de perfil
     path('perfil/persona/', views.perfil_persona, name='perfil_persona'),
     path('perfil/empresa/', views.perfil_empresa, name='perfil_empresa'),
+    path('perfil/empresa/<int:empresa_id>/', views.perfil_empresa, name='perfil_empresa'),
 
     # Rutas para agregar, editar y eliminar formación académica
     path('perfil/formacion/agregar/', views.agregar_formacion, name='agregar_formacion'),

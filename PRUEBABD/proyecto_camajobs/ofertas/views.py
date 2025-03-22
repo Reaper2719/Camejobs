@@ -126,20 +126,14 @@ def pagina_ofertas(request):
     ofertas = Oferta.objects.filter(activa=True).order_by('-fecha_publicacion')
     ubicaciones = Oferta.objects.values_list('ubicacion', flat=True).distinct()
     empresas = Oferta.objects.values_list('empresa__razon_social', flat=True).distinct()
-    postulaciones_usuario = {}
-    tiene_postulacion_aprobada = False
+
     
-    if request.user.is_authenticated and hasattr(request.user, 'persona'):
-        persona = request.user.persona
-        postulaciones = Postulacion.objects.filter(trabajador=persona)
-        postulaciones_usuario = {p.oferta.id: p.estado for p in postulaciones}
-        tiene_postulacion_aprobada = postulaciones.filter(estado='Aprobado').exists()
+ 
     
     context = {
         'ofertas': ofertas,
         'ubicaciones': ubicaciones,
         'empresas': empresas,
-        'postulaciones_usuario': postulaciones_usuario,
-        'tiene_postulacion_aprobada': tiene_postulacion_aprobada,
+        
     }
     return render(request, 'ofertas/pagina_ofertas.html', context)

@@ -108,8 +108,23 @@ def bienvenida(request):
     if hasattr(usuario, 'persona'):
         context['tipo'] = 'persona'
         context['nombre'] = usuario.persona.nombre_completo
+        
+        # Obtener todas las postulaciones de la persona
         postulaciones = Postulacion.objects.filter(trabajador=usuario.persona)
         context['postulaciones'] = postulaciones
+        
+        # Obtener ofertas en las que la persona ha sido aceptada
+        ofertas_aceptadas = postulaciones.filter(estado="Aprobado").values_list('oferta_id', flat=True)
+        context['ofertas_aceptadas'] = list(ofertas_aceptadas)  # Convertir a lista
+        
+        #diccionario para acceder rápidamente a las postulaciones por oferta
+        postulaciones_dict = {p.oferta.id: p for p in postulaciones}
+        context['postulaciones_dict'] = postulaciones_dict
+        
+        #Asignar la postulación a cada oferta si existe
+        for oferta in ofertas_activas:
+            oferta.postulacion = postulaciones_dict.get(oferta.id, None)
+        
         context['empresas_calificadas'] = Empresa.objects.filter(
             calificaciones_recibidas__persona=usuario.persona
         ).annotate(

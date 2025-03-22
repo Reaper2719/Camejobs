@@ -12,7 +12,7 @@
                 document.getElementById("logout-form").submit();
             }
         }
-    </script>
+    </script> 
         <link rel="icon" href="{% static 'img/Logo camejobs.png' %}">
 </head>
 <body>
@@ -128,17 +128,24 @@
                     <p><strong>Salario:</strong> ${{ oferta.salario }}</p>
                     <p><strong>Ubicación:</strong> {{ oferta.ubicacion }}</p>
                     <p><strong>Fecha de cierre:</strong> {{ oferta.fecha_cierre }}</p>
-
-                    <!-- Mostrar estado de la postulación o botón para postular -->
-                    {% if postulaciones %}
-                        {% for postulacion in postulaciones %}
-                            {% if postulacion.oferta.id == oferta.id %}
-                                <p><strong>Estado de tu postulación:</strong> {{ postulacion.estado }}</p>
-                                <a href="{% url 'ver_detalles_postulacion' postulacion.id %}">
-                                    <button class="btn-ver-detalles">Ver Detalles</button>
-                                </a>
-                            {% endif %}
-                        {% endfor %}
+            
+                    {% if oferta.id in ofertas_aceptadas %}
+                        <p><strong>Ya fuiste aceptado en esta oferta.</strong></p>
+                        {% if oferta.postulacion %}
+                            <a href="{% url 'ver_detalles_postulacion' oferta.postulacion.id %}">
+                                <button class="btn-ver-detalles">Ver Detalles</button>
+                            </a>
+                        {% endif %}
+            
+                    {% elif oferta.postulacion %}
+                        {% with postulacion=oferta.postulacion %}
+                            <p><strong>Estado de tu postulación:</strong> {{ postulacion.estado }}</p>
+                            <a href="{% url 'ver_detalles_postulacion' postulacion.id %}">
+                                <button class="btn-ver-detalles">Ver Detalles</button>
+                            </a>
+                            
+                        {% endwith %}
+            
                     {% else %}
                         <a href="{% url 'postular' oferta.id %}">
                             <button class="btn-postular">Postular</button>
