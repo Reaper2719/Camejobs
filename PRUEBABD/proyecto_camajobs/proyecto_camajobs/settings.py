@@ -90,7 +90,7 @@ DATABASES = {
         'USER': 'camejobs',
         'PASSWORD': 'camejobs2025',
         'HOST': '127.0.0.1',  # O la IP de tu servidor de base de datos si no está en local
-        'PORT': '3308',  # El puerto por defecto de MySQL
+        'PORT': '33065',  # El puerto por defecto de MySQL
     }
 }
 

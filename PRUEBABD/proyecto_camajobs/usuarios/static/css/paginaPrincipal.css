@@ -57,6 +57,7 @@ html {
 }
 
 .hero-content {
+  padding-top: var(--navbar-height);
   position: relative;
   z-index: 1
 }

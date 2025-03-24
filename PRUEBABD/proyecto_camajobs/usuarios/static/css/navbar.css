@@ -15,7 +15,7 @@
   --color-2: #098e68c2;
   --color-3: #09bc8a;
   --color-4: #0385bd;
-  --color-5: #102b3e
+  --color-5: #102b3e;
   --navbar-height: 80px;
 }
 
@@ -24,6 +24,7 @@ body {
   font-family: Arial, sans-serif;
   background-color: #fff;
   margin: 0;
+  padding-top: var(--navbar-height); /* Añadir padding para compensar el navbar fijo */
 }
 
 /* Navbar */
@@ -39,9 +40,9 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.8rem 2rem;
   max-width: 1400px;
   margin: 0 auto;
+  height: 100%;
 }
 
 .navbar-left {
@@ -253,6 +254,7 @@ input:checked+.slider:before {
 /* Sidebar */
 .sidebar {
   position: fixed;
+  padding-top: 20px; /* fallback por si JS no se ejecuta */
   top: var(--navbar-height, 60px); /* fallback por si JS no se ejecuta */
   right: -250px;
   width: 250px;
@@ -434,10 +436,11 @@ html {
 }
 
 @media screen and (min-width: 1024px) {
-  .nav-container {
-    padding: 1rem 4rem;
+
+  .navbar{
+    height: var(--navbar-height);
   }
-  
+
   .nav-links {
     gap: 3rem;
   }
@@ -521,6 +524,7 @@ html {
     display: inline
   }
 }
+<<<<<<< HEAD
 
 .logout-button {
   background-color: white;
@@ -534,3 +538,5 @@ html {
   color: #0385bd;
 }
 
+=======
+>>>>>>> af48055 (De nuevo, arreglado el Navbar y la pag Filtros. De paso las otras paginas con Navbar)
