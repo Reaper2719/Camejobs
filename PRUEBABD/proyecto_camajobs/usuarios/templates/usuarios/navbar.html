@@ -27,12 +27,14 @@
                 <li><a href="{% url 'busquedas_pagina' %}">Empresas</a></li>
                 <li><a href="#">Postulaciones</a></li>
             </ul>
+
+            <!-- Botón de Dark Mode -->
             <div class="navbar-right">
                 <label class="switch">
                     <input type="checkbox" id="dark-mode-toggle">
                     <span class="slider"></span>
                 </label>
-                <!-- Botón de Dark Mode -->
+                <!-- Menú de perfil -->
                 <div class="profile-menu">
                     <div class="profile" id="profile-icon">
                         {% if persona.foto_perfil %}
@@ -42,6 +44,7 @@
                         {% else %}
                             <img src="{% static 'img/default_profile_nav.png' %}" alt="Foto por defecto">
                         {% endif %}
+                    
                     </div>
                     <div class="dropdown-menu" id="dropdown-menu">
                         <a href="#">Tu Perfil</a>
@@ -52,57 +55,81 @@
                 </div>
 
                 <!-- Botón de menú (ícono de hamburguesa) -->
-                <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+                <button class="menu-toggle" id="menu-toggle" aria-label="Menú" aria-expanded="false">
+                    <span class="line top"></span>
+                    <span class="line mid"></span>
+                    <span class="line bott"></span>
+                </button>
 
-            </div>
-
-        </nav>
-
-        <!-- Sidebar para móviles -->
-        <div class="sidebar" id="sidebar">
-            <button class="close-btn" id="close-btn">&times;</button>
-            <ul style="margin-top: 30px;">
-                <li><a href="{% url 'pagina_ofertas' %}">Ofertas</a></li>
-                <li><a href="{% url 'busquedas_pagina' %}">Perfiles</a></li>
-                <li><a href="{% url 'busquedas_pagina' %}">Empresas</a></li>
-                <li><a href="#">Postulaciones</a></li>
-                <li><a href="{% url 'login' %}" onclick="confirmarCerrarSesion();">Cerrar Sesión</a></li>
-            </ul>
-            <div class="profile-info">
-                {% if persona.foto_perfil %}
-                    <img src="{{ persona.foto_perfil.url }}" alt="Foto de {{ persona.nombre_completo }}">
-                {% elif empresa.logo %}
-                    <img src="{{ empresa.logo.url }}" alt="Foto de {{ empresa.razon_social }}">
-                {% else %}
-                    <img src="{% static 'img/default_profile_nav.png' %}" alt="Foto por defecto">
-                {% endif %}
-                <p>Usuario</p>
-                <p>usuario@example.com</p>
             </div>
         </div>
+    </nav>
+
+    <!-- Sidebar para móviles -->
+    <div class="sidebar" id="sidebar">
+        <ul>
+            <li><a href="{% url 'pagina_ofertas' %}">Ofertas</a></li>
+            <li><a href="{% url 'busquedas_pagina' %}">Perfiles</a></li>
+            <li><a href="{% url 'busquedas_pagina' %}">Empresas</a></li>
+            <li><a href="#">Postulaciones</a></li>
+            <li><a href="{% url 'login' %}" onclick="confirmarCerrarSesion();">Cerrar Sesión</a></li>
+        </ul>
+        <div class="profile-info">
+            {% if persona.foto_perfil %}
+                <img src="{{ persona.foto_perfil.url }}" alt="Foto de {{ persona.nombre_completo }}">
+            {% elif empresa.logo %}
+                <img src="{{ empresa.logo.url }}" alt="Foto de {{ empresa.razon_social }}">
+            {% else %}
+                <img src="{% static 'img/default_profile_nav.png' %}" alt="Foto por defecto">
+            {% endif %}
+            <p>Usuario</p>
+            <p>usuario@example.com</p>
+        </div>
     </div>
+    {% block content %}
+    {% endblock %}
+
     <!-- Resto del contenido de paginaPrincipal.html -->
 
     <script src="{% static 'js/darkmode.js' %}"></script>
 
     <script>
         // Script para manejar el menú desplegable y el sidebar
-        document.getElementById("menu-toggle").addEventListener("click", function () {
-            document.getElementById("sidebar").classList.add("active");
+        const menuToggle = document.getElementById("menu-toggle");
+        const sidebar = document.getElementById("sidebar");
+
+        menuToggle.addEventListener("click", function() {
+            sidebar.classList.toggle("active");
+            menuToggle.classList.toggle("active");
         });
-        document.getElementById("close-btn").addEventListener("click", function () {
-            document.getElementById("sidebar").classList.remove("active");
+
+        // Cierra el menú de perfil al hacer clic fuera
+        document.addEventListener("click", function(event) {
+            if (!event.target.closest('.profile-menu')) {
+                const dropdown = document.getElementById("dropdown-menu");
+                if (dropdown) dropdown.classList.remove("active");
+            }
         });
-        document.getElementById("profile-icon").addEventListener("click", function () {
+
+        document.getElementById("profile-icon").addEventListener("click", function() {
             document.getElementById("dropdown-menu").classList.toggle("active");
         });
 
         // Script para mostrar/ocultar el texto completo
-        document.querySelectorAll("button").forEach(button => {
-            button.addEventListener("click", function () {
-                const parentSection = this.closest("section");
-                parentSection.classList.toggle("show-full-text");
-            });
+        document.addEventListener("click", function(event) {
+            if (!event.target.closest('.profile-menu')) {
+                document.getElementById("dropdown-menu").classList.remove("active");
+            }
+        });
+
+        window.addEventListener("DOMContentLoaded", function () {
+            const navbar = document.querySelector(".navbar");
+            const root = document.documentElement;
+            
+            if (navbar) {
+                const height = navbar.offsetHeight + "px";
+                root.style.setProperty("--navbar-height", height);
+            }
         });
     </script>
 </body>
