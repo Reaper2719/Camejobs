@@ -14,8 +14,8 @@ urlpatterns = [
     # Ruta para la vista de inicio (opcional)
     path('inicio/', views.inicio, name='inicio'),
 
-    # Ruta para la vista de bienvenida
-    path('bienvenida/', views.bienvenida, name='bienvenida'),
+    # Ruta para la vista de postulaciones
+    path('postulaciones/', views.postulaciones, name='postulaciones'),
 
     # Ruta para cerrar sesión
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
