@@ -95,9 +95,9 @@ def registro_empresa(request):
         form = RegistroEmpresaForm()
     return render(request, 'usuarios/registro_empresa.html', {'form': form})
 
-# Vista de bienvenida
+# Vista de postulaciones
 @login_required
-def bienvenida(request):
+def postulaciones(request):
     usuario = request.user
     ofertas_activas = Oferta.objects.filter(activa=True)
     context = {
@@ -144,7 +144,7 @@ def bienvenida(request):
             cantidad_calificaciones=Count('calificaciones_recibidas')
         ).distinct()
 
-    return render(request, 'usuarios/bienvenida.html', context)
+    return render(request, 'usuarios/postulaciones.html', context)
 
 # Perfil de persona
 @login_required
@@ -316,7 +316,7 @@ def confirmar_email(request, uidb64, token):
         user.is_active = True
         user.save()
         login(request, user)
-        return redirect('bienvenida')
+        return redirect('postulaciones')
     else:
         return render(request, 'usuarios/enlace_invalido.html')
     
