@@ -9,8 +9,9 @@
     <link rel="icon" href="{% static 'img/Logo camejobs.png' %}">
 </head>
 <body>
-    <h1>Registro de Empresa</h1>
     <form method="post" enctype="multipart/form-data"> <!-- Aceptar archivos -->
+        <h1>Registro de Empresa</h1>
+        <br>
         {% csrf_token %}
         {{ form.as_p }}
         {% if form.errors %}
