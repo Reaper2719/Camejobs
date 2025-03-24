@@ -58,4 +58,5 @@ urlpatterns = [
     #confimar gmail
     path('confirmar-email/<str:uidb64>/<str:token>/',views.confirmar_email,name='confirmar-email'),
     path('confirmacion-enviada/', views.confirmacion_enviada, name='confirmacion-enviada'),
+
 ]

@@ -11,5 +11,5 @@ urlpatterns = [
     path('calificar_persona/<int:postulacion_id>/', views.calificar_persona, name='calificar_persona'),
 
     # Ruta para pagina de ofertas
-    path('pagina_ofertas/', views.pagina_ofertas, name='pagina_ofertas'),
+    path('ofertas/', views.pagina_ofertas, name='pagina_ofertas'),
 ]
