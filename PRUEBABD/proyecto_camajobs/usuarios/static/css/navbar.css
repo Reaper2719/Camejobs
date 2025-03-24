@@ -76,22 +76,36 @@ body {
   justify-content: center;
   gap: 2rem;
   margin: 0;
+  margin-right: 50px;
   padding: 0;
   list-style: none;
   flex: 1;
 }
 
 .nav-links a {
+  display: inline-block;
   color: var(--text-primary);
   text-decoration: none;
   padding: 0.5rem 1rem;
   font-size: 1rem;
+  color: #fff;
+  transition: all .3s ease-in-out;
+  border-radius: 5px;
   white-space: nowrap;
+}
+
+.nav-links a:hover {
+  background-color: #172a3a;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, .5);
+  transition: background-color .5s ease-in-out
 }
 
 .navbar-right {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+  margin-right: 20px;
   gap: 1.5rem;
   flex: 0 0 auto;
   min-width: 120px;
@@ -315,50 +329,9 @@ input:checked+.slider:before {
 body,
 html {
   margin: 0;
-  padding: 0
-}
-
-body,
-html {
+  padding: 0;
   overflow-x: hidden;
-  width: 100%
-}
-
-.navbar {
-  background-color: #0c1e2c;
-  padding: 10px 10px;
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 30px;
-  margin-right: 50px
-}
-
-.nav-links a {
-  font-size: 18px;
-  display: inline-block;
-  padding: 5px 10px;
-  text-decoration: none;
-  color: #fff;
-  transition: all .3s ease-in-out;
-  border-radius: 5px
-}
-
-.nav-links a:hover {
-  background-color: #172a3a;
-  color: #fff;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, .5);
-  transition: background-color .5s ease-in-out
-}
-
-.navbar-right {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  margin-right: 20px;
-  gap: 15px;
+  width: 100%;
 }
 
 .profile-menu img {
@@ -373,6 +346,7 @@ html {
 
 /* Media queries específicos para prevenir colapso */
 @media screen and (max-width: 1023px) and (min-width: 900px) {
+
   .nav-container {
     padding: 0.8rem 1rem;
   }
@@ -406,6 +380,8 @@ html {
 }
 
 @media screen and (max-width: 900px) and (min-width: 769px) {
+  
+  
   .navbar-left {
     flex: 0 0 160px;
   }
@@ -447,6 +423,10 @@ html {
 }
 
 @media screen and (max-width: 900px) and (min-width: 769px) {
+  .navbar{
+    padding: 0.5rem;
+  }
+
   .nav-links {
     display: none;
   }
@@ -478,6 +458,10 @@ html {
 }
 
 @media screen and (max-width: 980px) and (min-width: 900px) {
+  .navbar{
+    padding: 0.5rem;
+  }
+
   .nav-container {
     padding: 0.8rem 0rem 0.8rem 0.1rem;
   }
@@ -504,6 +488,10 @@ html {
 
 /* Responsive */
 @media (max-width: 900px) {
+  .navbar{
+    padding: 0.5rem;
+  }
+
   .nav-links {
     display: none;
   }

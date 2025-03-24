@@ -567,7 +567,7 @@ body.dark-mode .oferta p {
       display: block;
       width: 100%;
       padding: 15px;
-      top: 95px;
+      top: 0px;
       background-color: var(--primary-color);
       color: #fff;
       border: none;
