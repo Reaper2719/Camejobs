@@ -71,6 +71,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'usuarios.context_processors.perfil_usuario',
             ],
         },
     },
@@ -163,7 +164,7 @@ REST_FRAMEWORK = {
     ],
 }   
 
-LOGOUT_REDIRECT_URL = 'inicio' 
+LOGOUT_REDIRECT_URL = 'paginaPrincipal' 
 LOGIN_REDIRECT_URL = 'postulaciones'
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 

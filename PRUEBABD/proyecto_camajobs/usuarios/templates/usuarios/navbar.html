@@ -36,31 +36,41 @@
                     <span class="slider"></span>
                 </label>
                 <!-- Menú de perfil -->
-                <div class="profile-menu">
-                    <div class="profile" id="profile-icon">
-                        {% if persona.foto_perfil %}
-                            <img src="{{ persona.foto_perfil.url }}" alt="Foto de {{ persona.nombre_completo }}">
-                        {% elif empresa.logo %}
-                            <img src="{{ empresa.logo.url }}" alt="Foto de {{ empresa.razon_social }}">
-                        {% else %}
+                {% if user.is_authenticated %}
+                    <div class="profile-menu">
+                        <div class="profile" id="profile-icon">
+                            {% if persona and persona.foto_perfil %}
+                                <img src="{{ persona.foto_perfil.url }}" alt="Foto de {{ persona.nombre_completo }}">
+                            {% elif empresa and empresa.logo %}
+                                <img src="{{ empresa.logo.url }}" alt="Logo de {{ empresa.razon_social }}">
+                            {% else %}
+                                <img src="{% static 'img/default_profile_nav.png' %}" alt="Foto por defecto">
+                            {% endif %}
+                        </div>
+                        <div class="dropdown-menu" id="dropdown-menu">
+                            <a href="#">Tu Perfil</a>
+                            <a href="#">Configuración</a>
+                            <a href="#">Modificar perfil</a>
+                            <form action="{% url 'logout' %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="logout-button">Cerrar sesión</button>
+                            </form>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="profile-menu">
+                        <div class="profile" id="profile-icon">
                             <img src="{% static 'img/default_profile_nav.png' %}" alt="Foto por defecto">
-                        {% endif %}
-                    </div>
-                    <div class="dropdown-menu" id="dropdown-menu">
-                        <a href="#">Tu Perfil</a>
-                        <a href="#">Configuración</a>
-                        <a hred="#">Modificar perfil</a>
-                        <a href="{% url 'login' %}" onclick="confirmarCerrarSesion();">Cerrar Sesión</a>
-                    </div>
-                </div>
+                        </div>
+                    </div>    
+                {% endif %}
 
-                <!-- Botón de menú (ícono de hamburguesa) -->
+                <!-- Botón de menú hamburguesa -->
                 <button class="menu-toggle" id="menu-toggle" aria-label="Menú" aria-expanded="false">
                     <span class="line top"></span>
                     <span class="line mid"></span>
                     <span class="line bott"></span>
                 </button>
-
             </div>
         </div>
     </nav>
@@ -75,12 +85,16 @@
             <li><a href="{% url 'login' %}">Cerrar sesión</a></li>
         </ul>
         <div class="profile-info">
-            {% if persona.foto_perfil %}
-                <img src="{{ persona.foto_perfil.url }}" alt="Foto de {{ persona.nombre_completo }}">
-            {% elif empresa.logo %}
-                <img src="{{ empresa.logo.url }}" alt="Foto de {{ empresa.razon_social }}">
-            {% else %}
-                <img src="{% static 'img/default_profile_nav.png' %}" alt="Foto por defecto">
+            {% if user.is_authenticated %}
+                {% if persona and persona.foto_perfil %}
+                    <img src="{{ persona.foto_perfil.url }}" alt="Foto de {{ persona.nombre_completo }}">
+                {% elif empresa and empresa.logo %}
+                    <img src="{{ empresa.logo.url }}" alt="Logo de {{ empresa.razon_social }}">
+                {% else %}
+                    <img src="{% static 'img/default_profile_nav.png' %}" alt="Foto por defecto">
+                {% endif %}
+                {% else %}
+                    <img src="{% static 'img/default_profile_nav.png' %}" alt="Foto por defecto">
             {% endif %}
             <p>Usuario</p>
             <p>usuario@example.com</p>
@@ -98,25 +112,25 @@
         const menuToggle = document.getElementById("menu-toggle");
         const sidebar = document.getElementById("sidebar");
 
-        menuToggle.addEventListener("click", function() {
+        menuToggle.addEventListener("click", function () {
             sidebar.classList.toggle("active");
             menuToggle.classList.toggle("active");
         });
 
         // Cierra el menú de perfil al hacer clic fuera
-        document.addEventListener("click", function(event) {
+        document.addEventListener("click", function (event) {
             if (!event.target.closest('.profile-menu')) {
                 const dropdown = document.getElementById("dropdown-menu");
                 if (dropdown) dropdown.classList.remove("active");
             }
         });
 
-        document.getElementById("profile-icon").addEventListener("click", function() {
+        document.getElementById("profile-icon").addEventListener("click", function () {
             document.getElementById("dropdown-menu").classList.toggle("active");
         });
 
         // Script para mostrar/ocultar el texto completo
-        document.addEventListener("click", function(event) {
+        document.addEventListener("click", function (event) {
             if (!event.target.closest('.profile-menu')) {
                 document.getElementById("dropdown-menu").classList.remove("active");
             }
@@ -125,7 +139,7 @@
         window.addEventListener("DOMContentLoaded", function () {
             const navbar = document.querySelector(".navbar");
             const root = document.documentElement;
-            
+
             if (navbar) {
                 const height = navbar.offsetHeight + "px";
                 root.style.setProperty("--navbar-height", height);
