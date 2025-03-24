@@ -164,7 +164,7 @@ REST_FRAMEWORK = {
 }   
 
 LOGOUT_REDIRECT_URL = 'inicio' 
-LOGIN_REDIRECT_URL = 'bienvenida'
+LOGIN_REDIRECT_URL = 'postulaciones'
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 # Carga las variables del archivo .env
