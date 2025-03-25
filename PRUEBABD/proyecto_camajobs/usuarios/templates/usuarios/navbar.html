@@ -48,7 +48,7 @@
                             {% endif %}
                         </div>
                         <div class="dropdown-menu" id="dropdown-menu">
-                            <a href="#">Tu Perfil</a>
+                            <a href="{% url 'perfil_persona' %}">Tu Perfil</a>
                             <a href="#">Configuración</a>
 
                             {% if user.is_authenticated %}
