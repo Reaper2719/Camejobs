@@ -37,8 +37,8 @@
 
             <ul class="detalles">
                 {% if empresa.sitio_web %}
-                <li><strong>🌐 Sitio web:</strong> <a href="{{ empresa.sitio_web }}" target="_blank">{{
-                        empresa.sitio_web }}</a></li>
+                <li><strong>🌐 Sitio web:</strong> <a href="{{ empresa.sitio_web }}" target="_blank">
+                        sitio web </a></li>
                 {% endif %}
                 <li><strong>🏢 Razón social:</strong> {{ empresa.razon_social }}</li>
                 <li><strong>📞 Teléfono:</strong> {{ empresa.telefono }}</li>
@@ -48,7 +48,7 @@
             </ul>
         </div>
     </div>
-    
+    <a href="{% url 'modificar_empresa' %}" class="btn-agregar">Editar Perfil</a>
     {% include 'usuarios/footer.html' %}
 
 </body>

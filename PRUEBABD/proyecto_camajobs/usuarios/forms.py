@@ -169,10 +169,19 @@ class PersonaForm(forms.ModelForm):
     class Meta:
         model = Persona
         fields = [
-            'nombre_completo', 'cedula', 'profesion', 'telefono', 'direccion',
-            'fecha_nacimiento', 'genero', 'email', 'ubicacion',
+            'nombre_completo', 'profesion', 'telefono', 'direccion',
+            'email', 'ubicacion',
             'habilidades', 'perfil_laboral', 'foto_perfil'
         ]
         widgets = {
             'fecha_nacimiento': forms.DateInput(attrs={'type': 'date'}),
         }
+
+class EmpresaForm(forms.ModelForm):
+    class Meta:
+        model = Empresa
+        fields = [
+            'nit', 'razon_social', 'eslogan', 'telefono', 'direccion',
+            'email', 'sitio_web', 'descripcion',
+            'ubicacion', 'logo'
+        ]

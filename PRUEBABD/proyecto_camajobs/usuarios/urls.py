@@ -61,4 +61,7 @@ urlpatterns = [
 
     #Modificar perfil
     path('modificar-perfil/', views.modificar_perfil, name='modificar_perfil'),
+
+    #Modificar empresa
+    path('empresa/modificar/', views.modificar_empresa, name='modificar_empresa'),
 ]

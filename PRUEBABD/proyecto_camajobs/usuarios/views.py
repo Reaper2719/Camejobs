@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login
-from .forms import PersonaForm
+from .forms import PersonaForm, EmpresaForm
 from django.forms import modelformset_factory
 from .forms import (
     RegistroPersonaForm, RegistroEmpresaForm, 
@@ -191,6 +191,21 @@ def perfil_empresa(request, empresa_id=None):
     return render(request, 'usuarios/perfil_empresa.html', {
         'empresa': empresa,
         'tickets': tickets,
+    })
+
+@login_required
+def modificar_empresa(request):
+    empresa = request.user.empresa
+    if request.method == 'POST':
+        empresa_form = EmpresaForm(request.POST, request.FILES, instance=empresa)
+        if empresa_form.is_valid():
+            empresa_form.save()
+            messages.success(request, "Perfil actualizado correctamente.")
+            return redirect('perfil_empresa')
+    else:
+        empresa_form = EmpresaForm(instance=empresa)
+    return render(request, 'usuarios/modificar_empresa.html', {
+        'empresa_form': empresa_form,
     })
 
 # Funciones adicionales para la formación y experiencia académica
