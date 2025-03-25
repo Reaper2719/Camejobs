@@ -56,13 +56,6 @@
                             {% endif %}
                             <form id="logout-form" action="{% url 'logout' %}" method="post">
 
-
-                            {% if user.is_authenticated %}
-                                <a href="{% url 'modificar_perfil' %}">Modificar perfil</a>
-                            {% endif %}
-                            <form action="{% url 'logout' %}" method="post">
-
-                            <a href="#">Modificar perfil</a>
                             <form id="logout-form" action="{% url 'logout' %}" method="post">
 
                                 {% csrf_token %}
