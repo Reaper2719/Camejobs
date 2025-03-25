@@ -51,9 +51,9 @@
                             <a href="#">Tu Perfil</a>
                             <a href="#">Configuración</a>
                             <a href="#">Modificar perfil</a>
-                            <form action="{% url 'logout' %}" method="post">
+                            <form id="logout-form" action="{% url 'logout' %}" method="post">
                                 {% csrf_token %}
-                                <button type="submit" class="logout-button">Cerrar sesión</button>
+                                <button type="submit" class="logout-button-link">Cerrar sesión</button>
                             </form>
                         </div>
                     </div>
