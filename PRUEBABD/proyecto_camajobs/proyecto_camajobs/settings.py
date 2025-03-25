@@ -90,7 +90,7 @@ DATABASES = {
         'USER': 'camejobs',
         'PASSWORD': 'camejobs2025',
         'HOST': '127.0.0.1',  # O la IP de tu servidor de base de datos si no está en local
-        'PORT': '33065',  # El puerto por defecto de MySQL
+        'PORT': '3308',  # El puerto por defecto de MySQL
     }
 }
 
@@ -142,7 +142,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'static',  # Ruta donde DJango buscará archivos estaticos (img, js, css, etc)
+    BASE_DIR / "static",  # Ruta donde DJango buscará archivos estaticos (img, js, css, etc)
 ]
 
 # Media files (uploaded by users)
