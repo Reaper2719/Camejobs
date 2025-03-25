@@ -42,6 +42,46 @@
                 <li><strong>📍 Ubicación:</strong> {{ persona.ubicacion }}</li>
                 <hr>
                 <li><strong>Sobre mí:</strong> {{ persona.habilidades }}</li>
+                <hr>
+                <li><strong>🧑‍💼 Experiencia laboral:</strong></li>
+                <ul>
+                    {% for experiencia in experiencias %}
+                        <li style="margin-bottom: 1em;">
+                            <strong>{{ experiencia.cargo }}</strong> en <em>{{ experiencia.nombre_empresa }}</em><br>
+                            {{ experiencia.descripcion }}<br>
+                            <small>
+                                {{ experiencia.fecha_inicio|date:"F Y" }} -
+                                {% if experiencia.en_progreso %}
+                                    Actualmente
+                                {% else %}
+                                    {{ experiencia.fecha_fin|date:"F Y" }}
+                                {% endif %}
+                            </small>
+                        </li>
+                    {% empty %}
+                        <li>No hay experiencia laboral registrada.</li>
+                    {% endfor %}
+                </ul>
+                <hr>
+                <li><strong>📚 Formación academica</strong></li>
+                <ul>
+                    {% for formacion in formaciones %}
+                        <li style="margin-bottom: 1em">
+                            <strong>{{ formacion.titulo_obtenido }}</strong> en <em>{{formacion.institucion}}</em><br>
+                            {{ formacion.nivel_educativo }}<br>
+                            <small>
+                                {{ formacion.fecha_inicio|date:"F Y"}} - 
+                                {% if formacion.en_progreso %}
+                                    Actualmente
+                                {% else %}
+                                    {{ formacion.fecha_fin|date:"F Y" }}
+                                {% endif %}
+                            </small>
+                        </li>
+                    {% empty %}
+                        <li>No hay formación académica</li>
+                    {% endfor %}
+                </ul>
             </ul>
         </div>
     </div>

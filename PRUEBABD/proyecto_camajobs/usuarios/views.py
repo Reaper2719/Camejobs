@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login
+from .forms import PersonaForm
+from django.forms import modelformset_factory
 from .forms import (
     RegistroPersonaForm, RegistroEmpresaForm, 
     CalificacionPersona, CalificacionEmpresa,
@@ -159,6 +161,21 @@ def perfil_persona(request):
         'formaciones': formaciones,
         'experiencias': experiencias,
         'tickets': tickets,
+    })
+
+@login_required
+def modificar_perfil(request):
+    persona = request.user.persona
+    if request.method == 'POST':
+        persona_form = PersonaForm(request.POST, request.FILES, instance=persona)
+        if persona_form.is_valid():
+            persona_form.save()
+            messages.success(request, "Perfil actualizado correctamente.")
+            return redirect('perfil_persona')
+    else:
+        persona_form = PersonaForm(instance=persona)
+    return render(request, 'usuarios/modificar_perfil.html', {
+        'persona_form': persona_form,
     })
 
 # Perfil de empresa

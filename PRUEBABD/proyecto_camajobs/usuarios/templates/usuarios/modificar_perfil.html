@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar Perfil</title>
+    <link rel="stylesheet" href="{% static 'css/modificar_perfil.css' %}">
+</head>
+<body>
+
+    {% include 'usuarios/navbar.html' %}
+
+    <br><br><br><br><br>
+
+    <div class="perfil-container">
+        <h1>Modificar Perfil</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <section class="seccion">
+                <h2>Datos Personales</h2>
+                {{ persona_form.as_p }}
+            </section>
+
+            <div class="boton-guardar">
+                <button type="submit">Guardar Cambios</button>
+            </div>
+        </form>
+    
+        <br>
+
+        <div class="botones-agregar">
+            <a href="{% url 'agregar_experiencia' %}" class="btn-agregar">Agregar Experiencia</a>
+            <a href="{% url 'agregar_formacion' %}" class="btn-agregar">Agregar Formación</a>
+        </div>
+    
+    </div>
+
+    {% include 'usuarios/footer.html' %}
+
+</body>
+</html>

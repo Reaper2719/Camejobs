@@ -1,0 +1,141 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.perfil-container {
+    background-color: white;
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: black;
+}
+
+.seccion {
+    margin-bottom: 30px;
+    border-top: 2px solid #ddd;
+    padding-top: 20px;
+}
+
+select, textarea, input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 20px;
+    box-sizing: border-box
+}
+
+select {
+    width: 100%;
+}
+
+.boton-guardar {
+    text-align: center;
+}
+
+button[type="submit"] {
+    background-color: #0c1e2c;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #0072a3;
+}
+
+.botones-agregar {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+}
+
+.btn-agregar {
+    background-color: #0c1e2c;
+    color: white;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-agregar:hover {
+    background-color: #0072a3;
+}
+
+@media (max-width: 992px) {
+    .perfil-container {
+        padding: 30px;
+        margin: 40px 20px;
+    }
+
+    select, textarea, input {
+        font-size: 18px;
+    }
+
+    button[type="submit"] {
+        padding: 10px 25px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .perfil-container {
+        padding: 20px;
+    }
+
+    .botones-agregar {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .btn-agregar {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Celulares pequeños */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    select, textarea, input {
+        font-size: 16px;
+    }
+
+    button[type="submit"] {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .btn-agregar {
+        padding: 10px;
+        font-size: 14px;
+    }
+}

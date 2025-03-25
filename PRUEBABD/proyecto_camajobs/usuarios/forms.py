@@ -164,3 +164,15 @@ class CustomAuthenticationForm(AuthenticationForm):
             self.confirm_login_allowed(self.user_cache)
 
         return self.cleaned_data           
+    
+class PersonaForm(forms.ModelForm):
+    class Meta:
+        model = Persona
+        fields = [
+            'nombre_completo', 'cedula', 'profesion', 'telefono', 'direccion',
+            'fecha_nacimiento', 'genero', 'email', 'ubicacion',
+            'habilidades', 'perfil_laboral', 'foto_perfil'
+        ]
+        widgets = {
+            'fecha_nacimiento': forms.DateInput(attrs={'type': 'date'}),
+        }

@@ -59,4 +59,6 @@ urlpatterns = [
     path('confirmar-email/<str:uidb64>/<str:token>/',views.confirmar_email,name='confirmar-email'),
     path('confirmacion-enviada/', views.confirmacion_enviada, name='confirmacion-enviada'),
 
+    #Modificar perfil
+    path('modificar-perfil/', views.modificar_perfil, name='modificar_perfil'),
 ]
