@@ -16,7 +16,7 @@ def crear_oferta(request):
             oferta = form.save(commit=False)
             oferta.empresa = request.user.empresa  # Asignar la empresa actual
             oferta.save()
-            return redirect('bienvenida')
+            return redirect('postulaciones')
     else:
         form = OfertaForm()
     return render(request, 'ofertas/crear_oferta.html', {'form': form})
@@ -33,7 +33,7 @@ def postular(request, oferta_id):
         defaults={'estado': 'Pendiente'}
     )
 
-    return redirect('bienvenida')
+    return redirect('postulaciones')
 
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Postulacion, Oferta
