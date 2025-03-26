@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido - CameJobs</title>
+    <link rel="stylesheet" href="{% static 'css/quienes_somos.css' %}">
+    <link rel="icon" href="{% static 'img/Logo camejobs.png' %}">
+</head>
+<body>
+    {% include 'usuarios/navbar.html' %}
+
+    <!-- Sección Sobre Nosotros -->
+    <section class="about-us">
+        <div class="about-us-content">
+            <h1>Sobre Nosotros</h1>
+            <div class="about-cards">
+                <div class="about-card">
+                    <h2>Quienes Somos</h2>
+                    <p>Somos un equipo de estudiantes técnicos en programación de software que, al identificar las dificultades para acceder a oportunidades laborales tras su formación, decidieron crear CameJobs. Nuestra plataforma conecta a egresados del SENA en el Valle del Cauca con empresas que buscan talento especializado en el área tecnológica.</p>
+                </div>
+                <div class="about-card">
+                    <h2>Misión</h2>
+                    <p>Brindar a los egresados del SENA una herramienta efectiva y accesible para destacar sus habilidades y facilitar su inserción en el mercado laboral. Con un sistema de perfiles y ranking, optimizamos el proceso de selección para que tanto empresas como talentos encuentren la mejor conexión.</p>
+                </div>
+                <div class="about-card">
+                    <h2>Visión</h2>
+                    <p>Aspiramos a ser la plataforma líder en intermediación laboral en la región, transformando el proceso de reclutamiento en un sistema transparente, eficiente y justo, que impulse el desarrollo profesional y contribuya al crecimiento económico del Valle del Cauca.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% include 'usuarios/footer.html' %} 
+</body>
+</html>

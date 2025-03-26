@@ -1,0 +1,92 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  color: #000;
+  transition: background-color .3s ease, color .3s ease;
+}
+
+body,
+html {
+  min-height: 100vh;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.about-us {
+  padding: 50px 20px;
+  background-color: #f9f9f9;
+  text-align: center
+}
+
+.about-us-content h1 {
+  font-size: 36px;
+  color: #0c1e2c;
+  margin-bottom: 20px
+}
+
+.about-cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap
+}
+
+.about-card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, .1);
+  width: 300px;
+  text-align: left;
+  transition: transform .3s ease, box-shadow .3s ease
+}
+
+.about-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, .453)
+}
+
+.about-card h2 {
+  font-size: 24px;
+  color: #0c1e2c;
+  margin-bottom: 10px
+}
+
+.about-card p {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.6
+}
+
+/* Modo oscuro */
+.dark-mode body {
+  background-color: #0c1e2c;
+  color: #ffffff;
+}
+
+.dark-mode .about-us {
+  background-color: #0c1e2c;
+  color: #ffffff;
+}
+
+.dark-mode .about-us-content h1 {
+  color: #ffffff;
+}
+
+.dark-mode .about-card {
+  background-color: #087b5a;
+  color: #ffffff;
+}
+
+.dark-mode .about-card h2,
+.dark-mode .about-card p {
+  color: #ffffff;
+}
+
+@media (max-width:480px) {
+  .about-card {
+      width: 90%
+  }
+}

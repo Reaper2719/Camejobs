@@ -324,9 +324,12 @@ def calificar_empresa(request, empresa_id):
     return render(request, 'usuarios/calificar_empresa.html', {'form': form, 'empresa': empresa})
 
 #Preguntas frecuentes
-@login_required
 def faqs_pagina(request):
     return render(request, 'usuarios/faqs_pagina.html')
+
+#Quienes somos
+def quienes_somos(request):
+    return render(request, 'usuarios/quienes_somos.html')
 
 #Pagina de perfiles
 @login_required

@@ -36,7 +36,7 @@
             <img src="{% static 'img/55.jpg' %}" alt="Oportunidades">
             <h2>Explora Oportunidades Laborales</h2>
             <p>Descubre ofertas de trabajo que se ajustan a tus intereses y habilidades.</p>
-            <button>Ver Ofertas de Empleo</button>
+            <a href="{% url 'pagina_ofertas' %}"><button>Ver Ofertas de Empleo</button></a>
         </div>
         <div class="card">
             <img src="{% static 'img/66.jpg' %}" alt="Empresas">
@@ -52,7 +52,7 @@
             <p>En Camejobs, creemos en el poder de conectar talento con oportunidades. 
                 Nuestra misión es ayudar a personas de todos los niveles de experiencia a encontrar empleos que se ajusten a sus habilidades, pasiones y objetivos profesionales. 
             </p>
-            <button>Sobre Nosotros</button>
+            <a href="{% url 'quienes_somos' %}"><button>Sobre Nosotros</button></a>
         </div>
         <img src="{% static 'img/Quienes somos2.jpg' %}" alt="Imagen de quiénes somos">
     </section>
