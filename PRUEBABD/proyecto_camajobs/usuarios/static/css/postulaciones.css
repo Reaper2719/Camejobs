@@ -1,319 +1,274 @@
-/* bienvenida.css */
+:root {
+    --background-primary: #0c1e2c;
+    --background-secondary: #0072a3;
+    --text-primary: #ffffff;
+    --text-secondary: #d6d6d6;
+    --accent-primary: #000;
+    --accent-secondary: #04302384;
+    --accent-tertiary: #000;
+    --card-background: #005e45;
+    --footer-background: #087b5a;
+    --footer-below-background: #005e45;
+    --text-herotitle: #000;
+    --about-color: #005e45c9;
+    --svg-color: #005e45c9;
+    --color-2: #098e68c2;
+    --color-3: #09bc8a;
+    --color-4: #0385bd;
+    --color-5: #102b3e;
+}
 
-/* Estilos generales */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 20px;
-    background-color: #f4f4f4; /* Fondo gris claro */
-    color: #333; /* Color de texto principal */
-    background-image: url('../img/blue.avif');
+    background-color: #f4f4f4;
+    background-image: url(../img/blue.avif);
     background-size: cover;
-    background-position: center;
+    background-position: 50%;
     background-repeat: no-repeat;
-    line-height: 1.6; /* Mejor espaciado entre líneas */
+    line-height: 1.6
 }
 
-h1, h2, h3 {
-    font-family: 'Georgia', serif; /* Fuente más elegante para títulos */
-    font-weight: bold;
-    color: #172A3A; /* Color azul oscuro para títulos */
+.container h1, h2, h3 {
+    font-family: Arial, sans-serif;
+    font-weight: 700;
 }
 
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
+.container h1 {
+    margin-bottom: 20px
 }
 
+.container h1,
 p {
-    text-align: center;
-    font-size: 1.1em;
-    color: #555; /* Texto un poco más oscuro */
+    text-align: center
 }
 
-/* Estilos para el contenedor principal */
+.container p {
+    font-size: 1.1em;
+}
+
 .container {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 92px auto 20px;
     padding: 20px;
-    background-color: white; /* Fondo blanco para el contenido */
-    border-radius: 10px; /* Bordes redondeados */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, .1)
 }
 
-/* Estilos para las ofertas */
+.container,
+.oferta {
+    background-color: #fff
+}
+
 .oferta {
     border: 1px solid #ddd;
     padding: 15px;
     margin-bottom: 20px;
     border-radius: 5px;
-    background-color: #fff; /* Fondo blanco */
-    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Transición suave */
+    transition: box-shadow .3s ease, transform .3s ease
 }
 
 .oferta:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
-    transform: translateY(-5px); /* Levantar ligeramente la oferta */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, .2);
+    transform: translateY(-5px)
 }
 
 .oferta h3 {
-    color: #172A3A; /* Color azul oscuro para el título de la oferta */
-    margin-top: 0;
+    margin-top: 0
 }
 
 .oferta p {
     margin: 5px 0;
-    font-size: 0.9em;
-    color: #666; /* Color gris para el texto */
+    font-size: .9em;
 }
 
-/* Estilos para los botones */
-button {
-    background-color: #172A3A; /* Color azul oscuro */
-    color: white;
+.container button {
+    background-color: var(--color-3);
+    color: #fff;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1em;
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Transición suave */
+    transition: background-color .3s ease, transform .2s ease
 }
 
-button:hover {
-    background-color: #2980b9; /* Color azul más claro al pasar el mouse */
-    transform: scale(1.05); /* Efecto de escala al pasar el mouse */
+.container button:hover {
+    background-color: var(--color-2);
+    transform: scale(1.05)
 }
 
-.btn-postular {
-    background-color: #4CAF50; /* Color verde para el botón de postular */
+.container .btn-postular {
+    background-color: var(--color-3);
 }
 
-.btn-postular:hover {
-    background-color: #45a049; /* Verde más oscuro al pasar el mouse */
+.container .btn-postular:hover {
+    background-color: var(--color-2);
 }
 
-.btn-ver-detalles {
-    background-color: #2196F3; /* Color azul para el botón de ver detalles */
+.container .btn-ver-detalles {
+    background-color: var(--color-3);
 }
 
-.btn-ver-detalles:hover {
-    background-color: #1e88e5; /* Azul más oscuro al pasar el mouse */
+.container .btn-ver-detalles:hover {
+    background-color: var(--color-2);
 }
 
-.btn-ver-candidatos {
-    background-color: #FF9800; /* Color naranja para el botón de ver candidatos */
+.container .btn-ver-candidatos {
+    background-color: var(--color-3);
 }
 
-.btn-ver-candidatos:hover {
-    background-color: #fb8c00; /* Naranja más oscuro al pasar el mouse */
+.container .btn-ver-candidatos:hover {
+    background-color: var(--color-2);
 }
 
-/* Estilos para la sección de ranking */
-.ranking-section {
+.container .ranking-section {
     margin-top: 30px;
     padding: 20px;
-    background-color: #f9f9f9; /* Fondo gris claro */
+    background-color: #f9f9f9;
     border-radius: 8px;
+    margin-bottom: 20px;
 }
 
-.ranking-item {
+.container .ranking-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 15px;
     margin-bottom: 10px;
-    background-color: white; /* Fondo blanco */
+    background-color: #fff;
     border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1)
 }
 
-.ranking-item h3 {
+.container .ranking-item h3 {
     margin: 0;
-    color: #172A3A; /* Color azul oscuro */
 }
 
-.ranking-item p {
+.container .ranking-item p {
     margin: 5px 0;
-    color: #666; /* Color gris */
 }
 
-.stars {
-    display: inline-block;
+.container .stars {
+    display: inline-block
 }
 
-.star-icon {
+.container .star-icon {
     width: 20px;
     height: 20px;
-    fill: #ffd700; /* Color dorado para las estrellas */
-    margin-right: 2px;
+    fill: gold;
+    margin-right: 2px
 }
 
-.star-icon.empty {
-    fill: #ddd; /* Color gris para las estrellas vacías */
+.container .star-icon.empty {
+    fill: #ddd
 }
 
-.rating-info {
-    font-size: 0.9em;
-    color: #666; /* Color gris para la información de calificación */
+.container .rating-info {
+    font-size: .9em;
 }
 
-.ranking-title {
-    color: #333; /* Color oscuro para el título */
-    border-bottom: 2px solid #4CAF50; /* Línea verde debajo del título */
+.container .ranking-title {
+    border-bottom: 2px solid #4caf50;
     padding-bottom: 10px;
     margin-bottom: 20px;
+    color: var(--color-5);
 }
 
-/* Estilos para el enlace de cerrar sesión */
-a {
-    color: #0072a3; /* Color azul para los enlaces */
-    text-decoration: none; /* Sin subrayado */
+.container a {
+    color: #0072a3;
+    text-decoration: none
 }
 
-a:hover {
-    text-decoration: underline; /* Subrayado al pasar el mouse */
+.container a:hover {
+    text-decoration: underline
 }
 
-/* Mejoras de accesibilidad */
-button:focus, a:focus {
-    outline: 2px solid #0072a3; /* Contorno visible para enfoque */
-    outline-offset: 2px;
+.container a:focus,
+button:focus {
+    outline: 2px solid #0072a3;
+    outline-offset: 2px
 }
 
-/* Estilos para mensajes de estado */
-.mensaje {
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    text-align: center;
+/* dark mode */
+
+
+body.dark-mode{
+    background-color: var(--background-primary);
+    color: var(--text-primary);
+    background-image: none;
 }
 
-.mensaje.exito {
-    background-color: #d4edda; /* Fondo verde claro */
-    color: #155724; /* Texto verde oscuro */
-    border: 1px solid #c3e6cb;
+.dark-mode .container .ranking-title {
+    color: var(--text-primary);
 }
 
-.mensaje.error {
-    background-color: #f8d7da; /* Fondo rojo claro */
-    color: #721c24; /* Texto rojo oscuro */
-    border: 1px solid #f5c6cb;
+.dark-mode .container,
+.dark-mode {
+  background-color: var(--background-primary);
+  color: var(--text-primary);
+}
+.dark-mode .oferta {
+    background-color: var(--color-5);
+}
+.dark-mode .ranking-section {
+    background-color: var(--color-5);
+    color: var(--text-primary);
 }
 
-.mensaje.advertencia {
-    background-color: #fff3cd; /* Fondo amarillo claro */
-    color: #856404; /* Texto amarillo oscuro */
-    border: 1px solid #ffeeba;
+.dark-mode .ranking-item {
+    background-color: var(--card-background);
+    color: var(--text-primary);
+}
+  
+.dark-mode h1, h2{
+    color: var(--text-primary);
 }
 
-/* Estilos para el footer */
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #172A3A; /* Fondo azul oscuro */
-    color: white;
-    margin-top: 30px;
-    border-radius: 0 0 10px 10px;
-}
 
-footer a {
-    color: #0072a3; /* Color azul para los enlaces */
-    text-decoration: none;
-}
+@media (max-width:768px) {
 
-footer a:hover {
-    text-decoration: underline;
-}
-
-/* Estilos para el menú de navegación (si lo hay) */
-nav {
-    background-color: #172A3A; /* Fondo azul oscuro */
-    padding: 10px;
-    border-radius: 10px 10px 0 0;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 10px;
-    font-weight: bold;
-}
-
-nav a:hover {
-    color: #0072a3; /* Color azul al pasar el mouse */
-}
-
-:root {
-  --navbar-height: 80px; /* Agregar la variable del navbar */
-}
-
-.main-content {
-  padding-top: var(--navbar-height);
-  min-height: 100vh;
-  width: 100%;
-}
-
-/* Responsividad */
-@media (max-width: 768px) {
-    .container {
-        padding: 10px;
-    }
-
+    .container,
     .oferta {
-        padding: 10px;
+        padding: 10px
     }
 
-    .ranking-item {
+    .container .ranking-item {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: flex-start
     }
 
-    .stars {
-        margin-top: 10px;
+    .container .stars {
+        margin-top: 10px
     }
 
-    button {
-        width: 100%; /* Botones de ancho completo en móviles */
-        margin-bottom: 10px;
+    .container button {
+        width: 100%;
+        margin-bottom: 10px
     }
 
-    h1 {
-        font-size: 1.5em; /* Tamaño de fuente más pequeño para móviles */
+    .container h1 {
+        font-size: 1.5em
     }
 
-    p {
-        font-size: 0.9em; /* Tamaño de fuente más pequeño para móviles */
+    .container p {
+        font-size: .9em
     }
 }
 
-/* Animaciones */
-@keyframes fadeIn {
-    from {
+@keyframes a {
+    0% {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(20px)
     }
+
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0)
     }
 }
 
-.oferta {
-    animation: fadeIn 0.5s ease-in-out;
-}
-
-/* Efecto de carga */
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-.cargando {
-    border: 4px solid #f3f3f3;
-    border-top: 4px solid #3498db;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    animation: spin 1s linear infinite;
-    margin: 20px auto;
+.container .oferta {
+    animation: a .5s ease-in-out
 }

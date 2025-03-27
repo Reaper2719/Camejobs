@@ -1,46 +1,30 @@
+{% load static %}
+
 <!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Postulaciones - CameJobs</title>
-    <style>
-      .postulacion {
-        border: 1px solid #ddd;
-        padding: 15px;
-        margin-bottom: 20px;
-        border-radius: 5px;
-      }
-      .btn-accion {
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        margin-right: 10px;
-      }
-      .btn-aceptar {
-        background-color: #4caf50;
-      }
-      .btn-rechazar {
-        background-color: #f44336;
-      }
-      .btn-calificar {
-        background-color: #ff9800; /* Color naranja para diferenciar */
-      }
-    </style>
-  </head>
-  <body>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Camejobs{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/listar_postulaciones.css' %}">
+  <link rel="icon" href="{% static 'img/Logo camejobs.png' %}">
+</head>
+
+<body>
+
+  {% include 'usuarios/navbar.html' %}
+  <div class="postulaciones-container">
     <h1>Postulaciones para "{{ oferta.titulo }}"</h1>
     <a href="{% url 'postulaciones' %}">
-      <button>Volver a Inicio</button>
+      <button class="btn-accion btn-rechazar">Volver a postulaciones</button>
     </a>
     <br /><br />
     {% for postulacion in postulaciones %}
     <div class="postulacion">
       <h3>{{ postulacion.trabajador.usuario.username }}</h3>
       <p>
-        <strong
-          >Fecha de Postulación: {{ postulacion.fecha_postulacion}}
+        <strong>Fecha de Postulación: {{ postulacion.fecha_postulacion}}
         </strong>
       </p>
       <p><strong>Estado:</strong> {{ postulacion.estado }}</p>
@@ -60,6 +44,11 @@
         {% endif %}
       </div>
     </div>
+
     {% endfor %}
-  </body>
+  </div>
+  {% include 'usuarios/footer.html' %}
+
+</body>
+
 </html>

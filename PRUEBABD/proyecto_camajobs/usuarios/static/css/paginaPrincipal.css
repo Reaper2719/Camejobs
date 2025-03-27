@@ -15,7 +15,7 @@
   --color-2: #098e68c2;
   --color-3: #09bc8a;
   --color-4: #0385bd;
-  --color-5: #102b3e
+  --color-5: #102b3e;
 }
 
 body {
@@ -63,14 +63,14 @@ html {
 }
 
 .hero h1 {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Arial, sans-serif;
   font-size: 37px;
   font-weight: 700;
   color: #fff
 }
 
 .hero p {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, sans-serif;
   font-size: 18px;
   color: #fff;
   margin-top: 10px
@@ -124,14 +124,14 @@ html {
 }
 
 .card h2 {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Arial, sans-serif;
   font-size: 20px;
   font-weight: 700;
   color: #fff
 }
 
 .card p {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, sans-serif;
   font-size: 17px;
   margin-top: 10px;
   color: #fff
@@ -172,14 +172,14 @@ html {
 }
 
 .about h2 {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Arial, sans-serif;
   font-size: 36px;
   font-weight: 700;
   color: #fff
 }
 
 .about p {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, sans-serif;
   font-size: 19px;
   margin-top: 10px;
   line-height: 1.6;
@@ -222,14 +222,14 @@ html {
 }
 
 .contact h2 {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Arial, sans-serif;
   font-size: 36px;
   font-weight: 700;
   color: #000
 }
 
 .contact p {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, sans-serif;
   font-size: 19px;
   margin-top: 10px;
   line-height: 1.8;
