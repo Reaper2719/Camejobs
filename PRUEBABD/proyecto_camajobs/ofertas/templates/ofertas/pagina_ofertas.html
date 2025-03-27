@@ -136,7 +136,10 @@
                             <p>{{ oferta.fecha_cierre }}</p>
                         </div>
 
-                        <button class="postular-btn">Postularse</button>
+                        <form action="{% url 'postular' oferta.id %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="postular-btn">Postularse</button>
+                        </form>
                     </div>
                 </div>
                 {% endfor %}
