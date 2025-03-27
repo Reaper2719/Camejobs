@@ -1,26 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
-    <title>Detalles de la Postulación</title>
-    <style>
-        .detalles {
-            border: 1px solid #ddd;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-        }
-        .btn-calificar {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-    </style>
+    <title>{% block title %}Camejobs{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/ver_detalles_postulacion.css' %}">
+    <link rel="icon" href="{% static 'img/Logo camejobs.png' %}">
 </head>
+
 <body>
+
     <h1>Detalles de la Postulación</h1>
     <div class="detalles">
         <h3>{{ postulacion.oferta.titulo }}</h3>
@@ -36,5 +25,6 @@
     <a href="{% url 'postulaciones' %}">
         <button>Volver a Inicio</button>
     </a>
+    
 </body>
 </html>
