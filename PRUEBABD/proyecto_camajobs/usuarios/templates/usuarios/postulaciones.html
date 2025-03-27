@@ -97,10 +97,6 @@
             <a href="{% url 'crear_oferta' %}">
                 <button>Crear Oferta</button>
             </a>
-            
-            <a href="{% url 'perfil_empresa' %}">
-                <button>Ver Mi Perfil</button>
-            </a>
 
             <!-- Mostrar ofertas de la empresa -->
             {% if ofertas_empresa %}
@@ -158,12 +154,6 @@
                     {% endif %}
                 </div>
             {% endfor %}
-
-            <!-- Botón "Mi Perfil Persona" -->
-            <br>
-            <a href="{% url 'perfil_persona' persona.id %}">
-                <button>Mi Perfil (Ver Formación/Experiencia)</button>
-            </a>
         {% endif %}
 
         <!-- Formulario oculto para cerrar sesión -->

@@ -9,13 +9,37 @@ K83hs6HsSbs - Pablo1 = persona 3
 J7sUjs32Kx2  - Juan2 = persona 4 - kevinrd.workspace@gmail.com -nueva contra : J7sUjs32Kx4
 Iks632xMsxs  - Goku = persona5 - - Iks632xMsx4
 
----****----
+osquitar417 - Emcali
+
+osquitar417 - EnriquePNG
+
+----****----
 Correo :camejobs2025@gmail.com
 Contrasseña: camejobstps
 NOmbre de app : camejobs
-contraseAPP : gqwz fiun cbjg yhcs
+contraseAPP : gqwz fiun cbjg yhcs''
+
+---Facebook---
+Correo: camejobs2025@gmail.com
+Contraseña: camejobstps
+
+---X---
+Correo: camejobs2025@gmail.com
+Contraseña: camejobstps
+Usuario: came_jobs2025
+
+---Instagram---
+Correo: camejobs2025@gmail.com
+Contraseña: camejobstps
 
 ---
 kevinrd.workspace@gmail.com
 
 "error en" <link rel="icon" href="{% static 'img/Logo camejobs.png' %}">
+
+----- config .env
+EMAIL_USER=camejobs2025@gmail.com
+EMAIL_PASSWORD=gqwzfiuncbjgyhcs
+----- .env
+EMAIL_USER=camejobs2025@gmail.com
+EMAIL_PASSWORD=gqwzfiuncbjgyhcs
