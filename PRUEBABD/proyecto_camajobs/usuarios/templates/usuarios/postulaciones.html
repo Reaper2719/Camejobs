@@ -161,7 +161,7 @@
 
             <!-- Botón "Mi Perfil Persona" -->
             <br>
-            <a href="{% url 'perfil_persona' %}">
+            <a href="{% url 'perfil_persona' persona.id %}">
                 <button>Mi Perfil (Ver Formación/Experiencia)</button>
             </a>
         {% endif %}
