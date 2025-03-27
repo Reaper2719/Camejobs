@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
 from django.contrib.auth import login
 from .forms import PersonaForm, EmpresaForm
 from django.forms import modelformset_factory
@@ -150,8 +151,8 @@ def postulaciones(request):
 
 # Perfil de persona
 @login_required
-def perfil_persona(request):
-    persona = get_object_or_404(Persona, usuario=request.user)
+def perfil_persona(request, persona_id):
+    persona = get_object_or_404(Persona, id=persona_id)
     formaciones = FormacionAcademica.objects.filter(persona=persona)
     experiencias = ExperienciaLaboral.objects.filter(persona=persona)
     tickets = Ticket.objects.filter(usuario=request.user)
@@ -357,3 +358,52 @@ def confirmar_email(request, uidb64, token):
     
 def confirmacion_enviada(request):
     return render(request, 'usuarios/confirmacion_enviada.html')
+
+#Botones ocultos
+def navbar_context(request):
+    perfil_persona = hasattr(request.user, 'persona')
+    perfil_empresa = hasattr(request.user, 'empresa')
+
+    return {
+        'perfil_persona': perfil_persona,
+        'perfil_empresa': perfil_empresa,
+    }
+
+#Perfiles personas
+def pagina_perfiles(request):
+    personas = Persona.objects.all()
+
+    ubicaciones = Persona.objects.values_list('ubicacion', flat=True).distinct()
+
+    context = {
+        'personas': personas,
+        'ubicaciones': ubicaciones
+    }
+
+    return render(request, 'usuarios/pagina_perfiles.html', context)
+
+def perfiles_empresas(request):
+    empresas = Empresa.objects.all() 
+
+    ubicaciones = Empresa.objects.values_list('ubicacion', flat=True).distinct()  # Ubicaciones únicas
+
+    context = {
+        'empresas': empresas,
+        'ubicaciones': ubicaciones
+    }
+
+    return render(request, 'usuarios/perfiles_empresas.html', context)
+
+#Acceder a perfiles por ID (Nit y cedula)
+def redirigir_perfil(request, persona_id):
+    persona = Persona.objects.filter(id=persona_id).first()
+    
+    if persona:
+        return redirect(f'/usuarios/perfil/persona/{persona_id}/')
+
+    empresa = Empresa.objects.filter(id=persona_id).first()
+    
+    if empresa:
+        return redirect(reverse('perfil_empresa', kwargs={'empresa_id': persona_id}))
+
+    return redirect('/usuarios/perfil/no-encontrado/')

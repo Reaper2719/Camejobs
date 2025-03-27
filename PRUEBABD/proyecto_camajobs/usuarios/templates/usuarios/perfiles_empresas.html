@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Empresas{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/pag_perfiles.css' %}">
+    <link rel="icon" href="{% static 'img/Logo camejobs.png' %}">
+</head>
+
+<body>
+    <div class="main-content">
+        <!-- Navbar -->
+        {% include 'usuarios/navbar.html' %}
+
+        <main>
+            <!-- Botón hamburguesa para filtros -->
+            <button id="toggleFiltros" class="btn-filtros">☰ Filtros</button>
+            <div class="perfil-container">
+                <!-- Sección izquierda: Filtros -->
+                <aside class="filtros" id="filtrosContainer">
+                    <h2>Filtros</h2>
+
+                    <!-- Barra de búsqueda -->
+                    <span class="texto">Buscar</span>
+                    <div class="input-container">
+                        <input type="text" id="searchBar" placeholder="Buscar Empresa"
+                            onkeyup="applyFilters()">
+                        <img src="{% static 'img/logo camejobs.png' %}" alt="Buscar">
+                    </div>
+                    <br>
+
+                    <!-- Filtro de ubicacion -->
+                    <span class="texto">Ubicación</span>
+                    <select id="filterUbicacion" class="filter-select" onchange="applyFilters()">
+                        <option class="filter-select-option" value="">Ubicación</option>
+                        {% for ubicacion in ubicaciones %}
+                        <option class="filter-select-option" value="{{ ubicacion }}">{{ ubicacion }}</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+                </aside>
+                <!-- Sección derecha: Listado de personas -->
+
+                <section class="empresas">
+                    {% for empresa in empresas %}
+                    <div class="persona-card">
+                        <div class="persona" persona-ubicacion="{{ empresa.ubicacion }}"
+
+                            <h2 class="persona-nombre">{{ empresa.razon_social }}</h2>
+
+                            {% if empresa.logo %}
+                            <img src="{{ empresa.logo.url }}" alt="{{ empresa.usuario }}" class="persona-foto">
+                            {% else %}
+                            <img src="{% static 'img/default_profile.png' %}"alt="Sin foto" class="persona-foto">
+                            {% endif %}
+
+                            <div class="persona-info">
+                                <p class="persona-profesion">🧑 {{ empresa.eslogan }}</p>
+                                <p class="persona-ubicacion">📍 {{ empresa.ubicacion}}</p>
+                            </div>
+
+                            <a class="perfil_link" href="{% url 'perfil_empresa' empresa.id %}" class="persona-card">Perfil</a>                    </div>
+                    </div>
+                    {% empty %}
+                    <p class="sin_personas">No hay empresas disponibles.</p>
+                    {% endfor %}
+                </section>
+
+        </main>
+    </div>
+
+    <!-- Footer -->
+    {% include 'usuarios/footer.html' %}
+
+</body>
+
+</html>

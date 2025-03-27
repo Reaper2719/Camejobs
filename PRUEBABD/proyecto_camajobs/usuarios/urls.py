@@ -3,6 +3,7 @@ from . import views
 from django.contrib.auth import views as auth_views
 #Cambiar contraseña y validar
 from .forms import CustomAuthenticationForm
+from .views import redirigir_perfil, perfil_persona, perfil_empresa
 
 urlpatterns = [
     # Página principal
@@ -67,4 +68,17 @@ urlpatterns = [
 
     #Modificar empresa
     path('empresa/modificar/', views.modificar_empresa, name='modificar_empresa'),
+
+    #Pagina perfiles
+    path('perfiles/', views.pagina_perfiles, name='pagina_perfiles'),
+
+    #Pagina perfiles empresa
+    path('empresas/', views.perfiles_empresas, name='perfiles_empresas'),
+
+    #Perfiles personas por id
+    path('usuarios/perfil/persona/<int:persona_id>/', perfil_persona, name='perfil_persona'),
+
+    #Perfiles empresas por id
+    path('usuarios/perfil/empresa/<int:empresa_id>/', perfil_empresa, name='perfil_empresa'),
+
 ]
